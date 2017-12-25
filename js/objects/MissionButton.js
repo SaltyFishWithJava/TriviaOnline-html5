@@ -1,7 +1,7 @@
 
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.MissionButton = function(gameState, position, texture, callback, context, group, properties) {
+Trivia.MissionButton = function(gameState, position, texture, callback, context, group, properties) {
   "use strict";
   Phaser.Button.call(this, gameState.game, position.x, position.y, texture, this.clicked, this, 0, 0, 0);
   this.gameState = gameState;
@@ -15,21 +15,21 @@ Tacit.MissionButton = function(gameState, position, texture, callback, context, 
   key.onDown.add(this.clicked, this);
 };
 
-Tacit.MissionButton.prototype = Object.create(Phaser.Button.prototype);
-Tacit.MissionButton.prototype.constructor = Tacit.MissionButton;
+Trivia.MissionButton.prototype = Object.create(Phaser.Button.prototype);
+Trivia.MissionButton.prototype.constructor = Trivia.MissionButton;
 
-Tacit.MissionButton.prototype.update = function () {
+Trivia.MissionButton.prototype.update = function () {
   "use strict";
 }
 
-Tacit.MissionButton.prototype.big = function() {
+Trivia.MissionButton.prototype.big = function() {
   var tween = game.add.tween(this.scale).to({x: 1.5, y: 1.5}, 50, "Linear", true, 0, 0, true);
   tween.onComplete.add(function() {
     this.scale.setTo(1);
   }, this);
 }
 
-Tacit.MissionButton.prototype.circle = function() {
+Trivia.MissionButton.prototype.circle = function() {
   var buttonCircle = this.gameState.buttonCircleGroup.getFirstExists(false);
   if(buttonCircle) {
     buttonCircle.alpha = 1;
@@ -44,7 +44,7 @@ Tacit.MissionButton.prototype.circle = function() {
   }
 }
 
-Tacit.MissionButton.prototype.clicked = function() {
+Trivia.MissionButton.prototype.clicked = function() {
   if(this.gameState.gOver || !this.gameState.canButton) {
     return;
   }

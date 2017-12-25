@@ -1,15 +1,15 @@
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.StartState = function () {
+Trivia.StartState = function () {
     "use strict";
-    Tacit.BaseState.call(this);
+    Trivia.BaseState.call(this);
 };
 
-Tacit.StartState.prototype = Object.create(Tacit.BaseState.prototype);
-Tacit.StartState.prototype.constructor = Tacit.StartState;
+Trivia.StartState.prototype = Object.create(Trivia.BaseState.prototype);
+Trivia.StartState.prototype.constructor = Trivia.StartState;
 
-Tacit.StartState.prototype.create = function () {
+Trivia.StartState.prototype.create = function () {
     "use strict";
 
     this.gOver = false;
@@ -43,37 +43,37 @@ Tacit.StartState.prototype.create = function () {
     this.groups["button"] = game.add.group();
 
     // 中间的圆
-    this.circleMask = new Tacit.CircleMask(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'circleMask', 'circleMask');
+    this.circleMask = new Trivia.CircleMask(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'circleMask', 'circleMask');
     this.circleMask.show();
 
     // 黑色的圈
-    this.blackCircle = new Tacit.BlackCircle(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'graphic');
+    this.blackCircle = new Trivia.BlackCircle(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'graphic');
     this.blackCircle.show(function () {
         this.loadLevel(this.levelNum);
     });
 
     // 蓝色的虚线圈
-    this.dashCircle = new Tacit.DashCircle(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'graphic');
+    this.dashCircle = new Trivia.DashCircle(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'graphic');
 
     // 代表时间的白色圈
-    this.timeCircle = new Tacit.TimeCircle(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'graphic');
+    this.timeCircle = new Trivia.TimeCircle(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'graphic');
 
     // 代表血条的圈
-    this.bloodCircle = new Tacit.BloodCircle(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'graphic');
+    this.bloodCircle = new Trivia.BloodCircle(this, {x: WIDTH / 2, y: HEIGHT / 2}, 'graphic');
 
-    this.emitter = new Tacit.Emitter(this, {
+    this.emitter = new Trivia.Emitter(this, {
         x: 0,
         y: 0
     }, 200, 'emitter');
 
-    this.treeManager = new Tacit.TreeManager(this);
-    this.pointerManager = new Tacit.PointerManager(this);
-    this.scoreManager = new Tacit.ScoreManager(this);
-    this.levelManager = new Tacit.LevelManager(this);
+    this.treeManager = new Trivia.TreeManager(this);
+    this.pointerManager = new Trivia.PointerManager(this);
+    this.scoreManager = new Trivia.ScoreManager(this);
+    this.levelManager = new Trivia.LevelManager(this);
 
     // 错误
-    this.leftError = new Tacit.Error(this, {x: 0, y: 0}, 'redError', 'error', {dir: 1});
-    this.rightError = new Tacit.Error(this, {x: WIDTH, y: 0}, 'redError', 'error', {dir: -1});
+    this.leftError = new Trivia.Error(this, {x: 0, y: 0}, 'redError', 'error', {dir: 1});
+    this.rightError = new Trivia.Error(this, {x: WIDTH, y: 0}, 'redError', 'error', {dir: -1});
 
     // 按钮的圈
     this.buttonCircleGroup = game.add.group();
@@ -87,7 +87,7 @@ Tacit.StartState.prototype.create = function () {
 
     // 左侧部分
     var leftDash = game.add.image(0, 138, 'dash');
-    this.leftBtn1 = new Tacit.MissionButton(this, {
+    this.leftBtn1 = new Trivia.MissionButton(this, {
         x: 20 + 145 / 2,
         y: 230 + 145 / 2
     }, 'button_black', this.clickButton, {
@@ -96,7 +96,7 @@ Tacit.StartState.prototype.create = function () {
         'game': this,
         'btn': 'leftBtn1'
     }, 'button', {keyCode: Phaser.KeyCode.Q});
-    this.leftBtn2 = new Tacit.MissionButton(this, {
+    this.leftBtn2 = new Trivia.MissionButton(this, {
         x: 60 + 145 / 2,
         y: 480 + 145 / 2
     }, 'button_red', this.clickButton, {
@@ -105,7 +105,7 @@ Tacit.StartState.prototype.create = function () {
         'game': this,
         'btn': 'leftBtn2'
     }, 'button', {keyCode: Phaser.KeyCode.A});
-    this.leftBtn3 = new Tacit.MissionButton(this, {
+    this.leftBtn3 = new Trivia.MissionButton(this, {
         x: 20 + 145 / 2,
         y: 730 + 145 / 2
     }, 'button_yellow', this.clickButton, {
@@ -114,7 +114,7 @@ Tacit.StartState.prototype.create = function () {
         'game': this,
         'btn': 'leftBtn3'
     }, 'button', {keyCode: Phaser.KeyCode.Z});
-    this.leftScore = game.add.bitmapText(20, 10, 'TacitNum', game.leftScore + "", 64);
+    this.leftScore = game.add.bitmapText(20, 10, 'TriviaNum', game.leftScore + "", 64);
 
     this.leftPart = game.add.sprite(0, 0);
     this.leftPart.addChild(leftDash);
@@ -131,7 +131,7 @@ Tacit.StartState.prototype.create = function () {
     // 右侧部分
     var rightDash = game.add.image(1920, 138, 'dash');
     rightDash.scale.x = -1;
-    this.rightBtn1 = new Tacit.MissionButton(this, {
+    this.rightBtn1 = new Trivia.MissionButton(this, {
         x: 1770 - 20 + 145 / 2,
         y: 230 + 145 / 2
     }, 'button_blue', this.clickButton, {
@@ -140,7 +140,7 @@ Tacit.StartState.prototype.create = function () {
         'game': this,
         'btn': 'rightBtn1'
     }, 'button', {keyCode: Phaser.KeyCode.O});
-    this.rightBtn2 = new Tacit.MissionButton(this, {
+    this.rightBtn2 = new Trivia.MissionButton(this, {
         x: 1770 - 60 + 145 / 2,
         y: 480 + 145 / 2
     }, 'button_red', this.clickButton, {
@@ -149,7 +149,7 @@ Tacit.StartState.prototype.create = function () {
         'game': this,
         'btn': 'rightBtn2'
     }, 'button', {keyCode: Phaser.KeyCode.K});
-    this.rightBtn3 = new Tacit.MissionButton(this, {
+    this.rightBtn3 = new Trivia.MissionButton(this, {
         x: 1770 - 20 + 145 / 2,
         y: 730 + 145 / 2
     }, 'button_green', this.clickButton, {
@@ -158,7 +158,7 @@ Tacit.StartState.prototype.create = function () {
         'game': this,
         'btn': 'rightBtn3'
     }, 'button', {keyCode: Phaser.KeyCode.M});
-    this.rightScore = game.add.bitmapText(0, 10, 'TacitNum', game.rightScore + "", 64);
+    this.rightScore = game.add.bitmapText(0, 10, 'TriviaNum', game.rightScore + "", 64);
     this.rightScore.x = 1920 - this.rightScore.width - 20;
 
     this.rightPart = game.add.sprite(0, 0);
@@ -178,7 +178,7 @@ Tacit.StartState.prototype.create = function () {
     gameover.anchor.setTo(0.5, 0.5);
     gameover.animations.add('shake');
     gameover.animations.play('shake', 3, true);
-    this.totalScore = game.add.bitmapText(WIDTH / 2, HEIGHT / 2 + 100, 'TacitNum', "", 64);
+    this.totalScore = game.add.bitmapText(WIDTH / 2, HEIGHT / 2 + 100, 'TriviaNum', "", 64);
     this.totalScore.x = WIDTH / 2 - this.totalScore.width / 2;
     this.gameoverAll = game.add.sprite(0, 0);
     this.gameoverAll.addChild(gameover);
@@ -196,7 +196,7 @@ Tacit.StartState.prototype.create = function () {
 
 };
 
-Tacit.StartState.prototype.clickButton = function () {
+Trivia.StartState.prototype.clickButton = function () {
     var clickIndex = this.index;
     var clickSide = this.side;
     var missions = this.game.missions;
@@ -244,7 +244,7 @@ Tacit.StartState.prototype.clickButton = function () {
     }
 }
 
-Tacit.StartState.prototype.loadLevel = function (level) {
+Trivia.StartState.prototype.loadLevel = function (level) {
 
     this.levelManager.loadLevel(level);
 
@@ -286,7 +286,7 @@ Tacit.StartState.prototype.loadLevel = function (level) {
 
 }
 
-Tacit.StartState.prototype.nextLevel = function () {
+Trivia.StartState.prototype.nextLevel = function () {
     var goNext = function () {
         this.curLine = 0;
         this.loadLevel(this.levelNum);
@@ -315,7 +315,7 @@ Tacit.StartState.prototype.nextLevel = function () {
     }
 }
 
-Tacit.StartState.prototype.allLeft = function (callback) {
+Trivia.StartState.prototype.allLeft = function (callback) {
     this.bloodCircle.kill();
     this.timeCircle.kill();
     this.dashCircle.kill();
@@ -326,7 +326,7 @@ Tacit.StartState.prototype.allLeft = function (callback) {
     this.blackCircle.hide(callback);
 }
 
-Tacit.StartState.prototype.gameOver = function () {
+Trivia.StartState.prototype.gameOver = function () {
     game.soundManager.playSoundGameOver();
     this.totalScore.text = (game.leftScore + game.rightScore) + "";
     this.totalScore.x = WIDTH / 2 - this.totalScore.width / 2;
@@ -344,7 +344,7 @@ Tacit.StartState.prototype.gameOver = function () {
     });
 }
 
-Tacit.StartState.prototype.through = function () {
+Trivia.StartState.prototype.through = function () {
     game.soundManager.playSoundWin();
     this.timeCircle.kill();
     this.bloodCircle.kill();
@@ -356,7 +356,7 @@ Tacit.StartState.prototype.through = function () {
                 this.circleMask.small();
                 game.add.tween(this.brain.scale).to({x: 0.5, y: 0.5}, 1500, Phaser.Easing.Exponential.In, true);
                 this.treeManager.disappearCurrentTree(function () {
-                    var totalSc = game.add.bitmapText(20, 10, 'TacitNum', (game.leftScore + game.rightScore) + "", 64);
+                    var totalSc = game.add.bitmapText(20, 10, 'TriviaNum', (game.leftScore + game.rightScore) + "", 64);
                     totalSc.x = WIDTH / 2 - totalSc.width / 2;
                     totalSc.y = 100;
                     game.soundManager.playSoundMenu();
@@ -375,6 +375,6 @@ Tacit.StartState.prototype.through = function () {
     });
 }
 
-Tacit.StartState.prototype.update = function () {
+Trivia.StartState.prototype.update = function () {
 
 }

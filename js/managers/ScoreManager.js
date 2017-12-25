@@ -1,8 +1,8 @@
 
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.ScoreManager = function(gameState) {
+Trivia.ScoreManager = function(gameState) {
   "use strict";
   Object.call(this);
   this.gameState = gameState;
@@ -11,15 +11,15 @@ Tacit.ScoreManager = function(gameState) {
   game.rightScore = 0;
 };
 
-Tacit.ScoreManager.prototype = Object.create(Object.prototype);
-Tacit.ScoreManager.prototype.constructor = Tacit.ScoreManager;
+Trivia.ScoreManager.prototype = Object.create(Object.prototype);
+Trivia.ScoreManager.prototype.constructor = Trivia.ScoreManager;
 
-Tacit.ScoreManager.prototype.levelScore = function() {
+Trivia.ScoreManager.prototype.levelScore = function() {
   this.updateScore('left', (this.gameState.levelManager.itemCount + this.gameState.LevelTime - this.gameState.timeCount) * 10);
   this.updateScore('right', (this.gameState.levelManager.itemCount + this.gameState.LevelTime - this.gameState.timeCount) * 10);
 }
 
-Tacit.ScoreManager.prototype.updateScore = function(side, score) {
+Trivia.ScoreManager.prototype.updateScore = function(side, score) {
   if(side == "left") {
     game.leftScore += score;
     if(game.leftScore < 0) {

@@ -1,8 +1,8 @@
 
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.TreeManager = function(gameState) {
+Trivia.TreeManager = function(gameState) {
   "use strict";
   Object.call(this);
   this.gameState = gameState;
@@ -10,23 +10,23 @@ Tacit.TreeManager = function(gameState) {
     x: 435 + 1043/2,
     y: 1041/2 + 20
   };
-  this.curTree = new Tacit.Tree(this.gameState, position, 'tree', 'tree');
-  this.lastTree = new Tacit.Tree(this.gameState, position, 'tree', 'tree');
+  this.curTree = new Trivia.Tree(this.gameState, position, 'tree', 'tree');
+  this.lastTree = new Trivia.Tree(this.gameState, position, 'tree', 'tree');
 
   var treeAnimProps = {
     treeAninTime: 800,
     treeAnimSize: 10
   }
-  this.treeAnimLray = new Tacit.TreeAnim(this.gameState, position, 'tree-anim-lray', 'tree', treeAnimProps);
-  this.treeAnimSray = new Tacit.TreeAnim(this.gameState, position, 'tree-anim-sray', 'tree', treeAnimProps);
-  this.treeAnimCircle = new Tacit.TreeAnim(this.gameState, position, 'tree-anim-circle', 'tree', treeAnimProps);
+  this.treeAnimLray = new Trivia.TreeAnim(this.gameState, position, 'tree-anim-lray', 'tree', treeAnimProps);
+  this.treeAnimSray = new Trivia.TreeAnim(this.gameState, position, 'tree-anim-sray', 'tree', treeAnimProps);
+  this.treeAnimCircle = new Trivia.TreeAnim(this.gameState, position, 'tree-anim-circle', 'tree', treeAnimProps);
 
 };
 
-Tacit.TreeManager.prototype = Object.create(Object.prototype);
-Tacit.TreeManager.prototype.constructor = Tacit.TreeManager;
+Trivia.TreeManager.prototype = Object.create(Object.prototype);
+Trivia.TreeManager.prototype.constructor = Trivia.TreeManager;
 
-Tacit.TreeManager.prototype.winLevel = function(level, callback) {
+Trivia.TreeManager.prototype.winLevel = function(level, callback) {
   if(level == 1) {
     this.curTree.changeIndex(level);
     this.curTree.showAndHide(callback, this.treeAnim, this);
@@ -38,16 +38,16 @@ Tacit.TreeManager.prototype.winLevel = function(level, callback) {
   }
 }
 
-Tacit.TreeManager.prototype.through = function(level) {
+Trivia.TreeManager.prototype.through = function(level) {
   this.curTree.changeIndex(level);
   this.curTree.show();
 }
 
-Tacit.TreeManager.prototype.disappearCurrentTree = function(callback) {
+Trivia.TreeManager.prototype.disappearCurrentTree = function(callback) {
   this.curTree.disappear(callback);
 }
 
-Tacit.TreeManager.prototype.treeAnim = function() {
+Trivia.TreeManager.prototype.treeAnim = function() {
   this.gameState.emitter.emit(5, this.curTree);
 
   this.treeAnimCircle.bigAlpha();

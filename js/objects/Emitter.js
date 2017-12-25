@@ -1,7 +1,7 @@
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.Emitter = function(gameState, position, maxParticles, group, properties) {
+Trivia.Emitter = function(gameState, position, maxParticles, group, properties) {
   "use strict";
   Phaser.Particles.Arcade.Emitter.call(this, gameState.game, position.x, position.y, maxParticles);
   
@@ -22,10 +22,10 @@ Tacit.Emitter = function(gameState, position, maxParticles, group, properties) {
   this.gravity = 0;
 };
 
-Tacit.Emitter.prototype = Object.create(Phaser.Particles.Arcade.Emitter.prototype);
-Tacit.Emitter.prototype.constructor = Tacit.Emitter;
+Trivia.Emitter.prototype = Object.create(Phaser.Particles.Arcade.Emitter.prototype);
+Trivia.Emitter.prototype.constructor = Trivia.Emitter;
 
-Tacit.Emitter.prototype.emit = function(index, sprite) {
+Trivia.Emitter.prototype.emit = function(index, sprite) {
   // 粒子效果
   var emitColor = EmitterMap[index];
 
@@ -43,7 +43,7 @@ Tacit.Emitter.prototype.emit = function(index, sprite) {
   this.start(true, 1000, null, 20);
 }
 
-Tacit.Emitter.prototype.generateFlame = function(bitmap, color) {
+Trivia.Emitter.prototype.generateFlame = function(bitmap, color) {
   var len = 10;
   bitmap.context.clearRect(0, 0, 2*len, 2*len);
   var radgrad = bitmap.ctx.createRadialGradient(len, len, 4, len, len, len);

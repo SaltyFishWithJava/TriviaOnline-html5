@@ -1,8 +1,8 @@
 
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.SoundManager = function() {
+Trivia.SoundManager = function() {
   "use strict";
   Object.call(this);
   this.soundMenu = game.add.audio("sound-menu", 1, true);
@@ -14,45 +14,45 @@ Tacit.SoundManager = function() {
   this.soundStartLevel = game.add.audio("sound-startlevel");
 };
 
-Tacit.SoundManager.prototype = Object.create(Object.prototype);
-Tacit.SoundManager.prototype.constructor = Tacit.SoundManager;
+Trivia.SoundManager.prototype = Object.create(Object.prototype);
+Trivia.SoundManager.prototype.constructor = Trivia.SoundManager;
 
-Tacit.SoundManager.prototype.playSound = function(key) {
+Trivia.SoundManager.prototype.playSound = function(key) {
   try {
     this[key].play();
   } catch (e) {}
 }
 
-Tacit.SoundManager.prototype.playSoundMenu = function() {
+Trivia.SoundManager.prototype.playSoundMenu = function() {
   if(!this.soundMenu.isPlaying) {
     this.soundMenu.play();
   }
 }
 
-Tacit.SoundManager.prototype.stopSoundMenu = function() {
+Trivia.SoundManager.prototype.stopSoundMenu = function() {
   this.soundMenu.stop();
 }
 
-Tacit.SoundManager.prototype.playSoundWin = function() {
+Trivia.SoundManager.prototype.playSoundWin = function() {
   this.playSound('soundWin');
 }
 
-Tacit.SoundManager.prototype.playSoundRight = function() {
+Trivia.SoundManager.prototype.playSoundRight = function() {
   this.playSound('soundRight');
 }
 
-Tacit.SoundManager.prototype.playSoundNextLevel = function() {
+Trivia.SoundManager.prototype.playSoundNextLevel = function() {
   this.playSound('soundNextLevel');
 }
 
-Tacit.SoundManager.prototype.playSoundGameOver = function() {
+Trivia.SoundManager.prototype.playSoundGameOver = function() {
   this.playSound('soundGameOver');
 }
 
-Tacit.SoundManager.prototype.playSoundError = function() {
+Trivia.SoundManager.prototype.playSoundError = function() {
   this.playSound('soundError');
 }
 
-Tacit.SoundManager.prototype.playSoundStartLevel = function() {
+Trivia.SoundManager.prototype.playSoundStartLevel = function() {
   this.playSound('soundStartLevel');
 }

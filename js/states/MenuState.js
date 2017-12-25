@@ -1,15 +1,15 @@
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.MenuState = function () {
+Trivia.MenuState = function () {
     "use strict";
-    Tacit.BaseState.call(this);
+    Trivia.BaseState.call(this);
 };
 
-Tacit.MenuState.prototype = Object.create(Tacit.BaseState.prototype);
-Tacit.MenuState.prototype.constructor = Tacit.MenuState;
+Trivia.MenuState.prototype = Object.create(Trivia.BaseState.prototype);
+Trivia.MenuState.prototype.constructor = Trivia.MenuState;
 
-Tacit.MenuState.prototype.create = function () {
+Trivia.MenuState.prototype.create = function () {
     "use strict";
     var background = this.game.add.tileSprite(0, 0, WIDTH, HEIGHT, 'background');
     var mask = game.add.sprite(WIDTH / 2, HEIGHT / 2, "mask");
@@ -50,7 +50,7 @@ Tacit.MenuState.prototype.create = function () {
 
 };
 
-Tacit.MenuState.prototype.onNextState = function () {
+Trivia.MenuState.prototype.onNextState = function () {
     var allTween = game.add.tween(this.spriteAll).to({y: -1080}, 0, Phaser.Easing.Exponential.Out, true);
     allTween.onComplete.add(function () {
         game.soundManager.stopSoundMenu();

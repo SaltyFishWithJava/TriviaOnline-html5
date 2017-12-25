@@ -1,22 +1,22 @@
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.LevelManager = function (gameState) {
+Trivia.LevelManager = function (gameState) {
     "use strict";
     Object.call(this);
     this.gameState = gameState;
 
 };
 
-Tacit.LevelManager.prototype = Object.create(Object.prototype);
-Tacit.LevelManager.prototype.constructor = Tacit.LevelManager;
+Trivia.LevelManager.prototype = Object.create(Object.prototype);
+Trivia.LevelManager.prototype.constructor = Trivia.LevelManager;
 
-Tacit.LevelManager.prototype.loadStage = function (stage) {
+Trivia.LevelManager.prototype.loadStage = function (stage) {
     // 关卡数据
     this.levelJSON = game.cache.getJSON('level' + stage);
 }
 
-Tacit.LevelManager.prototype.loadLevel = function (level) {
+Trivia.LevelManager.prototype.loadLevel = function (level) {
     var curLevelArr = this.levelJSON[level];
     this.gameState.missions.splice(0, this.gameState.missions.length);
     this.itemCount = 0;
@@ -38,7 +38,7 @@ Tacit.LevelManager.prototype.loadLevel = function (level) {
                 if (mission) {
                     mission.changeMission(position, MissionMap[item[0]], item[0]);
                 } else {
-                    mission = new Tacit.Mission(this.gameState, position, MissionMap[item[0]], 'mission', {
+                    mission = new Trivia.Mission(this.gameState, position, MissionMap[item[0]], 'mission', {
                         index: item[0]
                     });
                 }
@@ -53,7 +53,7 @@ Tacit.LevelManager.prototype.loadLevel = function (level) {
     }
 }
 
-Tacit.LevelManager.prototype.nextLevel = function (level) {
+Trivia.LevelManager.prototype.nextLevel = function (level) {
     for (var i = 0; i < this.gameState.missions.length; i++) {
         for (var j = 0; j < this.gameState.missions[i].length; j++) {
             this.gameState.missions[i][j].sprite.kill();

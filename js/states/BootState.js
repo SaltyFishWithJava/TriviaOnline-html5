@@ -1,9 +1,9 @@
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.BootState = function () {
+Trivia.BootState = function () {
     "use strict";
-    Tacit.BaseState.call(this);
+    Trivia.BaseState.call(this);
 };
 
 Phaser.World.prototype.displayObjectUpdateTransform = function () {
@@ -20,10 +20,10 @@ Phaser.World.prototype.displayObjectUpdateTransform = function () {
     PIXI.DisplayObject.prototype.updateTransform.call(this);
 }
 
-Tacit.BootState.prototype = Object.create(Tacit.BaseState.prototype);
-Tacit.BootState.prototype.constructor = Tacit.BootState;
+Trivia.BootState.prototype = Object.create(Trivia.BaseState.prototype);
+Trivia.BootState.prototype.constructor = Trivia.BootState;
 
-Tacit.BootState.prototype.preload = function () {
+Trivia.BootState.prototype.preload = function () {
     "use strict";
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
@@ -40,7 +40,7 @@ Tacit.BootState.prototype.preload = function () {
     }
 };
 
-Tacit.BootState.prototype.create = function () {
+Trivia.BootState.prototype.create = function () {
     "use strict";
     game.scale.onOrientationChange.add(function () {
         if (game.scale.isLandscape) {

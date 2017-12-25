@@ -1,7 +1,7 @@
 
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.DashCircle = function(gameState, position, group, properties) {
+Trivia.DashCircle = function(gameState, position, group, properties) {
   "use strict";
   Phaser.Graphics.call(this, gameState.game, position.x, position.y);
   this.gameState = gameState;
@@ -12,14 +12,14 @@ Tacit.DashCircle = function(gameState, position, group, properties) {
   this.lineStyle(3, 0x37AFB7);
 };
 
-Tacit.DashCircle.prototype = Object.create(Phaser.Graphics.prototype);
-Tacit.DashCircle.prototype.constructor = Tacit.DashCircle;
+Trivia.DashCircle.prototype = Object.create(Phaser.Graphics.prototype);
+Trivia.DashCircle.prototype.constructor = Trivia.DashCircle;
 
-Tacit.DashCircle.prototype.update = function () {
+Trivia.DashCircle.prototype.update = function () {
   "use strict";
 }
 
-Tacit.DashCircle.prototype.show = function(callback) {
+Trivia.DashCircle.prototype.show = function(callback) {
   for(var i=0; i<36; i++) {
     this.arc(0, 0, 460, i*2*Math.PI/36 + Math.PI/72, (i+1)*2*Math.PI/36);
   }

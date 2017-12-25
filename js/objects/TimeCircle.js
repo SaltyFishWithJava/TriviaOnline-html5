@@ -1,7 +1,7 @@
 
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.TimeCircle = function(gameState, position, group, properties) {
+Trivia.TimeCircle = function(gameState, position, group, properties) {
   "use strict";
   Phaser.Graphics.call(this, gameState.game, position.x, position.y);
   this.gameState = gameState;
@@ -11,14 +11,14 @@ Tacit.TimeCircle = function(gameState, position, group, properties) {
   this.anchor.setTo(0.5, 0.5);
 };
 
-Tacit.TimeCircle.prototype = Object.create(Phaser.Graphics.prototype);
-Tacit.TimeCircle.prototype.constructor = Tacit.TimeCircle;
+Trivia.TimeCircle.prototype = Object.create(Phaser.Graphics.prototype);
+Trivia.TimeCircle.prototype.constructor = Trivia.TimeCircle;
 
-Tacit.TimeCircle.prototype.update = function () {
+Trivia.TimeCircle.prototype.update = function () {
   "use strict";
 }
 
-Tacit.TimeCircle.prototype.setTime = function(sec) {
+Trivia.TimeCircle.prototype.setTime = function(sec) {
   this.clear();
   // clear之后一定要设置lineStyle
   this.lineStyle(3, 0xFFFFFF);

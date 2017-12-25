@@ -1,6 +1,6 @@
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.BlackCircle = function (gameState, position, group, properties) {
+Trivia.BlackCircle = function (gameState, position, group, properties) {
     "use strict";
     Phaser.Graphics.call(this, gameState.game, position.x, position.y);
     this.gameState = gameState;
@@ -13,19 +13,19 @@ Tacit.BlackCircle = function (gameState, position, group, properties) {
     this.scale.setTo(2, 2);
 };
 
-Tacit.BlackCircle.prototype = Object.create(Phaser.Graphics.prototype);
-Tacit.BlackCircle.prototype.constructor = Tacit.BlackCircle;
+Trivia.BlackCircle.prototype = Object.create(Phaser.Graphics.prototype);
+Trivia.BlackCircle.prototype.constructor = Trivia.BlackCircle;
 
-Tacit.BlackCircle.prototype.update = function () {
+Trivia.BlackCircle.prototype.update = function () {
     "use strict";
 }
 
-Tacit.BlackCircle.prototype.show = function (callback) {
+Trivia.BlackCircle.prototype.show = function (callback) {
     var tween = game.add.tween(this.scale).to({x: 1, y: 1}, 0, Phaser.Easing.Exponential.Out, true);
     tween.onComplete.add(callback, this.gameState);
 }
 
-Tacit.BlackCircle.prototype.hide = function (callback) {
+Trivia.BlackCircle.prototype.hide = function (callback) {
     var tween = game.add.tween(this.scale).to({x: 2, y: 2}, 500, Phaser.Easing.Exponential.Out, true);
     tween.onComplete.add(callback, this.gameState);
 }

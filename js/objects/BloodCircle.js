@@ -1,7 +1,7 @@
 
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.BloodCircle = function(gameState, position, group, properties) {
+Trivia.BloodCircle = function(gameState, position, group, properties) {
   "use strict";
   Phaser.Graphics.call(this, gameState.game, position.x, position.y);
   this.gameState = gameState;
@@ -11,14 +11,14 @@ Tacit.BloodCircle = function(gameState, position, group, properties) {
   this.anchor.setTo(0.5, 0.5);
 };
 
-Tacit.BloodCircle.prototype = Object.create(Phaser.Graphics.prototype);
-Tacit.BloodCircle.prototype.constructor = Tacit.BloodCircle;
+Trivia.BloodCircle.prototype = Object.create(Phaser.Graphics.prototype);
+Trivia.BloodCircle.prototype.constructor = Trivia.BloodCircle;
 
-Tacit.BloodCircle.prototype.update = function () {
+Trivia.BloodCircle.prototype.update = function () {
   "use strict";
 }
 
-Tacit.BloodCircle.prototype.getColor = function(sec) {
+Trivia.BloodCircle.prototype.getColor = function(sec) {
   var green = 0xA0CF30, yellow = 0xEEBF06, red = 0xF92672;
   var den = TOTAL_BLOOD/2;
   if(sec < den) {
@@ -33,7 +33,7 @@ Tacit.BloodCircle.prototype.getColor = function(sec) {
   return (Math.round(r) << 16) + (Math.round(g) << 8) + Math.round(b);
 }
 
-Tacit.BloodCircle.prototype.setBlood = function(blood) {
+Trivia.BloodCircle.prototype.setBlood = function(blood) {
   blood = TOTAL_BLOOD - blood;
   this.clear();
   this.lineStyle(8, this.getColor(blood));

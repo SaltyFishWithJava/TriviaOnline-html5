@@ -1,10 +1,10 @@
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.BaseState = function () {
+Trivia.BaseState = function () {
     "use strict";
     Phaser.State.call(this);
 };
 
-Tacit.BaseState.prototype = Object.create(Phaser.State.prototype);
-Tacit.BaseState.prototype.constructor = Tacit.BaseState;
+Trivia.BaseState.prototype = Object.create(Phaser.State.prototype);
+Trivia.BaseState.prototype.constructor = Trivia.BaseState;

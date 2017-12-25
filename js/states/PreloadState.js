@@ -1,15 +1,15 @@
 var Phaser = Phaser || {};
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.PreloadState = function () {
+Trivia.PreloadState = function () {
     "use strict";
-    Tacit.BaseState.call(this);
+    Trivia.BaseState.call(this);
 };
 
-Tacit.PreloadState.prototype = Object.create(Tacit.BaseState.prototype);
-Tacit.PreloadState.prototype.constructor = Tacit.PreloadState;
+Trivia.PreloadState.prototype = Object.create(Trivia.BaseState.prototype);
+Trivia.PreloadState.prototype.constructor = Trivia.PreloadState;
 
-Tacit.PreloadState.prototype.preload = function () {
+Trivia.PreloadState.prototype.preload = function () {
     "use strict";
     game.add.tileSprite(0, 0, WIDTH, HEIGHT, 'background');
     var preloadSprite = this.game.add.sprite(WIDTH / 2, HEIGHT / 2, 'loading');
@@ -30,7 +30,7 @@ Tacit.PreloadState.prototype.preload = function () {
     game.load.image('dash', 'assets/dash.png');
     game.load.image('pointer', 'assets/pointer.png');
     game.load.image('circleMask', 'assets/circle_mask.png');
-    game.load.bitmapFont('TacitNum', 'assets/num.png', 'assets/num.xml');
+    game.load.bitmapFont('TriviaNum', 'assets/num.png', 'assets/num.xml');
     game.load.image('button_black', 'assets/button_black.png');
     game.load.image('button_blue', 'assets/button_blue.png');
     game.load.image('button_green', 'assets/button_green.png');
@@ -76,10 +76,10 @@ Tacit.PreloadState.prototype.preload = function () {
 
 };
 
-Tacit.PreloadState.prototype.create = function () {
+Trivia.PreloadState.prototype.create = function () {
     "use strict";
     // 初始化全局对象
-    game.soundManager = new Tacit.SoundManager();
+    game.soundManager = new Trivia.SoundManager();
     game.sound.setDecodedCallback(["sound-menu", "sound-win", "sound-right", "sound-nextlevel", "sound-gameover", "sound-error", "sound-startlevel"], function () {
         game.state.start('MenuState');
     }, this);

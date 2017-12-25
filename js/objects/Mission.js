@@ -1,9 +1,9 @@
 
-var Tacit = Tacit || {};
+var Trivia = Trivia || {};
 
-Tacit.Mission = function(gameState, position, texture, group, properties) {
+Trivia.Mission = function(gameState, position, texture, group, properties) {
   "use strict";
-  Tacit.Prefab.call(this, gameState, position, texture, group, properties);
+  Trivia.Prefab.call(this, gameState, position, texture, group, properties);
   this.gameState = gameState;
   this.myTexture = texture;
   this.frame = 1;
@@ -11,14 +11,14 @@ Tacit.Mission = function(gameState, position, texture, group, properties) {
   this.index = properties.index;
 };
 
-Tacit.Mission.prototype = Object.create(Tacit.Prefab.prototype);
-Tacit.Mission.prototype.constructor = Tacit.Mission;
+Trivia.Mission.prototype = Object.create(Trivia.Prefab.prototype);
+Trivia.Mission.prototype.constructor = Trivia.Mission;
 
-Tacit.Mission.prototype.update = function () {
+Trivia.Mission.prototype.update = function () {
   "use strict";
 }
 
-Tacit.Mission.prototype.changeMission = function(position, texture, index) {
+Trivia.Mission.prototype.changeMission = function(position, texture, index) {
   this.reset(position.x, position.y);
   this.loadTexture(texture);
   this.myTexture = texture;
@@ -27,7 +27,7 @@ Tacit.Mission.prototype.changeMission = function(position, texture, index) {
   this.isDone = false;
 }
 
-Tacit.Mission.prototype.done = function() {
+Trivia.Mission.prototype.done = function() {
   var effect = this.gameState.missionEffectGroup.getFirstExists(false);
   if(effect) {
     effect.reset(this.x, this.y);
