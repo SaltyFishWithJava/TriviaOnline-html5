@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/supersized.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+<div class="page-container register_container">
+    <h1>Register</h1>
+    <form action="" method="post">
+        <i class="fa fa-camera-retro fa-lg"></i>
+        <input type="text" name="username" class="username" placeholder="Username">
+        <div class="errorText errorText_username"><span id="username">用户名已存在</span></div>
+        <input type="password" name="newPassword" class="password" placeholder="New Password">
+        <div class="errorText errorText_password"><span id="password">密码长度应6-10位</span></div>
+        <input type="password" name="rePassword" class="rePassword" placeholder="Repeat New Password">
+        <div class="errorText errorText_repassword"><span id="password2">两次密码不一致</span></div>
+        <button type="submit">注册</button>
+        <div class="error errorback0">
+            <span class="error0">+️</span>
+        </div>
+        <div class="error errorback1">
+            <span class="error1">+️</span>
+        </div>
+        <div class="error errorback2">
+            <span class="error2">+️</span>
+        </div>
+    </form>
+
+
+    <div class="connect">
+        <p>吴一凡 华丽萍 陈弈君 赵宁</p>
+    </div>
+</div>
+<!-- Javascript -->
+<script src="assets/js/jquery-1.8.2.min.js"></script>
+<script src="assets/js/supersized.3.2.7.min.js"></script>
+<script src="assets/js/supersized-register.js"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+</html>
