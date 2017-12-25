@@ -1,10 +1,9 @@
-
 var Phaser = Phaser || {};
 var Tacit = Tacit || {};
 
 Tacit.BaseState = function () {
-  "use strict";
-  Phaser.State.call(this);
+    "use strict";
+    Phaser.State.call(this);
 };
 
 Tacit.BaseState.prototype = Object.create(Phaser.State.prototype);
