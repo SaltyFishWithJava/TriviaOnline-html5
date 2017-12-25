@@ -1,0 +1,74 @@
+.login_container{
+    margin: 380px auto 0 auto;
+}
+.register{
+    margin-top: 10px;
+}
+.register a{
+    text-decoration-color: white;
+    color: white;
+}
+
+.register_container{
+    margin: 220px auto 0 auto;
+}
+.errorText{
+    position: absolute;
+    right: -200px;
+    display: none;
+    /*margin-top: 8px;*/
+    /*display: none;*/
+}
+.errorText_username{
+    top:40px;
+}
+.errorText_password{
+    top:109px;
+}
+.errorText_repassword{
+    top:178px;
+}
+.error{
+    display:none;
+    position: absolute;
+    right: -55px;
+    width: 40px;
+    height: 40px;
+    background: #2d2d2d; /* browsers that don't support rgba */
+    background: rgba(45,45,45,.25);
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.error0{
+    top: 27px;
+    right: -55px;
+    width: 40px;
+    height: 40px;
+}
+.error1{
+     top: 96px;
+    right: -55px;
+    width: 40px;
+    height: 40px;
+}
+.error2{
+    top: 165px;
+    right: -55px;
+    width: 40px;
+    height: 40px;
+}
+.errorback0{
+    top: 27px;
+}
+.errorback1{
+     top: 96px;
+ }
+.errorback2{
+    top: 165px;
+}
+#username{top: 27px;}
+#password{top: 96px;}
+#password2{top: 165px;}
+
