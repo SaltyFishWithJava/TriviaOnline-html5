@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎进入游戏大厅</title>
+    <link rel="stylesheet" href="../css/gameroom.css" />
+    <link rel="stylesheet" href="../css/iefixed.css" />
+    <link rel="stylesheet" href="../css/global-base.css" />
+    <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../js/filter.js"></script>
+    <script type="text/javascript" src="../js/vivo-common.js"></script>
+
+</head>
+<body>
+
+
+<div id="mainPanel">
+    <div class="roomListAll">
+        <div class="roomHead">
+            <div class="roomHead_text">游戏大厅</div>
+        </div>
+
+        <section class="container">
+            <button class="btn btn-border btn-round color-4 material-design" data-color="#e94043">快速加入</button>
+            <button class="btn btn-round color-4 material-design" data-color="#ffffff">新建房间</button>
+        </section>
+
+        <div class="roomBody select">
+            <div class="roomList">
+                <div class="smallroomList material-design" data-color="#ffffff">
+                    <div class="avatar">
+                        <img src="../img/gameroom/avatar0.png">
+                    </div>
+                    <div class="roominfoList">
+                        <div class="roominfo">
+                            <div class="roomId">
+                                001
+                            </div>
+                            <div class="roomName">
+                                这是房间名
+                            </div>
+                        </div>
+                        <div class="roominfoDetail">
+                            <div class="roomhostName">
+                                <div>房主名：</div>
+                                <div>巴拉巴拉</div>
+                            </div>
+                            <div class="perNum">房间当前人数：<div>3</div>人</div>
+                        </div>
+                        <div>
+                            <div class="blank"></div>
+                            <div class="roomstate">游戏中</div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="join_botton">
+                            <img src="../img/gameroom/join_button_black.png">
+                    </div>
+
+                </div>
+                <div class="smallroomList material-design" data-color="#ffffff">
+                    <div class="avatar">
+                        <img src="../img/gameroom/avatar0.png">
+                    </div>
+                    <div class="roominfoList">
+                        <div class="roominfo">
+                            <div class="roomId">
+                                001
+                            </div>
+                            <div class="roomName">
+                                这是房间名
+                            </div>
+                        </div>
+                        <div class="roominfoDetail">
+                            <div class="roomhostName">
+                                <div>房主名：</div>
+                                <div>巴拉巴拉</div>
+                            </div>
+                            <div class="perNum">
+                                <div>房间当前人数：</div>
+                                <div>3</div>
+                                <div>人</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="blank"></div>
+                            <div class="roomstate">游戏中</div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="join_botton">
+                        <img src="../img/gameroom/join_button_white.png">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="roomList">
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panelRight">
+        <div class="roomfilter">
+            <div class="roomHead">
+                <div class="roomHead_text">房间筛选</div>
+                <div class="blank"></div>
+            </div>
+            <ul class="select">
+                <li class="select-list select-list-roomid" style="padding: 0px;">
+                <div id="vivo-airbox"></div>
+                <div id="vivo-wrap">
+                    <div id="vivo-head">
+                        <div class="vivo-search">
+                            <div class="search-box">
+                                <form action='' method='get'>
+                                    <input type="text" placeholder="请输入房间id或者房间主昵称" name='q' class='data_q' autocomplete="off"><button>搜索</button><a class="close"></a>
+                                </form>
+                                <div class="qk-results">
+                                    <ul>
+                                    </ul>
+                                    <div class="other-results"><a href="#">其他搜索结果</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vivo-nav cl">
+                            <div class="search-user"><a href="#" class="search"><b></b></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="vivo-contain"></div>
+                </li>
+
+                <li class="select-list">
+                    <dl id="select1">
+                        <dt>地板格子数：</dt>
+                        <dd class="select-all selected"><a href="#">全部</a></dd>
+                        <dd><a href="#">12</a></dd>
+                        <dd><a href="#">15</a></dd>
+                    </dl>
+                </li>
+                <li class="select-list">
+                    <dl id="select2">
+                        <dt>题目类型：</dt>
+                        <dd class="select-all selected"><a href="#">全部</a></dd>
+                        <dd class="type1"><a href="#">类型1</a></dd>
+                        <dd class="type2"><a href="#">类型2</a></dd>
+                        <dd class="type3"><a href="#">类型3</a></dd>
+                        <dd class="type4"><a href="#">类型4</a></dd>
+                        <dd class="type5"><a href="#">类型5</a></dd>
+                        <dd class="type6"><a href="#">类型6</a></dd>
+                    </dl>
+                </li>
+                <li class="select-result">
+                    <dl>
+                        <dt>已选条件：</dt>
+                        <dd class="select-no">暂时没有选择过滤条件</dd>
+                    </dl>
+                    <button class="selectButton" onclick="select()">筛选</button>
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="playerList">
+            <div class="roomHead">
+                <div class="roomHead_text">玩家列表</div>
+                <div class="blank"></div>
+            </div>
+            <div class="playerListhead">
+                <div class="playerListhead0">加为好友</div>
+                <div class="playerListhead0">玩家昵称</div>
+                <div class="playerListhead0">当前游戏积分</div>
+                <div class="playerListhead0">状态</div>
+            </div>
+            <div class="playerListBody rollBox">
+                <div class="playerListDetail">
+                    <div class="addFriend"></div>
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/grey_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/red_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="addFriend"></div>
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/grey_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/red_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="addFriend"></div>
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/grey_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/red_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="addFriend"></div>
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/grey_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/red_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="addFriend"></div>
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/grey_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/red_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="addFriend"></div>
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/grey_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+                <div class="playerListDetail">
+                    <div class="playerListhead0">
+                        <img src="../img/gameroom/red_heart.png">
+                    </div>
+                    <div class="playerListhead0">超级无敌大boss</div>
+                    <div class="playerListhead0">10000</div>
+                    <div class="playerListhead0">游戏中</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="myLnfo">
+            <div class="roomHead">
+                <div class="roomHead_text">个人信息</div>
+                <div class="blank"></div>
+            </div>
+            <div class="myinfoBody">
+                <div class="myinfoDetail">
+
+                    <div id="myavatar">
+                        <div class="overlay"></div>
+                        <div class="bio-photo text-center">
+                            <img src="../img/gameroom/myavatar.png">
+                        </div>
+                    </div>
+                    <div class="myinfoText nickname">
+                        昵称：
+                        <div>宇宙无敌美少女</div>
+                    </div>
+                    <div class="myinfoText myscore">
+                        当前积分：
+                        <div>100033</div>
+                    </div>
+                    <div class="cancel">
+                        <button class="selectButton">注销</button>
+                    </div>
+                </div>
+                <div class="myfriendList">
+                    <div class="playerListhead">
+                        <div class="playerListhead0">好友列表</div>
+                        <div class="playerListhead0">取消好友</div>
+                    </div>
+                    <div class="friendListAll  rollBox">
+                        <div class="friendList playerListDetail">
+                            <div class="friendName playerListhead0">好友1</div>
+                            <div class="heartImg playerListhead0">
+                                <img src="../img/gameroom/red_heart.png">
+                            </div>
+                        </div>
+                        <div class="friendList playerListDetail">
+                            <div class="friendName playerListhead0">好友1</div>
+                            <div class="heartImg playerListhead0">
+                                <img src="../img/gameroom/red_heart.png">
+                            </div>
+                        </div>
+                        <div class="friendList playerListDetail">
+                            <div class="friendName playerListhead0">好友1</div>
+                            <div class="heartImg playerListhead0">
+                                <img src="../img/gameroom/red_heart.png">
+                            </div>
+                        </div>
+                        <div class="friendList playerListDetail">
+                            <div class="friendName playerListhead0">好友1</div>
+                            <div class="heartImg playerListhead0">
+                                <img src="../img/gameroom/red_heart.png">
+                            </div>
+                        </div>
+                        <div class="friendList playerListDetail">
+                            <div class="friendName playerListhead0">好友1</div>
+                            <div class="heartImg playerListhead0">
+                                <img src="../img/gameroom/red_heart.png">
+                            </div>
+                        </div>
+                        <div class="friendList playerListDetail">
+                            <div class="friendName playerListhead0">好友1</div>
+                            <div class="heartImg playerListhead0">
+                                <img src="../img/gameroom/red_heart.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="../js/script.js"></script>
+</body>
+</html>
