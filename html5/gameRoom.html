@@ -1,10 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <title>游戏房间</title>
+    <link rel="stylesheet" href="../css/global.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="css/screen.css" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="css/reset.css" type="text/css"/>-->
 </head>
-<body>
 
+<body>
+<div id="board">
+    <section id="start" class="boardblue">
+        <h1>OUR TRAVIA</h1>
+        <span class="instructions">Collect <span class="currency">200</span><br/> as you pass</span>
+        <a href="#mediterranean">Go</a>
+    </section>
+    <section id="mediterranean" class="property purple left">
+        <h1>Mediterranean Avenue</h1>
+        <div class="price">60</div>
+    </section>
+    <section id="chest1" class="chest boardblue left">
+        <h1>Community Chest</h1>
+    </section>
+    <section id="jail" class="jail boardblue up">
+        <h1 class="jailred">In Jail</h1>
+        <aside id="visiting">
+            <h2>Just Visiting</h2>
+        </aside>
+    </section>
+
+
+    <section id="stcharles" class="property plum right" style="top: 25em;">
+        <h1>St. Charles Place</h1>
+        <div class="price">140</div>
+    </section>
+
+    <section id="newyork" class="property orange right">
+        <h1>New York Avenue</h1>
+        <div class="price">200</div>
+    </section>
+
+
+    <section id="free" class="freeparking black left" style="    top: 14.0625em;">
+        <h1>Free Parking</h1>
+    </section>
+    <section id="kentucky" class="property red left">
+        <h1>Kentucky Avenue</h1>
+        <div class="price">220</div>
+    </section>
+
+    <section id="marvin" class="property yellow up">
+        <h1>Marvin Gardens</h1>
+        <div class="price">280</div>
+    </section>
+
+
+    <section id="arrested" class="boardblue right">
+        <h1><a href="#jail">Go to <span>Jail</span></a></h1>
+    </section>
+
+    <section id="luxury" class="tax boardblue right">
+        <h1>Luxury Tax</h1>
+        <div class="price">75</div>
+    </section>
+    <section id="boardwalk" class="property blue right">
+        <h1>Boardwalk</h1>
+        <div class="price">400</div>
+    </section>
+
+</div>
 </body>
 </html>
