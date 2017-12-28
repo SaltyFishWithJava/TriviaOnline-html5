@@ -8,6 +8,8 @@
     <!--<link rel="stylesheet" href="css/reset.css" type="text/css"/>-->
     <!--洗牌动画-->
     <link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/baraja.css" />
+    <!--骰子动画-->
+    <link rel="stylesheet" type="text/css" href="../css/dicing/dicing.css" />
     <!--<link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/demo.css" />-->
     <link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/custom.css" />
     <script type="text/javascript" src="../js/shuffleAnimation/modernizr.custom.79639.js"></script>
@@ -74,8 +76,11 @@
     </section>
 
 </div>
+<div style="position: absolute;z-index:2">
+<button id="nav-fan" >洗牌</button>
+<button id="dicing" >掷骰子</button>
+</div>
 
-<button id="nav-fan" style="position: absolute;z-index:2">Fan right</button>
 
 <div id="shuffle_div" style="background-color:rgba(0, 0, 0, 0.7);position: absolute;z-index:5;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
     <div class="baraja-demo">
@@ -100,6 +105,13 @@
             <li><img src="../img/shuffle/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
         </ul>
     </div>
+</div>
+
+<div id="dicing_div" style="background-color:rgba(0, 0, 0, 0.7);position: absolute;z-index:10;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
+    <div class="wrap">
+        <div id="dice" class="dice dice_1"></div>
+    </div>
+    <p id="result">请直接点击上面的色子！</p>
 </div>
 <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="../js/shuffleAnimation/jquery.baraja.js"></script>
@@ -126,19 +138,45 @@
                 console.log(index.val());
                 index.trigger("click");
             },1250);
+            setTimeout(function () {
+                $("#shuffle_div").hide();
+            },3000);
         } );
-//        // example of how to add more items
-//        $( '#add' ).on( 'click', function( event ) {
-//
-//            if( $( this ).hasClass( 'disabled' ) ) {
-//                return false;
-//            }
-//
-//            $( this ).addClass( 'disabled' );
-//
-//            baraja.add( $('<li><img src="images/6.jpg" alt="image6"/><h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li><li><img src="images/7.jpg" alt="image7"/><h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li><li><img src="images/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li><li><img src="images/9.jpg" alt="image9"/><h4>Cherry Country</h4><p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>') );
-//
-//        } );
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $("#dicing").click(function () {
+            $("#dicing_div").show();
+            var dice = $("#dice");
+            dice.trigger("click");
+            setTimeout(function () {
+                dice.trigger("click");
+            },500);
+            setTimeout(function () {
+                $("#dicing_div").hide();
+            },2500);
+
+            dice.click(function(){
+                $(".wrap").append("<div id='dice_mask'></div>");//加遮罩
+                dice.attr("class","dice");//清除上次动画后的点数
+                dice.css('cursor','default');
+                var num = Math.floor(Math.random()*6+1);//产生随机数1-6
+                dice.animate({left: '+2px'}, 100,function(){
+                    dice.addClass("dice_t");
+                }).delay(200).animate({top:'-2px'},100,function(){
+                    dice.removeClass("dice_t").addClass("dice_s");
+                }).delay(200).animate({opacity: 'show'},600,function(){
+                    dice.removeClass("dice_s").addClass("dice_e");
+                }).delay(100).animate({left:'-2px',top:'2px'},100,function(){
+                    dice.removeClass("dice_e").addClass("dice_"+num);
+                    $("#result").html("您掷得点数是<span>"+num+"</span>");
+                    dice.css('cursor','pointer');
+                    $("#dice_mask").remove();//移除遮罩
+                });
+            });
+        });
+
     });
 </script>
 </body>
