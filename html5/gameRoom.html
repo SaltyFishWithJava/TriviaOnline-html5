@@ -6,10 +6,15 @@
     <link rel="stylesheet" href="../css/global.css" type="text/css"/>
     <!--<link rel="stylesheet" href="css/screen.css" type="text/css"/>-->
     <!--<link rel="stylesheet" href="css/reset.css" type="text/css"/>-->
+    <!--洗牌动画-->
+    <link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/baraja.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/demo.css" />-->
+    <link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/custom.css" />
+    <script type="text/javascript" src="../js/shuffleAnimation/modernizr.custom.79639.js"></script>
 </head>
 
 <body>
-<div id="board">
+<div id="board" style="position: absolute;z-index:1">
     <section id="start" class="boardblue">
         <h1>TRAVIA,go!</h1>
         <span class="instructions">Collect <span class="currency">200</span><br/> as you pass</span>
@@ -69,5 +74,72 @@
     </section>
 
 </div>
+
+<button id="nav-fan" style="position: absolute;z-index:2">Fan right</button>
+
+<div id="shuffle_div" style="background-color:rgba(0, 0, 0, 0.7);position: absolute;z-index:5;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
+    <div class="baraja-demo">
+        <ul id="baraja-el" class="baraja-container">
+            <li><img src="../img/shuffle/1.jpg" alt="image1"/><h4>Coco Loko</h4><p>Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+            <li><img src="../img/shuffle/2.jpg" alt="image2"/><h4>Vermouth Land</h4><p>Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+            <li><img src="../img/shuffle/3.jpg" alt="image3"/><h4>Electrodynamics</h4><p>Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+            <li><img src="../img/shuffle/4.jpg" alt="image4"/><h4>Retinal Bliss</h4><p>Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+            <li><img src="../img/shuffle/5.jpg" alt="image5"/><h4>Disco Fever</h4><p>Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+            <li><img src="../img/shuffle/6.jpg" alt="image6"/><h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+            <li><img src="../img/shuffle/7.jpg" alt="image7"/><h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+            <li><img src="../img/shuffle/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+            <li><img src="../img/shuffle/9.jpg" alt="image9"/><h4>Cherry Country</h4><p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+            <li><img src="../img/shuffle/10.jpg" alt="image10"/><h4>Cherry Country</h4><p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+            <li><img src="../img/shuffle/11.jpg" alt="image11"/><h4>Coco Loko</h4><p>Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+            <li><img src="../img/shuffle/12.jpg" alt="image12"/><h4>Vermouth Land</h4><p>Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+            <li><img src="../img/shuffle/3.jpg" alt="image3"/><h4>Electrodynamics</h4><p>Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+            <li><img src="../img/shuffle/4.jpg" alt="image4"/><h4>Retinal Bliss</h4><p>Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+            <li><img src="../img/shuffle/5.jpg" alt="image5"/><h4>Disco Fever</h4><p>Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+            <li><img src="../img/shuffle/6.jpg" alt="image6"/><h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+            <li><img src="../img/shuffle/7.jpg" alt="image7"/><h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+            <li><img src="../img/shuffle/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/shuffleAnimation/jquery.baraja.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var $el = $( '#baraja-el' ),
+            baraja = $el.baraja();
+        // simple fan
+        $( '#nav-fan' ).on( 'click', function( event ) {
+            $("#shuffle_div").show();
+            baraja.fan( {
+                speed : 500,
+                easing : 'ease-out',
+                range : 90,
+                direction : 'right',
+                origin : { x : 25, y : 100 },
+                center : true
+            } );
+
+            setTimeout(function () {
+                var random = parseInt(Math.random()*15+1);
+                console.log(random);
+                var index = $("ul#baraja-el li:eq("+random+")");
+                console.log(index.val());
+                index.trigger("click");
+            },1250);
+        } );
+//        // example of how to add more items
+//        $( '#add' ).on( 'click', function( event ) {
+//
+//            if( $( this ).hasClass( 'disabled' ) ) {
+//                return false;
+//            }
+//
+//            $( this ).addClass( 'disabled' );
+//
+//            baraja.add( $('<li><img src="images/6.jpg" alt="image6"/><h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li><li><img src="images/7.jpg" alt="image7"/><h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li><li><img src="images/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li><li><img src="images/9.jpg" alt="image9"/><h4>Cherry Country</h4><p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>') );
+//
+//        } );
+    });
+</script>
 </body>
 </html>
