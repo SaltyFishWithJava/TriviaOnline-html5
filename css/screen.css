@@ -6,12 +6,9 @@ body{
     position: relative;
     margin: 2em;
     padding: 1.5625em;
-    /*opacity: 0.5;*/
-    /*background:url("../img/gameroom.png");*/
-    /*width: 137.5em;*/
     height: 50em;
+    width: 50em;
     background-color: #196785;
-    /*border: .4375em solid #383838;*/
     font-size: 14px;
 }
 #board:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
@@ -23,12 +20,12 @@ section:not(#start):not(#free) {
 }
 .left { float: right; }
 .right { float: left; }
-section:nth-child(2)  { margin-right: 12.5em; }
+section:nth-child(2),section:nth-last-child(1)  { margin-right: 12.5em; }
 section:nth-child(6),section:nth-child(8){ margin-right: 25em; }
-section:nth-child(-n+7):not(#start) { top: 12.5em; }
+section:nth-child(-n+6):not(#start) { top: 12.5em; }
 section:nth-child(-n+4):not(#start) { top: 37.5em; }
 section:nth-last-child(-n+6) { top: -12.5em; }
-section:nth-last-child(-n+3) { top: -25em; }
+section:nth-last-child(-n+3) { top: -37.5em; }
 
 /* ----- COLORS ----- */
 .boardblue {
@@ -84,45 +81,6 @@ section:nth-last-child(-n+3) { top: -25em; }
     right: 1.5625em;
     width: 12.5em;
     height: 50em;
-}
-#stcharles {
-    top: 25em;
-    float: right;
-    right: -12.5em;
-}
-
-
-#newyork{
-    float: right;
-}
-
-#free {
-    top: 14.1em;
-}
-
-#kentucky{
-    float: right;
-    left: 37.5em;
-    top: 0em;
-}
-
-#marvin{
-    left: -37.5em;
-}
-
-#arrested{
-    float: right;
-    left: -37.5em;
-}
-
-#luxury{
-    float: right;
-    left: -12.5em;
-}
-
-#boardwalk{
-    float: right;
-    left: 12.5em;
 }
 
 #free {
@@ -411,9 +369,4 @@ a[href="#jail"] span {
 #colophon:hover, #colophon:active {
     color: #000;
     background-color:rgba(183, 216, 213, .8);
-}
-
-#marvin{
-    left: 37.5em;
-    top: 0em;
 }
