@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/iefixed.css" />
     <link rel="stylesheet" href="../css/global-base.css" />
     <!--input.css库-->
-    <link rel="stylesheet" type="text/css" href="../css/lobbyInput/input.css"/>
+
     <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="../js/filter.js"></script>
     <script type="text/javascript" src="../js/vivo-common.js"></script>
@@ -368,19 +368,40 @@
 </div>
 <!--模态窗口-->
 <div id="modal-default" class="iziModal">
-    <section class="content bgcolor-4">
-    <span class="input input--madoka">
-					<input class="input__field input__field--madoka input-demo" type="text" id="input-31" />
-					<label class="input__label input__label--madoka" for="input-31">
-						<svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-							<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
-						</svg>
-						<span class="input__label-content input__label-content--madoka">Frequency</span>
-					</label>
-				</span>
+    <section class="container">
+        房间名：<input>
+        <span style="width: 10%"></span>
+        房主名：<input>
     </section>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo error aperiam voluptates enim quo unde officiis vero aliquid iste omnis odit nihil eaque quasi deserunt nesciunt, architecto, illo tenetur dolores!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, modi voluptate voluptates pariatur quos distinctio perspiciatis, vitae nihil consectetur, ipsam a magnam omnis sequi necessitatibus. Quisquam nesciunt ullam iste optio!</p>
+    <div name="new_room_select">
+        <ul class="select">
+            <li class="select-list">
+                <dl name="new_room_select_floor" id="newRoomSelectFloor">
+                    <dt>地板格子数：</dt>
+                    <dd class="select-all selected"><a href="#">全部</a></dd>
+                    <dd><a href="#">12</a></dd>
+                    <dd><a href="#">15</a></dd>
+                </dl>
+            </li>
+            <li class="select-list">
+                <dl name="new_room_select_qus_type" id="newRoomSelectQusType">
+                    <dt>题目类型：</dt>
+                    <dd class="select-all selected"><a href="#">全部</a></dd>
+                    <dd class="type1"><a href="#">类型1</a></dd>
+                    <dd class="type2"><a href="#">类型2</a></dd>
+                    <dd class="type3"><a href="#">类型3</a></dd>
+                    <dd class="type4"><a href="#">类型4</a></dd>
+                </dl>
+            </li>
+            <li class="select-result" name="new_room_select_result">
+                <dl>
+                    <dt>已选条件：</dt>
+                    <dd class="select-no">暂时没有选择过滤条件</dd>
+                </dl>
+                <button class="selectButton" onclick="">筛选</button>
+            </li>
+        </ul>
+    </div>
 </div>
 <script type="text/javascript" src="../js/script.js"></script>
 <script src="../js/lobbyModal/iziModal.js" type="text/javascript"></script>
@@ -402,7 +423,6 @@
 //    $("#createNewRoom").click(function () {
 //        alert("aaa");
 //    });
-
 </script>
 </body>
 </html>
