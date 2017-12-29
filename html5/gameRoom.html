@@ -4,16 +4,28 @@
     <meta charset="utf-8"/>
     <title>游戏房间</title>
     <link rel="stylesheet" href="../css/global.css" type="text/css"/>
+<<<<<<< HEAD
     <!--<link rel="stylesheet" href="../css/jue" type="text/css"/>-->
     <link rel="stylesheet" href="../css/countdown.css" type="text/css"/>
     <link rel="stylesheet" href="../css/alpha.css" type="text/css"/>
     <link rel="stylesheet" href="../css/playerllist.css" type="text/css"/>
     <!--<link rel="stylesheet" href="../css/default.css" type="text/css"/>-->
     <!--<link rel="stylesheet" href="../css/normalize.css" type="text/css"/>-->
+=======
+    <!--<link rel="stylesheet" href="css/screen.css" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="css/reset.css" type="text/css"/>-->
+    <!--洗牌动画-->
+    <link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/baraja.css" />
+    <!--骰子动画-->
+    <link rel="stylesheet" type="text/css" href="../css/dicing/dicing.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/demo.css" />-->
+    <link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/custom.css" />
+    <script type="text/javascript" src="../js/shuffleAnimation/modernizr.custom.79639.js"></script>
+>>>>>>> master
 </head>
 
 <body>
-<div id="board">
+<div id="board" style="position: absolute;z-index:1">
     <section id="start" class="boardblue">
         <h1>TRAVIA,go!</h1>
         <span class="instructions">Collect <span class="currency">200</span><br/> as you pass</span>
@@ -170,6 +182,7 @@
 
 
 </div>
+<<<<<<< HEAD
 <script src='../js/jquery-1.8.2.min.js'></script>
 <script src='../js/underscore-1.5.2-min.js'></script>
 <script src='../js/countdown.js'></script>
@@ -186,5 +199,110 @@
 </script>
 <!-- 初始化容器 end -->
 
+=======
+<div style="position: absolute;z-index:2">
+<button id="nav-fan" >洗牌</button>
+<button id="dicing" >掷骰子</button>
+</div>
+
+
+<div id="shuffle_div" style="background-color:rgba(0, 0, 0, 0.7);position: absolute;z-index:5;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
+    <div class="baraja-demo">
+        <ul id="baraja-el" class="baraja-container">
+            <li><img src="../img/shuffle/1.jpg" alt="image1"/><h4>Coco Loko</h4><p>Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+            <li><img src="../img/shuffle/2.jpg" alt="image2"/><h4>Vermouth Land</h4><p>Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+            <li><img src="../img/shuffle/3.jpg" alt="image3"/><h4>Electrodynamics</h4><p>Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+            <li><img src="../img/shuffle/4.jpg" alt="image4"/><h4>Retinal Bliss</h4><p>Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+            <li><img src="../img/shuffle/5.jpg" alt="image5"/><h4>Disco Fever</h4><p>Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+            <li><img src="../img/shuffle/6.jpg" alt="image6"/><h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+            <li><img src="../img/shuffle/7.jpg" alt="image7"/><h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+            <li><img src="../img/shuffle/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+            <li><img src="../img/shuffle/9.jpg" alt="image9"/><h4>Cherry Country</h4><p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+            <li><img src="../img/shuffle/10.jpg" alt="image10"/><h4>Cherry Country</h4><p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+            <li><img src="../img/shuffle/11.jpg" alt="image11"/><h4>Coco Loko</h4><p>Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+            <li><img src="../img/shuffle/12.jpg" alt="image12"/><h4>Vermouth Land</h4><p>Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+            <li><img src="../img/shuffle/3.jpg" alt="image3"/><h4>Electrodynamics</h4><p>Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+            <li><img src="../img/shuffle/4.jpg" alt="image4"/><h4>Retinal Bliss</h4><p>Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+            <li><img src="../img/shuffle/5.jpg" alt="image5"/><h4>Disco Fever</h4><p>Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+            <li><img src="../img/shuffle/6.jpg" alt="image6"/><h4>Serenity</h4><p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+            <li><img src="../img/shuffle/7.jpg" alt="image7"/><h4>Dark Honor</h4><p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+            <li><img src="../img/shuffle/8.jpg" alt="image8"/><h4>Nested Happiness</h4><p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+        </ul>
+    </div>
+</div>
+
+<div id="dicing_div" style="background-color:rgba(0, 0, 0, 0.7);position: absolute;z-index:10;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
+    <div class="wrap">
+        <div id="dice" class="dice dice_1"></div>
+    </div>
+    <p id="result">请直接点击上面的色子！</p>
+</div>
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/shuffleAnimation/jquery.baraja.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var $el = $( '#baraja-el' ),
+            baraja = $el.baraja();
+        // simple fan
+        $( '#nav-fan' ).on( 'click', function( event ) {
+            $("#shuffle_div").show();
+            baraja.fan( {
+                speed : 500,
+                easing : 'ease-out',
+                range : 90,
+                direction : 'right',
+                origin : { x : 25, y : 100 },
+                center : true
+            } );
+
+            setTimeout(function () {
+                var random = parseInt(Math.random()*15+1);
+                console.log(random);
+                var index = $("ul#baraja-el li:eq("+random+")");
+                console.log(index.val());
+                index.trigger("click");
+            },1250);
+            setTimeout(function () {
+                $("#shuffle_div").hide();
+            },3000);
+        } );
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $("#dicing").click(function () {
+            $("#dicing_div").show();
+            var dice = $("#dice");
+            dice.trigger("click");
+            setTimeout(function () {
+                dice.trigger("click");
+            },500);
+            setTimeout(function () {
+                $("#dicing_div").hide();
+            },2500);
+
+            dice.click(function(){
+                $(".wrap").append("<div id='dice_mask'></div>");//加遮罩
+                dice.attr("class","dice");//清除上次动画后的点数
+                dice.css('cursor','default');
+                var num = Math.floor(Math.random()*6+1);//产生随机数1-6
+                dice.animate({left: '+2px'}, 100,function(){
+                    dice.addClass("dice_t");
+                }).delay(200).animate({top:'-2px'},100,function(){
+                    dice.removeClass("dice_t").addClass("dice_s");
+                }).delay(200).animate({opacity: 'show'},600,function(){
+                    dice.removeClass("dice_s").addClass("dice_e");
+                }).delay(100).animate({left:'-2px',top:'2px'},100,function(){
+                    dice.removeClass("dice_e").addClass("dice_"+num);
+                    $("#result").html("您掷得点数是<span>"+num+"</span>");
+                    dice.css('cursor','pointer');
+                    $("#dice_mask").remove();//移除遮罩
+                });
+            });
+        });
+
+    });
+</script>
+>>>>>>> master
 </body>
 </html>

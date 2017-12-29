@@ -36,6 +36,34 @@ $(document).ready(function(){
         }
     });
 
+    //创建新房间模态框选择
+    $("#newRoomSelectFloor dd").click(function () {
+        $(this).addClass("selected").siblings().removeClass("selected");
+        if ($(this).hasClass("select-all")) {
+            $("#selectA").remove();
+        } else {
+            var copyThisA = $(this).clone();
+            if ($("#selectA").length > 0) {
+                $("#selectA a").html($(this).text());
+            } else {
+                $(".select-result[name='new_room_select_result'] dl").append(copyThisA.attr("id", "selectA"));
+            }
+        }
+    });
+
+    $("#newRoomSelectQusType dd").click(function () {
+        if ($(this).hasClass("select-all")) {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            delById("selectB");
+        } else {
+            if(!$(this).hasClass("selected")){
+                $("#select2 .select-all").removeClass("selected");
+                $(this).addClass("selected");
+                var copyThisB = $(this).clone();
+                $(".select-result[name='new_room_select_result'] dl").append(copyThisB.attr("id", "selectB"));
+            }
+        }
+    });
 
     $("#selectA").live("click", function () {
         $(this).remove();
@@ -74,6 +102,7 @@ $(document).ready(function(){
     });
 
 });
+
 function delById(elementId)
 {
     while ($("#" + elementId).length > 0)
