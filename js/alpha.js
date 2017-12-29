@@ -1043,7 +1043,6 @@
 
 
 
-
 //testimonials
 ! (function($) {
 
@@ -1077,11 +1076,14 @@
 
         var responsive = false;
 
-        jQuery(document).ready(function() {
-            calcWidth();
-        });
+        // jQuery(document).ready(function() {
+        //     console.log("ready");
+        //     calcWidth();
+        // });
+        calcWidth();
 
         $(window).resize(function() {
+            console.log("resize");
             calcWidth();
         });
         var style = '<style type="text/css>"';
@@ -1100,7 +1102,7 @@
         //set selected testimonal active
         $('#testimonials').find('.customer').eq(act).addClass('active').find('.testimonial-bubble').addClass('fadeInDown').closest('.customer').find('.cus-profile').find('.cus-name').fadeIn(200,
             function() {
-                $(this).css('bottom', '75px')
+                $(this).css('bottom', '110px')
             });
         //set selected testimonal active
         $('#testimonials.responsive').find('.customer').eq(act).addClass('active').find('.testimonial-bubble').addClass('fadeInRight');
@@ -1132,6 +1134,7 @@
         //Helper functions
         // calculating width of the testimonial line ul
         function calcWidth() {
+            console.log("calcWidth()");
             var tesWidth = 0;
             var cusH = parseInt($('.cus-image').outerHeight(true)) + 20;
             var tesH = $('.testimonials-line').outerHeight();
@@ -1140,6 +1143,7 @@
             });
 
             if ($(window).outerWidth() > 1120 && layout != 'alt') {
+                console.log("$(window).outerWidth() > 1120 && layout != 'alt'");
                 responsive = false;
                 $('#testimonials').css('width', '100%');
                 $('#testimonials').removeClass('responsive');
@@ -1147,6 +1151,7 @@
                     $(this).css({
                         'top': '-' + ($(this).outerHeight(true) + 80) + 'px'
                     });
+                    console.log($(this).outerHeight(true) + 80);
                 });
                 $('#testimonials').find('.customer.active').find('.testimonial-bubble').addClass('fadeInDown');
             }

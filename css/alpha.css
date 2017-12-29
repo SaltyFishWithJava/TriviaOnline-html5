@@ -126,7 +126,11 @@ span#prev.visible, span#next.visible{display: block;}
 .fadeOutUp {
   -webkit-animation: fadeOutUp 1s;
           animation: fadeOutUp 1s;
+  /*top: -217px;*/
 }
+/*.fadeInDown{*/
+  /*top: -216px;*/
+/*}*/
   @media only screen and ( max-width: 680px ){
     .testimonials-wrapper{
       width: 100%;
