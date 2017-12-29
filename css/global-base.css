@@ -27,11 +27,11 @@ body.loaded #vivo-contain,body.loaded #vivo-foot,body.loaded #mobile-header,body
 /*--a-common--*/
 #vivo-airbox{width:100%; position:fixed; top:0; left:0; z-index:100; overflow:hidden;}
 #vivo-wrap,#vivo-head,#vivo-contain,#vivo-foot{z-index:1; position:relative; width:100%;}
-.search-user b{background:url(../img/gameroom/vivo-head-ico.png) no-repeat; _background-image:url(../img/gameroom/vivo-head-ico.gif) ;}
+.search-user b{background:url(../img/gameLobby/vivo-head-ico.png) no-repeat; _background-image:url(../img/gameLobby/vivo-head-ico.gif) ;}
 #video_layer{width: 100%; min-height: 300px; background: #fff; background: rgba(255,255,255,.88); position: fixed; top: 0; left: 0; z-index: 1;}
 #video_layer .video-obox{width: 650px; height: 300px;  background1: #fff; position: absolute; top: 50%; left: 50%; margin-top: -200px; margin-left: -325px;}
 #video_layer .video-obox .videoo{margin: 10px; background1: #000;}
-#video_layer .video-obox a.close{width: 30px; height: 30px; overflow: hidden; position: absolute; top: 5px; right: -30px; background: url(../img/gameroom/vivo-video-ico.png) no-repeat;}
+#video_layer .video-obox a.close{width: 30px; height: 30px; overflow: hidden; position: absolute; top: 5px; right: -30px; background: url(../img/gameLobby/vivo-video-ico.png) no-repeat;}
 #video_layer .video-obox a.close:hover{background-position: 0 -30px;}
 /*--z-common--*/
 
@@ -60,7 +60,7 @@ body.loaded #vivo-contain,body.loaded #vivo-foot,body.loaded #mobile-header,body
 .vivo-search .search-box button{width:20%; height:40px; overflow:hidden; text-align:center; font-size:14px; color:#fff; border:none; overflow:hidden; vertical-align:middle; background:#008cd6; outline:none; cursor:pointer; -webkit-transition:background .2s ease-in-out; -moz-transition:background .2s ease-in-out; -ms-transition:background .2s ease-in-out; transition:background .2s ease-in-out;}
 .vivo-search .search-box button:hover{background:#0074b2;}
 .vivo-search .search-box button:active{-webkit-box-shadow:0 1px 2px rgba(0,0,0,.3) inset; -moz-box-shadow:0 1px 2px rgba(0,0,0,.3) inset; -ms-box-shadow:0 1px 2px rgba(0,0,0,.3) inset; box-shadow:0 1px 2px rgba(0,0,0,.3) inset;}
-.vivo-search .search-box a.close{width:24px; height:24px; position:absolute; top:8px; right:-30px; background:url(../img/gameroom/vivo-head-ico.png) -86px 0 no-repeat; _background-image:url(../img/gameroom/vivo-head-ico.gif);}
+.vivo-search .search-box a.close{width:24px; height:24px; position:absolute; top:8px; right:-30px; background:url(../img/gameLobby/vivo-head-ico.png) -86px 0 no-repeat; _background-image:url(../img/gameLobby/vivo-head-ico.gif);}
 .vivo-search .search-box a.close:hover{background-position:-86px -25px;}
 .vivo-search .search-box .qk-results{width: 588px; position: absolute; left: 0; top: 40px; border: 1px #eee solid; border-top:none; display: none;}
 .vivo-search .search-box .qk-results ul li{display: block; position: relative; background: #fff; border-top: 1px #eee solid;}

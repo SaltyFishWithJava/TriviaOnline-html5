@@ -1,0 +1,20 @@
+body{
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+#info_area{
+    -webkit-box-flex: 1;
+}
+/*.cus-image img{*/
+    /*-webkit-border-radius: 3px;*/
+/*}*/
+
+/*.testimonials-line{*/
+    /*display: -webkit-box;*/
+    /*-webkit-box-orient: horizontal;*/
+/*}*/
+/*.customer{*/
+    /*-webkit-box-flex: 1;*/
+    /*width: 20%;*/
+    /*z-index: 100;*/
+/*}*/
