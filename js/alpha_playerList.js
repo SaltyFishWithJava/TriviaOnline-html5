@@ -1047,7 +1047,6 @@
 ! (function($) {
 
     $.fn.alpha = function(options) {
-        console.log("alpha");
         var settings = $.extend({
                 autoplay: 'on',
                 delay: 4000,
@@ -1072,7 +1071,7 @@
         var maxHeight = Math.max.apply(null, testimonialHeights);
 
         // Set each height to the max height
-        $('.testimonials-wrapper').css('padding-top', maxHeight + 400);
+        $('.testimonials-wrapper').css('padding-top', maxHeight + 100);
 
         var responsive = false;
 
@@ -1083,7 +1082,6 @@
         calcWidth();
 
         $(window).resize(function() {
-            console.log("resize");
             calcWidth();
         });
         var style = '<style type="text/css>"';
@@ -1120,7 +1118,6 @@
         //reveal testimonial on hover
         customer.mouseenter(function() {
             if (!$(this).closest('#testimonials').hasClass('responsive')) {
-            	console.log("mouseenter");
                 $(this).siblings().removeClass('active');
                 $(this).addClass('active');
                 $(this).siblings().not('active').find('.testimonial-bubble').removeClass('fadeInDown').addClass('fadeOutUp').closest('.customer').find('.cus-profile').find('.cus-name').fadeOut(10).css('bottom', '-50px');
@@ -1134,7 +1131,6 @@
         //Helper functions
         // calculating width of the testimonial line ul
         function calcWidth() {
-            console.log("calcWidth()");
             var tesWidth = 0;
             var cusH = parseInt($('.cus-image').outerHeight(true)) + 20;
             var tesH = $('.testimonials-line').outerHeight();
@@ -1143,7 +1139,6 @@
             });
 
             if ($(window).outerWidth() > 1120 && layout != 'alt') {
-                console.log("$(window).outerWidth() > 1120 && layout != 'alt'");
                 responsive = false;
                 $('#testimonials').css('width', '100%');
                 $('#testimonials').removeClass('responsive');
@@ -1151,12 +1146,10 @@
                     $(this).css({
                         'top': '-' + ($(this).outerHeight(true) + 80) + 'px'
                     });
-                    console.log($(this).outerHeight(true) + 80);
                 });
                 $('#testimonials').find('.customer.active').find('.testimonial-bubble').addClass('fadeInDown');
             }
             else if (tesH > cusH || $(window).outerWidth() < 1024) {
-                console.log("tesH > cusH || $(window).outerWidth() < 1024");
                 responsive = true;
                 $('#testimonials').addClass('responsive');
                 $('.testimonials-line').css('height', cusH);
@@ -1167,7 +1160,6 @@
                     75);
                 $('#testimonials.responsive').find('.testimonial-bubble').css('top', '-50' + 'px');
             } else {
-                console.log("elsezvdfsgsdgsd");
                 $('#testimonials').css('width', '100%');
                 $('#testimonials').removeClass('responsive');
             }
@@ -1260,7 +1252,6 @@
         // }
 
         function scroll() {
-            console.log("sdfgshgdfgh")
             var testimon = $('#testimonials');
             var last = $('#testimonials').find('.customer').length;
             var curActive = testimon.find('.customer.active').index();

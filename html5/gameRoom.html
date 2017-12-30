@@ -77,20 +77,32 @@
 
 
 <div id="info_area">
-    <div class="jq22-container timer">
-    <div class="jq22-content bgcolor-8">
-        <div class="count"></div>
-        <script id="count-template" type="text/template">
-            <span class="current top <%= currentSize %>"><%= time %></span>
-            <span class="next top <%= nextSize %>"><%= nextTime %></span>
-            <span class="current bottom <%= currentSize %>"><%= time %></span>
-            <span class="next bottom <%= nextSize %>"><%= nextTime %></span>
-        </script>
+    <div class="gameInfo_area">
+    <div class="gameStatusDisplayBox">
+        <div class="displayBoxHead">游戏状态显示框</div>
+        <div class="displayBoxBody">游戏状态显示框body</div>
     </div>
+
+    <div class="timer">
+        <div class="">
+            <div class="count"></div>
+             <script id="count-template" type="text/template">
+                <span class="current top <%= currentSize %>"><%= time %></span>
+                <span class="next top <%= nextSize %>"><%= nextTime %></span>
+                <span class="current bottom <%= currentSize %>"><%= time %></span>
+                <span class="next bottom <%= nextSize %>"><%= nextTime %></span>
+             </script>
+        </div>
+
+        <div class="buttons">
+            <button id="startCount">start</button>
+            <button id="resetCount">reset</button>
+        </div>
+        <div>
+            <button id="nav-fan" >洗牌</button>
+            <button id="dicing" >掷骰子</button>
+        </div>
     </div>
-    <div class="buttons">
-        <button id="startCount">start</button>
-        <button id="resetCount">reset</button>
     </div>
 
     <div class="playerList">
@@ -182,10 +194,7 @@
 
 </div>
 
-<div style="position: absolute;z-index:2">
-<button id="nav-fan" >洗牌</button>
-<button id="dicing" >掷骰子</button>
-</div>
+
 
 
 <div id="shuffle_div" style="background-color:rgba(0, 0, 0, 0.7);position: absolute;z-index:5;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
@@ -227,7 +236,7 @@
 <script src='../js/underscore-1.5.2-min.js'></script>
 <script src='../js/countdown.js'></script>
 <script src='../js/jquery.min.js'></script>
-<script src="../js/alpha.js" type="text/javascript"></script>
+<script src="../js/alpha_playerList.js" type="text/javascript"></script>
 
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -271,6 +280,7 @@
 <script type="text/javascript">
     $(function(){
         $("#dicing").click(function () {
+            console.log("#dicing).click(function ()");
             $("#dicing_div").show();
             var dice = $("#dice");
             dice.trigger("click");

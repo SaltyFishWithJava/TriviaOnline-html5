@@ -1,19 +1,18 @@
 .count {
   box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.2);
-  height: 180px;
-  left: 45%;
-  line-height: 180px;
-  margin: -150px 0 -100px;
+  height: 150px;
+  line-height: 150px;
+  /*margin: -150px 0 -100px;*/
   -moz-perspective: 500px;
   -webkit-perspective: 500px;
   perspective: 500px;
-  position: absolute;
+  /*position: absolute;*/
   text-align: center;
-  top: 50%;
+  /*top: 50%;*/
   -moz-transform: translateZ(0);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  width: 120px;
+  width: 100px;
 }
 @media screen and (max-width: 480px){
   .count{top:70%;left:30%}
@@ -29,7 +28,7 @@
   text-shadow: 0 1px 0 #282828, 0 2px 0 #1e1e1e, 0 3px 0 #141414, 0 4px 0 #0a0a0a, 0 5px 0 #000, 0 0 10px rgba(0, 0, 0, 0.8);
   -moz-transform-origin: 0 90px 0;
   -webkit-transform-origin: 0 90px 0;
-  transform-origin: 0 90px 0;
+  transform-origin: 0 75px 0;
   width: 100%;
 }
 .count span:before {
@@ -194,14 +193,4 @@
 /*}*/
 
 
-.timer{
-  position: fixed;
-  top: 150px;
-  right: 150px;
-}
 
-.buttons{
-  position: fixed;
-  bottom: 600px;
-  right: 50px;
-}
