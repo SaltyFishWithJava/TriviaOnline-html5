@@ -83,6 +83,7 @@
                 <div class="displayBoxBody">游戏状态显示框body</div>
             </div>
 
+<!--<<<<<<< HEAD-->
             <div class="timer">
                 <div class="">
                     <div class="count"></div>
@@ -93,6 +94,24 @@
                         <span class="next bottom <%= nextSize %>"><%= nextTime %></span>
                     </script>
                 </div>
+<!--=======-->
+        <!--<div class="buttons">-->
+            <!--<button id="startCount">start</button>-->
+            <!--<button id="resetCount">reset</button>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<button id="nav-fan" >洗牌</button>-->
+            <!--<button id="dicing" >掷骰子</button>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<button id="0" >0</button>-->
+            <!--<button id="1" >1</button>-->
+            <!--<button id="2" >2</button>-->
+            <!--<button id="3" >3</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+<!--&gt;>>>>>> hlp-->
 
                 <div class="buttons">
                     <button id="startCount">start</button>
@@ -102,6 +121,12 @@
                     <button id="nav-fan">洗牌</button>
                     <button id="dicing">掷骰子</button>
                 </div>
+        <div>
+            <button id="0" >0</button>
+            <button id="1" >1</button>
+            <button id="2" >2</button>
+            <button id="3" >3</button>
+        </div>
             </div>
         </div>
 
@@ -241,7 +266,7 @@
 
 <div id="dicing_div"
      style="background-color:rgba(0, 0, 0, 0.7);position: absolute;left: 0px;
-     z-index:220;width: 90%;height: 100em;padding-top: 10%" hidden="hidden">
+     z-index:220;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
     <div class="wrap">
         <div id="dice" class="dice dice_1"></div>
     </div>
@@ -263,7 +288,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#testimonials').alpha();
-
         // 洗牌动画
         var $el = $('#baraja-el'),
             baraja = $el.baraja();
@@ -296,6 +320,7 @@
         var dice = $("#dice");
         $("#dicing").click(function () {
             console.log("#dicing).click(function ()");
+            $("#result").html("请直接点击上面的色子！");
             $("#dicing_div").show();
             // dice.trigger("click");
             setTimeout(function () {
@@ -303,11 +328,10 @@
             }, 500);
             setTimeout(function () {
                 $("#dicing_div").hide();
-            }, 5000);
+            }, 3000);
         });
         dice.click(function () {
             console.log("diving init");
-            $("#result").html("请直接点击上面的色子！");
             $(".wrap").append("<div id='dice_mask'></div>");//加遮罩
             dice.attr("class", "dice");//清除上次动画后的点数
             dice.css('cursor', 'default');
