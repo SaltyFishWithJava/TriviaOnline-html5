@@ -241,7 +241,7 @@
 
 <div id="dicing_div"
      style="background-color:rgba(0, 0, 0, 0.7);position: absolute;left: 0px;
-     z-index:220;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
+     z-index:220;width: 90%;height: 100em;padding-top: 10%" hidden="hidden">
     <div class="wrap">
         <div id="dice" class="dice dice_1"></div>
     </div>
@@ -264,6 +264,7 @@
     $(document).ready(function () {
         $('#testimonials').alpha();
 
+        // 洗牌动画
         var $el = $('#baraja-el'),
             baraja = $el.baraja();
         // simple fan
@@ -290,106 +291,41 @@
             }, 3000);
         });
 
+
+        // 掷骰子动画
+        var dice = $("#dice");
         $("#dicing").click(function () {
             console.log("#dicing).click(function ()");
             $("#dicing_div").show();
-            var dice = $("#dice");
-            dice.trigger("click");
+            // dice.trigger("click");
             setTimeout(function () {
                 dice.trigger("click");
             }, 500);
             setTimeout(function () {
                 $("#dicing_div").hide();
-            }, 2500);
-
-            dice.click(function () {
-                $(".wrap").append("<div id='dice_mask'></div>");//加遮罩
-                dice.attr("class", "dice");//清除上次动画后的点数
-                dice.css('cursor', 'default');
-                var num = Math.floor(Math.random() * 6 + 1);//产生随机数1-6
-                dice.animate({left: '+2px'}, 100, function () {
-                    dice.addClass("dice_t");
-                }).delay(200).animate({top: '-2px'}, 100, function () {
-                    dice.removeClass("dice_t").addClass("dice_s");
-                }).delay(200).animate({opacity: 'show'}, 600, function () {
-                    dice.removeClass("dice_s").addClass("dice_e");
-                }).delay(100).animate({left: '-2px', top: '2px'}, 100, function () {
-                    dice.removeClass("dice_e").addClass("dice_" + num);
-                    $("#result").html("您掷得点数是<span>" + num + "</span>");
-                    dice.css('cursor', 'pointer');
-                    $("#dice_mask").remove();//移除遮罩
-                });
+            }, 5000);
+        });
+        dice.click(function () {
+            console.log("diving init");
+            $("#result").html("请直接点击上面的色子！");
+            $(".wrap").append("<div id='dice_mask'></div>");//加遮罩
+            dice.attr("class", "dice");//清除上次动画后的点数
+            dice.css('cursor', 'default');
+            var num = Math.floor(Math.random() * 6 + 1);//产生随机数1-6
+            dice.animate({left: '+2px'}, 100, function () {
+                dice.addClass("dice_t");
+            }).delay(200).animate({top: '-2px'}, 100, function () {
+                dice.removeClass("dice_t").addClass("dice_s");
+            }).delay(200).animate({opacity: 'show'}, 600, function () {
+                dice.removeClass("dice_s").addClass("dice_e");
+            }).delay(100).animate({left: '-2px', top: '2px'}, 100, function () {
+                dice.removeClass("dice_e").addClass("dice_" + num);
+                $("#result").html("您掷得点数是<span>" + num + "</span>");
+                dice.css('cursor', 'pointer');
+                $("#dice_mask").remove();//移除遮罩
             });
         });
-
     });
-</script>
-<!-- 初始化容器 end -->
-<!--zn-->
-<script type="text/javascript">
-    // $(function () {
-    //     var $el = $('#baraja-el'),
-    //         baraja = $el.baraja();
-    //     // simple fan
-    //     $('#nav-fan').on('click', function (event) {
-    //         $("#shuffle_div").show();
-    //         baraja.fan({
-    //             speed: 500,
-    //             easing: 'ease-out',
-    //             range: 90,
-    //             direction: 'right',
-    //             origin: {x: 25, y: 100},
-    //             center: true
-    //         });
-    //
-    //         setTimeout(function () {
-    //             var random = parseInt(Math.random() * 15 + 1);
-    //             console.log(random);
-    //             var index = $("ul#baraja-el li:eq(" + random + ")");
-    //             console.log(index.val());
-    //             index.trigger("click");
-    //         }, 1250);
-    //         setTimeout(function () {
-    //             $("#shuffle_div").hide();
-    //         }, 3000);
-    //     });
-    // });
-</script>
-<script type="text/javascript">
-    // $(function () {
-    //     $("#dicing").click(function () {
-    //         console.log("#dicing).click(function ()");
-    //         $("#dicing_div").show();
-    //         var dice = $("#dice");
-    //         dice.trigger("click");
-    //         setTimeout(function () {
-    //             dice.trigger("click");
-    //         }, 500);
-    //         setTimeout(function () {
-    //             $("#dicing_div").hide();
-    //         }, 2500);
-    //
-    //         dice.click(function () {
-    //             $(".wrap").append("<div id='dice_mask'></div>");//加遮罩
-    //             dice.attr("class", "dice");//清除上次动画后的点数
-    //             dice.css('cursor', 'default');
-    //             var num = Math.floor(Math.random() * 6 + 1);//产生随机数1-6
-    //             dice.animate({left: '+2px'}, 100, function () {
-    //                 dice.addClass("dice_t");
-    //             }).delay(200).animate({top: '-2px'}, 100, function () {
-    //                 dice.removeClass("dice_t").addClass("dice_s");
-    //             }).delay(200).animate({opacity: 'show'}, 600, function () {
-    //                 dice.removeClass("dice_s").addClass("dice_e");
-    //             }).delay(100).animate({left: '-2px', top: '2px'}, 100, function () {
-    //                 dice.removeClass("dice_e").addClass("dice_" + num);
-    //                 $("#result").html("您掷得点数是<span>" + num + "</span>");
-    //                 dice.css('cursor', 'pointer');
-    //                 $("#dice_mask").remove();//移除遮罩
-    //             });
-    //         });
-    //     });
-    //
-    // });
 </script>
 </body>
 </html>
