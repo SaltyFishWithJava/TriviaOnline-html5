@@ -1048,7 +1048,7 @@
 
     $.fn.alpha = function(options) {
         var settings = $.extend({
-                autoplay: 'on',
+                autoplay: 'off',
                 delay: 4000,
                 layout: 'default',
                 bubbleColor: 'cornflowerblue',
@@ -1104,7 +1104,8 @@
             });
         //set selected testimonal active
         $('#testimonials.responsive').find('.customer').eq(act).addClass('active').find('.testimonial-bubble').addClass('fadeInRight');
-
+        settings.active+=1;
+        console.log("settings.active"+settings.active);
         if (autoplay === 'on') {
             play = setInterval(scroll, parseInt(delay));
             customer.mouseenter(function() {
@@ -1164,23 +1165,9 @@
                 $('#testimonials').removeClass('responsive');
             }
 
-            // if ($('#testimonials').outerWidth(true) < 860 || layout === 'alt') {
-            //     console.log("$('#testimonials').outerWidth(true) < 860 || layout === 'alt'");
-            //     responsive = true;
-            //     $('#testimonials').addClass('responsive');
-            //     $('.testimonials-line').css('height', parseInt($('.cus-image').outerHeight(true)) + 20);
-            //     setTimeout(function() {
-            //             $('#testimonials').find('.testimonial-bubble').removeClass('fadeInDown fadeOutUp');
-            //             $('#testimonials').find('.testimonial-bubble.active').removeClass('fadeInDown');
-            //         },
-            //         75);
-            //     $('#testimonials.responsive').find('.testimonial-bubble').css('top', '-50' + 'px');
-            // }
 
         }
 
-        // $('#testimonials #next').click(next);
-        // $('#testimonials #prev').click(previous);
 
         //integrating hammer.js
         var ID = 'testimonials';
@@ -1190,75 +1177,31 @@
             direction: Hammer.DIRECTION_ALL
         });
 
-        // touch.on("swiperight",
-        //     function(ev) {
-        //         var testimon = $('#testimonials');
-        //         var curActive = testimon.find('.customer.active').index();
-        //         testimon.find('.customer.active').removeClass('active fadeInLeft fadeInRight').addClass('fadeOutRight');
-        //         var previous = curActive - 1;
-        //         testimon.find('.customer').eq(previous).removeClass('fadeOutLeft fadeOutRight').addClass('active fadeInLeft');
-        //     });
-        //
-        // touch.on("swipeleft",
-        //     function(ev) {
-        //         var testimon = $('#testimonials');
-        //         var last = testimon.find('.customer').length;
-        //         var curActive = testimon.find('.customer.active').index();
-        //         var next = curActive + 1;
-        //         if (next === last) {
-        //             next = 0;
-        //         }
-        //         if (layout === 'default' && responsive === false) {
-        //             testimon.find('.customer').eq(next).addClass('active').siblings().removeClass('active');
-        //             testimon.find('.customer').eq(next).siblings().not('active').find('.testimonial-bubble').removeClass('fadeInDown').addClass('fadeOutUp').closest('.customer').find('.cus-profile').find('.cus-name').fadeOut(10).css('bottom', '-50px');
-        //             testimon.find('.customer').eq(next).find('.testimonial-bubble').removeClass('fadeOutUp').addClass('fadeInDown').closest('.customer').find('.cus-profile').find('.cus-name').fadeIn(200,
-        //                 function() {
-        //                     $(this).css('bottom', '85px')
-        //                 });
-        //         } else {
-        //             testimon.find('.customer.active').removeClass('active fadeInLeft fadeInRight').addClass('fadeOutLeft');
-        //             testimon.find('.customer').eq(next).removeClass('fadeOutRight fadeOutLeft').addClass('active fadeInRight');
-        //         }
-        //     });
 
-        // function previous() {
-        //     var testimon = $(this).closest('#testimonials');
-        //     var curActive = testimon.find('.customer.active').index();
-        //     testimon.find('.customer.active').removeClass('active fadeInLeft fadeInRight').addClass('fadeOutRight');
-        //     var previous = curActive - 1;
-        //     testimon.find('.customer').eq(previous).removeClass('fadeOutLeft fadeOutRight').addClass('active fadeInLeft');
-        // }
-        //
-        // function next() {
-        //     console.log("next() hgdfgh");
-        //     var testimon = $(this).closest('#testimonials');
-        //     var last = testimon.find('.customer').length;
-        //     var curActive = testimon.find('.customer.active').index();
-        //     var next = curActive + 1;
-        //     if (next === last) {
-        //         next = 0;
-        //     }
-        //     if (layout === 'default' && responsive === false) {
-        //         testimon.find('.customer').eq(next).addClass('active').siblings().removeClass('active');
-        //         testimon.find('.customer').eq(next).siblings().not('active').find('.testimonial-bubble').removeClass('fadeInDown').addClass('fadeOutUp').closest('.customer').find('.cus-profile').find('.cus-name').fadeOut(10).css('bottom', '-50px');
-        //         testimon.find('.customer').eq(next).find('.testimonial-bubble').removeClass('fadeOutUp').addClass('fadeInDown').closest('.customer').find('.cus-profile').find('.cus-name').fadeIn(200,
-        //             function() {
-        //                 $(this).css('bottom', '85px')
-        //             });
-        //     } else {
-        //         testimon.find('.customer.active').removeClass('active fadeInLeft fadeInRight').addClass('fadeOutLeft');
-        //         testimon.find('.customer').eq(next).removeClass('fadeOutRight fadeOutLeft').addClass('active fadeInRight');
-        //     }
-        // }
-
+        $( '#0' ).on( 'click', function( event ) {
+            settings.active=0;
+            scroll();
+            console.log("scroll(1);");
+        } );
+        $( '#1' ).on( 'click', function( event ) {
+            settings.active=1;
+            scroll();
+            console.log("scroll(1);");
+        } );
+        $( '#2' ).on( 'click', function( event ) {
+            settings.active=2;
+            scroll();
+            console.log("scroll(1);");
+        } );
+        $( '#3' ).on( 'click', function( event ) {
+            settings.active=3;
+            scroll();
+            console.log("scroll(1);");
+        } );
         function scroll() {
             var testimon = $('#testimonials');
-            var last = $('#testimonials').find('.customer').length;
-            var curActive = testimon.find('.customer.active').index();
-            var next = curActive + 1;
-            if (next === last) {
-                next = 0;
-            }
+
+            next=settings.active;
             if (layout === 'default' && responsive === false) {
                 testimon.find('.customer').eq(next).addClass('active').siblings().removeClass('active');
                 testimon.find('.customer').eq(next).siblings().not('active').find('.testimonial-bubble').removeClass('fadeInDown').addClass('fadeOutUp').closest('.customer').find('.cus-profile').find('.cus-name').fadeOut(10).css('bottom', '-50px');
@@ -1272,4 +1215,8 @@
             }
         }
     } //alpha()
+
+
+
+
 })(jQuery);

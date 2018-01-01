@@ -102,6 +102,12 @@
             <button id="nav-fan" >洗牌</button>
             <button id="dicing" >掷骰子</button>
         </div>
+        <div>
+            <button id="0" >0</button>
+            <button id="1" >1</button>
+            <button id="2" >2</button>
+            <button id="3" >3</button>
+        </div>
     </div>
     </div>
 
@@ -250,6 +256,7 @@
 <!--zn-->
 <script type="text/javascript">
     $(function() {
+        console.log("shuffle");
         var $el = $( '#baraja-el' ),
             baraja = $el.baraja();
         // simple fan
