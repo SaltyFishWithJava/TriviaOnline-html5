@@ -5,9 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="userName"></div>
+    <div class="userName">aa</div>
 </body>
 <script>
-    document.getElementById("userName").innerText=localStorage.getItem("userName");
+    document.getElementsByClassName("passWord").innerText=window.localStorage.getItem("userName");
+    console.log(window.localStorage.getItem("passWord"));
 </script>
 </html>

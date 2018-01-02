@@ -2,6 +2,8 @@ jQuery(document).ready(function() {
     $("input").blur(function(){
         var isInputTextNull = $(this).val();
         var currName=this.name;
+        $(this).parent().find(".error").fadeOut();
+        console.log("11111111");
         if(currName=="username"){
             if(isInputTextNull==''){
                 $(this).parent().find('.errorback0').fadeIn();
@@ -35,7 +37,6 @@ jQuery(document).ready(function() {
         }
 
         // localStorage.setItem("userName",username);
-        console.log("sdafadfadsf"+localStorage.getItem("b"));
     });
 
 
@@ -100,12 +101,29 @@ jQuery(document).ready(function() {
         $(this).parent().find('.errorText').fadeOut('fast');
     });
 
-    jQuery('#button').click(function () {
-        var username="aaa";
-        localStorage.setItem("userName",username);
-        window.location.href= "gameRoom.html";
-        console.log("adfsd");
-        alert("登录成功！");
+    $('#button_login').click(function () {
+        var username = $(this).parent().find('.username').val();
+        var password = $(this).parent().find('.password').val();
+        if(username == '') {
+            $(this).parent().find('.error').fadeIn('fast', function(){
+                        $(this).parent().find('.username').focus();
+            });
+            return false;
+        }
+         if(password == '') {
+            $(this).parent().find('.error').fadeIn('fast', function(){
+                $(this).parent().find('.password').focus();
+            });
+            return false;
+         }
+         Login();
+
+
+        // window.localStorage.setItem("userName",username);
+        // window.localStorage.setItem("passWord",password);
+        // $(location).attr('href', 'gameLobby.html');
+        // console.log(window.localStorage.getItem("passWord"));
+        // alert("登录成功！");
         
     });
     // $('#button').onclick(function(){
@@ -139,5 +157,111 @@ jQuery(document).ready(function() {
     // }
 
 });
+
+
+
+var uN = document.getElementById("username");
+var pW = document.getElementById("password");
+uN.addEventListener("input", function () {
+    // document.getElementById("show").innerHTML = uN.value;
+    console.log('uN.value'+uN.value);
+});
+pW.addEventListener("input",function () {
+    console.log('pW.value'+pW.value);
+});
+var ws = null;
+var socketstate = false;
+function offlineCheck() {
+    console.log("check");
+    Offline.check();
+    if(!socketstate){
+        if(Offline.state === 'up'&&ws.reconnectAttempts>ws.maxReconnectInterval){
+            console.log("up");
+            //ws.refresh();
+        }
+        else{
+            console.log("ssss");
+        }
+        //    buildSocket();
+    }else{
+        console.log("send");
+        ws.send("{}");
+    }
+}
+var t1 = null;
+if (!("WebSocket" in window)) {
+    alert("您的浏览器不支持 WebSocket!");
+}
+else {
+    ws = new ReconnectingWebSocket("ws://111.231.85.149:8080/MyTestServer/websocket/Login");
+    ws.onopen = function () {
+        console.log("WebOpen");
+        socketstate = true;
+        clearInterval(t1);//去掉定时器
+        t1 = setInterval(offlineCheck, 3000);
+    };
+
+    ws.onmessage = function (evt) {
+        console.log("Back");
+        socketstate = true;
+        var received_msg = evt.data;
+        console.log(received_msg);
+        var msg = JSON.parse(received_msg);
+        if(msg.resMsg==="LoginSuccess"){
+            window.localStorage.setItem("userName",uN.value);
+            window.localStorage.setItem("passWord",pW.value);
+            console.log(window.localStorage.getItem("userName"));
+            return false;
+            $(location).attr('href', 'gameLobby.html');
+            alert("登录成功！");
+        }
+        else {
+            // alert("登录失败！");
+            // return false;
+        }
+    };
+
+    ws.onclose = function () {
+        socketstate = false;
+        console.log("连接已关闭...");
+    };
+
+    ws.onerror = function (evt) {
+        socketstate = false;
+        console.log(evt);
+    };
+}
+
+window.onbeforeunload = function () {
+    /*
+    退出窗口则退出游戏，需要一个监听
+     */
+    ws.close();
+}
+
+var sCode;
+
+function Login() {
+    sCode='L';
+    Send();
+    console.log("Login");
+    console.log("uN.value"+uN.value+"  "+pW.value);
+}
+
+function Re() {
+    sCode='R';
+    Send();
+}
+
+function Send() {
+    var js={
+        Code : sCode,
+        uName : uN.value,
+        pWord : pW.value
+    };
+    var json = JSON.stringify(js);
+    console.log(json);
+    ws.send(json);
+}
 
 

@@ -335,6 +335,8 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "������";}
     max-width: 46rem;
 }
 .roomBody{
+    overflow: scroll;
+    height: 100%;
     width: 95%;
     margin: 0 auto;
 }
