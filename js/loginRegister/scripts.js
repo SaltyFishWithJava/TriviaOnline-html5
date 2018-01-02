@@ -126,6 +126,7 @@ jQuery(document).ready(function() {
         // alert("登录成功！");
         
     });
+
     // $('#button').onclick(function(){
     //     var username = $(this).parent().find('.username').val();
     //     var password = $(this).parent().find('.password').val();
