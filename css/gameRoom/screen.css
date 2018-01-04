@@ -1,9 +1,10 @@
 body{
-    background:url("../img/backgrounds/gameroom.png");
+    background:url("../../img/backgrounds/gameroom.png");
 
 }
 #board {
     position: relative;
+    z-index: -1;
     margin: 2em;
     padding: 1.5625em;
     height: 50em;
@@ -21,10 +22,10 @@ section:not(#start):not(#free):not(#testimonials){
 .left { float: right; }
 .right { float: left; }
 section:nth-child(2),section:nth-last-child(1)  { margin-right: 12.5em; }
-section:nth-child(6),section:nth-child(8){ margin-right: 25em; }
-section:nth-child(-n+6):not(#start) { top: 12.5em; }
+section:nth-child(9){ margin-right: 25em; }
+section:nth-child(-n+7):not(#start) { top: 12.5em; }
 section:nth-child(-n+4):not(#start) { top: 37.5em; }
-section:nth-last-child(-n+6) { top: -12.5em; }
+section:nth-last-child(-n+7) { top: -12.5em; }
 section:nth-last-child(-n+3) { top: -37.5em; }
 
 /* ----- COLORS ----- */
@@ -68,6 +69,10 @@ section:nth-last-child(-n+3) { top: -37.5em; }
     background-color: #005a88;
     color: #fff;
 }
+.pink{
+    background-color: #edb0aa;
+    color: #fff;
+}
 .jailred {
     background-color: #ce4c18;
     color: #fff;
@@ -89,7 +94,7 @@ section:nth-last-child(-n+3) { top: -37.5em; }
     top: 14.0625em;
     right: 14.0625em;
     width: 12.5em;
-    height: 25em;
+    height: 12.5em;
 }
 #jail, #marvin { float: right; }
 #jail {
@@ -118,11 +123,10 @@ section:nth-last-child(-n+3) { top: -37.5em; }
 .chance h1, .chest h1, #arrested h1:after { color: #b7d8d5; }
 .chance h1:after, .chest h1:after, .rail h1:after, .utility h1:after,
 .tax h1:after, #arrested h1:after, #jail h1:after, #free h1:after {
-    content: '?';
     position: absolute;
     display: block;
     top: .88667em;
-    left: .88667em;
+    left: 2em;
     width: 1.333em;
     height: 1.333em;
     padding: .16667em;
@@ -134,6 +138,7 @@ section:nth-last-child(-n+3) { top: -37.5em; }
     background-color: #00855c;
     
 }
+
 .wf-active .chance h1:after, .wf-active .chest h1:after, .wf-active .rail h1:after, .wf-active .utility h1:after,
 .wf-active .tax h1:after, .wf-active #arrested h1:after, .wf-active #jail h1:after, .wf-active #free h1:after {
     text-indent: 0;;
@@ -149,32 +154,32 @@ section:nth-last-child(-n+3) { top: -37.5em; }
     line-height: 1;
 }
 .chest h1:after {
-    content: 'C';
-    line-height: 1;
-    background-color: #005a88;
+    /*content: 'C';*/
+    /*background-color: #005a88;*/
 }
-.rail h1:after {
-    content: 'R';
-    color: #000;
-    background-color: #b7d8d5;
-}
-.rail.left h1:after { content: 'L'; }
-#electric h1:after, #water h1:after, .tax h1:after {
-    color: #b7d8d5;
-    background-color: #000;
-}
-#electric h1:after { content: 'E'; }
-#water h1:after { content: 'W'; }
-.tax h1:after {
-    content: 'M';
-    line-height: 1.4;
-    text-decoration: line-through;
-}
-#arrested h1:after {
-    content: 'A';
-    background-color: #005a88;
-}
-#jail h1:after {
+/*.rail h1:after {*/
+    /*content: 'R';*/
+    /*color: #000;*/
+    /*background-color: #b7d8d5;*/
+/*}*/
+/*.rail.left h1:after { content: 'L'; }*/
+/*#electric h1:after, #water h1:after, .tax h1:after {*/
+    /*color: #b7d8d5;*/
+    /*background-color: #000;*/
+/*}*/
+/*#electric h1:after { content: 'E'; }*/
+/*#water h1:after { content: 'W'; }*/
+/*.tax h1:after {*/
+    /*content: 'M';*/
+    /*line-height: 1.4;*/
+    /*text-decoration: line-through;*/
+/*}*/
+/*#arrested h1:after {*/
+    /*!*font-size: small;*!*/
+    /*content: '生';*/
+    /*background-color: #005a88;*/
+/*}*/
+#jail .jailred:after {
     content: 'J';
     top: -2em;
     left: 2em;
@@ -184,16 +189,98 @@ section:nth-last-child(-n+3) { top: -37.5em; }
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
-#free h1:after {
-    content: 'P';
-    top: 1.75em;
-    left: 0;
-    line-height: 1.5;
-    font-weight: bold;
-    color: #000;
-    background-color: #ff9c00;
+
+/*.block3_jalred:after {*/
+    /*content: 'q';*/
+    /*top: 0em;*/
+    /*left: 2em;*/
+    /*color: #000;*/
+    /*background-color: #fff;*/
+    /*-moz-transform: rotate(-45deg);*/
+    /*-webkit-transform: rotate(-45deg);*/
+    /*transform: rotate(-45deg);*/
+    /*z-index: 201;*/
+/*}*/
+
+/*#free h1:after {*/
+    /*content: 'P';*/
+    /*!*top: 1.75em;*!*/
+    /*!*left: 0;*!*/
+    /*!*line-height: 1.5;*!*/
+    /*!*font-weight: bold;*!*/
+    /*color: #000;*/
+    /*background-color: #ff9c00;*/
+/*}*/
+.block1 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
 }
 
+.block2 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+
+.block3 .block3_jalred:after{
+    left: 2em;
+    content: '生';
+    background-color: #005a88;
+    -moz-transform-origin: 0 0;
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin: 0 0;
+    transform: rotate(0deg);
+}
+.block4 h1:after{
+    left:.88667em;
+    content: '一';
+    background-color: #005a88;
+}
+.block5 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+.block6 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+.block7 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+.block8 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+.block9 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+.block10 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+.block11 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+.block12 h1:after{
+    left:.88667em;
+    content: '百';
+    background-color: #005a88;
+}
+
+.block3_jalred:after{
+    left: 2em;
+}
 /* ----- TILES ----- */
 .border { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
 .left.border{ border-left: .125em solid #b7d8d5; }
@@ -231,6 +318,10 @@ section.up:after {
     top: -1.40625em;
     left: 4.84375em;
 }
+section.down:after {
+    top: 11.09375em;
+    left: 4.84375em;
+}
 section#jail.up:after {
     top: -7.65em;
     left: -1.488em;
@@ -250,7 +341,7 @@ section h1 {
     font-size: .875em;
     text-align: center;
     font-weight: normal;
-    z-index: 200;
+    z-index: 1;
 }
 aside h2 {
     line-height: 1.2;
@@ -331,6 +422,19 @@ aside h2 {
     transform-origin: 0 0;
 }
 
+.block3_jalred h1{
+    top: 0.85714em;
+    left: 5.14286em;
+    margin: 0;
+    width: 17.14286em;
+    -moz-transform: rotate(225deg);
+    -moz-transform-origin: 0 0;
+    -webkit-transform: rotate(225deg);
+    -webkit-transform-origin: 0 0;
+    transform: rotate(225deg);
+    transform-origin: 0 0;
+}
+
 a[href="#jail"] {
     display: block;
     padding-top: .5em;
@@ -346,11 +450,18 @@ a[href="#jail"] span {
 }
 
 #free h1 {
-    top: 5em;
-    left: 2.642em;
-    width: 5em;
-    line-height: 8em;
+    /*top: 5em;*/
+    /*left: 2.642em;*/
+    /*width: 5em;*/
+    /*line-height: 8em;*/
+    /*text-align: center;*/
+    position: relative;
+    margin: 2em;
+    line-height: 1.2;
+    font-size: .875em;
     text-align: center;
+    font-weight: normal;
+    z-index: 200;
 }
 
 /* ----- COLOPHON ----- */
@@ -369,4 +480,10 @@ a[href="#jail"] span {
 #colophon:hover, #colophon:active {
     color: #000;
     background-color:rgba(183, 216, 213, .8);
+}
+#phaser_board{
+    height: 700px;
+    width: 700px;
+    position:absolute;
+    z-index:999;
 }

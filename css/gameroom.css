@@ -344,3 +344,6 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "������";}
     height: 100px;
     width: 100px;
 }
+.smallroomList_white{
+    background: white;
+}

@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    $("input").blur(function(){
+    $(".register_container input").blur(function(){
         var isInputTextNull = $(this).val();
         var currName=this.name;
         $(this).parent().find(".error").fadeOut();
@@ -26,7 +26,9 @@ jQuery(document).ready(function() {
             if(isInputTextNull==''){
                 $(this).parent().find('.errorback2').fadeIn();
             }
-            if($(this).parent().find('.password').val()!=$(this).val()){
+            if($(this).parent().find('#password').val()!=$(this).val()){
+                console.log("aaaaa"+$(this).parent().find('#password').val());
+                console.log("bbbbbb"+$(this).val());
                 $(this).parent().find('.errorback2').fadeIn();
                 $(this).parent().find('.errorText_repassword').fadeIn();
             }
@@ -101,6 +103,25 @@ jQuery(document).ready(function() {
         $(this).parent().find('.errorText').fadeOut('fast');
     });
 
+    $('#Register_button').click(function () {
+        console.log("regis");
+        var username = $(this).parent().find('#username').val();
+        var password = $(this).parent().find('#password').val();
+        if(username == '') {
+            $(this).parent().find('.error').fadeIn('fast', function(){
+                $(this).parent().find('.username').focus();
+            });
+            return false;
+        }
+        if(password == '') {
+            $(this).parent().find('.error').fadeIn('fast', function(){
+                $(this).parent().find('.password').focus();
+            });
+            return false;
+        }
+        Re(username,password);
+    });
+
     $('#button_login').click(function () {
         var username = $(this).parent().find('.username').val();
         var password = $(this).parent().find('.password').val();
@@ -162,6 +183,7 @@ jQuery(document).ready(function() {
 
 
 var uN = document.getElementById("username");
+
 var pW = document.getElementById("password");
 uN.addEventListener("input", function () {
     // document.getElementById("show").innerHTML = uN.value;
@@ -210,15 +232,21 @@ else {
         var msg = JSON.parse(received_msg);
         if(msg.resMsg==="LoginSuccess"){
             window.localStorage.setItem("userName",uN.value);
-            window.localStorage.setItem("passWord",pW.value);
             console.log(window.localStorage.getItem("userName"));
-            return false;
             $(location).attr('href', 'gameLobby.html');
             alert("登录成功！");
         }
-        else {
-            // alert("登录失败！");
-            // return false;
+        else if(msg.resMsg==="LoginError"){
+            alert("用户名或密码错误");
+        }else if(msg.resMsg==="UserNameExists"){
+            alert("用户名已存在！");
+        }else if(msg.resMsg==="RegSuccess"){
+            alert("注册成功！");
+            $(location).attr('href', 'login.html');
+        }else if(msg.resMsg==="UnkonwnError"){
+            alert("未知错误！");
+        }else if(msg.resMsg==="DatabaseError"){
+            alert("数据库错误");
         }
     };
 
@@ -249,9 +277,9 @@ function Login() {
     console.log("uN.value"+uN.value+"  "+pW.value);
 }
 
-function Re() {
+function Re(username,password) {
     sCode='R';
-    Send();
+    Send2(username,password);
 }
 
 function Send() {
@@ -259,6 +287,16 @@ function Send() {
         Code : sCode,
         uName : uN.value,
         pWord : pW.value
+    };
+    var json = JSON.stringify(js);
+    console.log(json);
+    ws.send(json);
+}
+function Send2(username,password) {
+    var js={
+        Code : sCode,
+        uName : username,
+        pWord : password
     };
     var json = JSON.stringify(js);
     console.log(json);

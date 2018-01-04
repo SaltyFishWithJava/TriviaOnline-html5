@@ -23,57 +23,54 @@
     <script type="text/javascript" src="../js/shuffleAnimation/modernizr.custom.79639.js"></script>
 </head>
 
-<body>
+<body id="body">
+
 <!--<div id="bottomDiv" style="position:absolute">-->
     <div id="board">
-        <section id="start" class="boardblue">
+        <section id="start" class="boardblue block0">
             <h1>TRAVIA,go!</h1>
-            <span class="instructions">Collect <span class="currency">200</span><br/> as you pass</span>
             <a href="#mediterranean">Go</a>
         </section>
-        <section id="mediterranean" class="property purple left">
-            <h1>Mediterranean Avenue</h1>
-            <div class="price">60</div>
+        <section id="mediterranean" class="property purple left chest block1">
+            <h1></h1>
         </section>
-        <section id="chest1" class="chest boardblue left">
-            <h1>Community Chest</h1>
+        <section id="chest1" class="chest boardblue left block2">
+            <h1></h1>
         </section>
-        <section id="jail" class="jail boardblue up">
+        <section id="jail" class="jail boardblue up chest block3">
+            <h1 class="block3_jalred"></h1>
             <h1 class="jailred">In Jail</h1>
-            <aside id="visiting">
-                <h2>Just Visiting</h2>
-            </aside>
         </section>
-        <section id="stcharles" class="property plum right">
-            <h1>St. Charles Place</h1>
-            <div class="price">140</div>
+        <section id="stcharles" class="property plum right up chest block4">
+            <h1></h1>
         </section>
-        <section id="newyork" class="property orange right">
-            <h1>New York Avenue</h1>
-            <div class="price">200</div>
+        <section id="newyork" class="property orange right chest block5">
+            <h1></h1>
         </section>
-        <section id="free" class="freeparking black left">
-            <h1>Free Parking</h1>
+        <section id="hlp" class="property pink right down chest block6">
+            <h1></h1>
         </section>
-        <section id="kentucky" class="property red left">
-            <h1>Kentucky Avenue</h1>
-            <div class="price">220</div>
+        <section id="free" class="freeparking black left chest block7">
+            <h1></h1>
         </section>
-        <section id="marvin" class="property yellow up">
-            <h1>Marvin Gardens</h1>
-            <div class="price">280</div>
+        <section id="kentucky" class="property red left down chest block8">
+            <h1></h1>
         </section>
-        <section id="arrested" class="boardblue right">
-            <h1><a href="#jail">Go to <span>Jail</span></a></h1>
+        <section id="marvin" class="property yellow up chest block9">
+            <h1></h1>
         </section>
-        <section id="luxury" class="tax boardblue right">
-            <h1>Luxury Tax</h1>
-            <div class="price">75</div>
+        <section id="arrested" class="boardblue right chest block10">
+            <div id="phaser_board"></div>
+            <h1></h1>
         </section>
-        <section id="boardwalk" class="property blue left">
-            <h1>Boardwalk</h1>
-            <div class="price">400</div>
+        <section id="luxury" class="tax boardblue right chest block11">
+            <h1></h1>
         </section>
+        <section id="boardwalk" class="property blue right down chest block12">
+            <h1></h1>
+        </section>
+
+
     </div>
 
     <div id="info_area">
@@ -284,6 +281,8 @@
 
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script type="text/javascript" src="../js/playerMovePhaser/phaser.min.js"></script>
+<!--<script type="text/javascript" src="../js/playerMovePhaser/game.js"></script>-->
 <!-- 初始化容器 start -->
 <script type="text/javascript">
     $(document).ready(function () {
