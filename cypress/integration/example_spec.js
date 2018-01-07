@@ -15,6 +15,7 @@ describe('Kitchen Sink', function () {
   it('.should() - assert that <title> is correct', function () {
     // https://on.cypress.io/visit
     cy.visit('https://example.cypress.io')
+      //
 
     // Here we've made our first assertion using a '.should()' command.
     // An assertion is comprised of a chainer, subject, and optional value.
