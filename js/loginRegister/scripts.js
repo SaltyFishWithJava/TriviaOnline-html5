@@ -207,6 +207,7 @@ function offlineCheck() {
         }
         //    buildSocket();
     }else{
+
         console.log("send");
         ws.send("{}");
     }
@@ -245,8 +246,11 @@ else {
             $(location).attr('href', 'login.html');
         }else if(msg.resMsg==="UnkonwnError"){
             alert("未知错误！");
-        }else if(msg.resMsg==="DatabaseError"){
+        }else if(msg.resMsg==="DatabaseError") {
             alert("数据库错误");
+        }else if(msg.resMsg==="PLAYING"){
+            alert("您仍在游戏中，下面将为您重新进入游戏");
+            $(location).attr('href', 'gameRoom.html');
         }
     };
 

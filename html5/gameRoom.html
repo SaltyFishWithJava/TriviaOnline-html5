@@ -8,24 +8,25 @@
     <!--<link rel="stylesheet" href="../css/jue" type="text/css"/>-->
     <link rel="stylesheet" href="../css/countdown.css" type="text/css"/>
     <link rel="stylesheet" href="../css/alpha.css" type="text/css"/>
-    <link rel="stylesheet" href="../css/playerllist.css" type="text/css"/>
-    <!--<link rel="stylesheet" href="../css/default.css" type="text/css"/>-->
-    <!--<link rel="stylesheet" href="../css/normalize.css" type="text/css"/>-->
-
-    <!--<link rel="stylesheet" href="css/screen.css" type="text/css"/>-->
-    <!--<link rel="stylesheet" href="css/reset.css" type="text/css"/>-->
+    <link rel="stylesheet" href="../css/gameRoom/playerllist.css" type="text/css"/>
     <!--洗牌动画-->
     <link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/baraja.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/gameRoom/shuffleDicing.css"/>
+   <!-- 答题效果-->
+    <link rel="stylesheet" type="text/css" href="../css/gameRoom/question.css"/>
+
     <!--骰子动画-->
     <link rel="stylesheet" type="text/css" href="../css/dicing/dicing.css"/>
     <!--<link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/demo.css" />-->
     <link rel="stylesheet" type="text/css" href="../css/shuffleAnimation/custom.css"/>
+    <script src = "../js/websocket/offline.js"></script>
+    <script src = "../js/websocket/reconnecting-websocket.js"></script>
+    <script type="text/javascript" src="../js/json2/json2.js"></script>
     <script type="text/javascript" src="../js/shuffleAnimation/modernizr.custom.79639.js"></script>
 </head>
 
 <body id="body">
 
-<!--<div id="bottomDiv" style="position:absolute">-->
     <div id="board">
         <section id="start" class="boardblue block0">
             <h1>TRAVIA,go!</h1>
@@ -33,41 +34,56 @@
         </section>
         <section id="mediterranean" class="property purple left chest block1">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="chest1" class="chest boardblue left block2">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
-        <section id="jail" class="jail boardblue up chest block3">
-            <h1 class="block3_jalred"></h1>
-            <h1 class="jailred">In Jail</h1>
+        <!--<section id="jail" class="jail boardblue up chest block3">-->
+            <!--<h1 class="block3_jalred"></h1>-->
+            <!--<h1 class="jailred">In Jail</h1>-->
+        <!--</section>-->
+        <section id="stcharl" class="property teal right up chest block3">
+            <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="stcharles" class="property plum right up chest block4">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="newyork" class="property orange right chest block5">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="hlp" class="property pink right down chest block6">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="free" class="freeparking black left chest block7">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="kentucky" class="property red left down chest block8">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="marvin" class="property yellow up chest block9">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="arrested" class="boardblue right chest block10">
             <div id="phaser_board"></div>
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
-        <section id="luxury" class="tax boardblue right chest block11">
+        <section id="luxury" class="tax purple right chest block11">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
         <section id="boardwalk" class="property blue right down chest block12">
             <h1></h1>
+            <div class="quesTYPE"></div>
         </section>
 
 
@@ -77,10 +93,10 @@
         <div class="gameInfo_area">
             <div class="gameStatusDisplayBox">
                 <div class="displayBoxHead">游戏状态显示框</div>
-                <div class="displayBoxBody">游戏状态显示框body</div>
+                <div id="displayBoxBody" class="displayBoxBody">
+                </div>
             </div>
 
-<!--<<<<<<< HEAD-->
             <div class="timer">
                 <div class="">
                     <div class="count"></div>
@@ -91,24 +107,6 @@
                         <span class="next bottom <%= nextSize %>"><%= nextTime %></span>
                     </script>
                 </div>
-<!--=======-->
-        <!--<div class="buttons">-->
-            <!--<button id="startCount">start</button>-->
-            <!--<button id="resetCount">reset</button>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<button id="nav-fan" >洗牌</button>-->
-            <!--<button id="dicing" >掷骰子</button>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<button id="0" >0</button>-->
-            <!--<button id="1" >1</button>-->
-            <!--<button id="2" >2</button>-->
-            <!--<button id="3" >3</button>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-<!--&gt;>>>>>> hlp-->
 
                 <div class="buttons">
                     <button id="startCount">start</button>
@@ -133,78 +131,94 @@
                 </div>
                 <div class="testimonials-wrapper">
                     <ul class="testimonials-line">
-                        <li class="customer">
-                            <div class="testimonial-bubble">
-                                <p>
-                                    hi!我是玩家1！
-                                </p>
-                            </div>
-                            <div class="cus-profile">
-              <span class="cus-image">
-                <img src="../img/gameRoom/te1.jpg">
-              </span>
-                                <span class="cus-name">
-                Customer
-                <span class="cus-title">
-                  His title
-                </span>
-              </span>
-                            </div>
-                        </li>
-                        <li class="customer">
-                            <div class="testimonial-bubble">
-                                <p>
-                                    hi!我是玩家2！
-                                </p>
-                            </div>
-                            <div class="cus-profile">
-              <span class="cus-image">
-                <img src="../img/gameRoom/te2.jpg">
-              </span>
-                                <span class="cus-name">
-                Customer
-                <span class="cus-title">
-                  His title
-                </span>
-              </span>
-                            </div>
-                        </li>
-                        <li class="customer">
-                            <div class="testimonial-bubble">
-                                <p>
-                                    hi!我是玩家3！
-                                </p>
-                            </div>
-                            <div class="cus-profile">
-              <span class="cus-image">
-                <img src="../img/gameRoom/te3.jpg">
-              </span>
-                                <span class="cus-name">
-                Customer
-                <span class="cus-title">
-                  His title
-                </span>
-              </span>
-                            </div>
-                        </li>
-                        <li class="customer">
-                            <div class="testimonial-bubble">
-                                <p>
-                                    hi!我是玩家4！
-                                </p>
-                            </div>
-                            <div class="cus-profile">
-              <span class="cus-image">
-                <img src="../img/gameRoom/te4.jpg">
-              </span>
-                                <span class="cus-name">
-                Customer
-                <span class="cus-title">
-                  His title
-                </span>
-              </span>
-                            </div>
-                        </li>
+                        <!--<li class="customer">-->
+                            <!--<div class="testimonial-bubble">-->
+                                <!--<p>-->
+                                    <!--hi!我是玩家1！-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="cus-profile">-->
+                                <!--<span class="cus-image">-->
+                                    <!--<img src="../img/gameRoom/te1.jpg">-->
+                                 <!--</span>-->
+                                <!--<span class="cus-name">-->
+                                    <!--Customer-->
+                                    <!--<span class="cus-title">-->
+                                    <!--His title-->
+                                    <!--</span>-->
+                                <!--</span>-->
+                            <!--</div>-->
+                            <!--<div class="score">本局得分：-->
+                                <!--<div class="curScore">5</div>-->
+                            <!--</div>-->
+                            <!--<div class="confirmButton">确定</div>-->
+                        <!--</li>-->
+
+
+
+                        <!--<li class="customer">-->
+                            <!--<div class="testimonial-bubble">-->
+                                <!--<p>-->
+                                    <!--hi!我是玩家2！-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="cus-profile">-->
+                                <!--<span class="cus-image">-->
+                                    <!--<img src="../img/gameRoom/te2.jpg">-->
+                                <!--</span>-->
+                                <!--<span class="cus-name">-->
+                                    <!--Customer-->
+                                    <!--<span class="cus-title">-->
+                                    <!--His title-->
+                                    <!--</span>-->
+                                 <!--</span>-->
+                            <!--</div>-->
+                            <!--<div class="score">本局得分：-->
+                                <!--<div class="curScore">5</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li class="customer">-->
+                            <!--<div class="testimonial-bubble">-->
+                                <!--<p>-->
+                                    <!--hi!我是玩家3！-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="cus-profile">-->
+                                <!--<span class="cus-image">-->
+                                    <!--<img src="../img/gameRoom/te3.jpg">-->
+                                <!--</span>-->
+                                    <!--<span class="cus-name">-->
+                                        <!--Customer-->
+                                        <!--<span class="cus-title">-->
+                                            <!--His title-->
+                                        <!--</span>-->
+                                    <!--</span>-->
+                            <!--</div>-->
+                            <!--<div class="score">本局得分：-->
+                                <!--<div class="curScore">5</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                        <!--<li class="customer">-->
+                            <!--<div class="testimonial-bubble">-->
+                                <!--<p>-->
+                                    <!--hi!我是玩家4！-->
+                                <!--</p>-->
+                            <!--</div>-->
+                            <!--<div class="cus-profile">-->
+                                <!--<span class="cus-image">-->
+                                    <!--<img src="../img/gameRoom/te4.jpg">-->
+                                <!--</span>-->
+                                <!--<span class="cus-name">-->
+                                    <!--Customer-->
+                                    <!--<span class="cus-title">-->
+                                        <!--His title-->
+                                    <!--</span>-->
+                                <!--</span>-->
+                            <!--</div>-->
+                            <!--<div class="score">本局得分：-->
+                                <!--<div class="curScore">5</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
                     </ul>
                     <!-- .testimonials-line -->
                 </div>
@@ -216,139 +230,111 @@
 <!--</div>-->
 
 
-<div id="shuffle_div"
-     style="background-color:rgba(0, 0, 0, 0.7);position:absolute;left:0px;
-     z-index:200;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
+<div id="shuffle_div" hidden="hidden">
+<!--<div id="shuffle_div">-->
     <div class="baraja-demo">
         <ul id="baraja-el" class="baraja-container">
             <li><img src="../img/shuffle/1.jpg" alt="image1"/><h4>Coco Loko</h4>
-                <p>Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/2.jpg" alt="image2"/><h4>Vermouth Land</h4>
-                <p>Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/3.jpg" alt="image3"/><h4>Electrodynamics</h4>
-                <p>Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/4.jpg" alt="image4"/><h4>Retinal Bliss</h4>
-                <p>Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/5.jpg" alt="image5"/><h4>Disco Fever</h4>
-                <p>Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/6.jpg" alt="image6"/><h4>Serenity</h4>
-                <p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/7.jpg" alt="image7"/><h4>Dark Honor</h4>
-                <p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/8.jpg" alt="image8"/><h4>Nested Happiness</h4>
-                <p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/9.jpg" alt="image9"/><h4>Cherry Country</h4>
-                <p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/10.jpg" alt="image10"/><h4>Cherry Country</h4>
-                <p>Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/11.jpg" alt="image11"/><h4>Coco Loko</h4>
-                <p>Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/12.jpg" alt="image12"/><h4>Vermouth Land</h4>
-                <p>Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/3.jpg" alt="image3"/><h4>Electrodynamics</h4>
-                <p>Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/4.jpg" alt="image4"/><h4>Retinal Bliss</h4>
-                <p>Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/5.jpg" alt="image5"/><h4>Disco Fever</h4>
-                <p>Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/6.jpg" alt="image6"/><h4>Serenity</h4>
-                <p>Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/7.jpg" alt="image7"/><h4>Dark Honor</h4>
-                <p>Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+                <p></p></li>
             <li><img src="../img/shuffle/8.jpg" alt="image8"/><h4>Nested Happiness</h4>
-                <p>Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+                <p></p></li>
         </ul>
+    </div>
+    <div id="q1" class="question">
+        <div class="enter_btn">
+            <div id="b1" class="quesButton">确定</div>
+        </div>
     </div>
 </div>
 
-<div id="dicing_div"
-     style="background-color:rgba(0, 0, 0, 0.7);position: absolute;left: 0px;
-     z-index:220;width: 100%;height: 100em;padding-top: 10%" hidden="hidden">
+
+<div id="dicing_div" hidden="hidden">
     <div class="wrap">
         <div id="dice" class="dice dice_1"></div>
     </div>
-    <p id="result">请直接点击上面的色子！</p>
+    <p id="result">好运好运快快来！！！</p>
 </div>
+
+
+    <div id="gameOver" hidden="hidden">
+        <div class="gameOverContainer">
+        <div class="gameOverHead">game over!</div>
+        <div class="gameOvertext">本轮得分：</div>
+        <div class="gameOverRanking">
+            <div class="line">
+                <div class="a1">第一名:</div>
+                <div class="a1">tt1</div>
+                <div class="a1">6分</div>
+            </div>
+            <div class="line">
+                <div class="a1">第一名:</div>
+                <div class="a1">tt1</div>
+                <div class="a1">6分</div>
+            </div>
+            <div class="line">
+                <div class="a1">第一名:</div>
+                <div class="a1">tt1</div>
+                <div class="a1">6分</div>
+            </div>
+        </div>
+            <div class="blank"></div>
+        <div class="gamOverButton">
+            <div id="exitGame" class="gameOverButton">退出游戏</div>
+            <div id="reGame" class="gameOverButton">再来一局</div>
+        </div>
+        </div>
+    </div>
 <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="../js/shuffleAnimation/jquery.baraja.js"></script>
-
 <!--hlp-->
 <!--<script src='../js/jquery-1.8.2.min.js'></script>-->
 <script src='../js/underscore-1.5.2-min.js'></script>
 <script src='../js/countdown.js'></script>
 <!--<script src='../js/jquery.min.js'></script>-->
-<script src="../js/alpha_playerList.js" type="text/javascript"></script>
+<script src="../js/gameRoom/alpha_playerList.js" type="text/javascript"></script>
 
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <script type="text/javascript" src="../js/playerMovePhaser/phaser.min.js"></script>
-<!--<script type="text/javascript" src="../js/playerMovePhaser/game.js"></script>-->
+<script type="text/javascript" src="../js/playerMovePhaser/game.js"></script>
+<script type="text/javascript" src="../js/gameRoom/addDisplayBoxBody.js"></script>
+<script type="text/javascript" src="../js/gameRoom/roomShuffleDice.js"></script>
+
+<!--<script type="text/javascript" src="../js/gameRoom/addQuesType.js"></script>-->
+<!--<script type="text/javascript" src="../js/gameRoom/changePlayerInfo.js"></script>-->
 <!-- 初始化容器 start -->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#testimonials').alpha();
-        // 洗牌动画
-        var $el = $('#baraja-el'),
-            baraja = $el.baraja();
-        // simple fan
-        $('#nav-fan').on('click', function (event) {
-            $("#shuffle_div").show();
-            baraja.fan({
-                speed: 500,
-                easing: 'ease-out',
-                range: 90,
-                direction: 'right',
-                origin: {x: 25, y: 100},
-                center: true
-            });
 
-            setTimeout(function () {
-                var random = parseInt(Math.random() * 15 + 1);
-                console.log(random);
-                var index = $("ul#baraja-el li:eq(" + random + ")");
-                console.log(index.val());
-                index.trigger("click");
-            }, 1250);
-            setTimeout(function () {
-                $("#shuffle_div").hide();
-            }, 3000);
-        });
-
-
-        // 掷骰子动画
-        var dice = $("#dice");
-        $("#dicing").click(function () {
-            console.log("#dicing).click(function ()");
-            $("#result").html("请直接点击上面的色子！");
-            $("#dicing_div").show();
-            // dice.trigger("click");
-            setTimeout(function () {
-                dice.trigger("click");
-            }, 500);
-            setTimeout(function () {
-                $("#dicing_div").hide();
-            }, 3000);
-        });
-        dice.click(function () {
-            console.log("diving init");
-            $(".wrap").append("<div id='dice_mask'></div>");//加遮罩
-            dice.attr("class", "dice");//清除上次动画后的点数
-            dice.css('cursor', 'default');
-            var num = Math.floor(Math.random() * 6 + 1);//产生随机数1-6
-            dice.animate({left: '+2px'}, 100, function () {
-                dice.addClass("dice_t");
-            }).delay(200).animate({top: '-2px'}, 100, function () {
-                dice.removeClass("dice_t").addClass("dice_s");
-            }).delay(200).animate({opacity: 'show'}, 600, function () {
-                dice.removeClass("dice_s").addClass("dice_e");
-            }).delay(100).animate({left: '-2px', top: '2px'}, 100, function () {
-                dice.removeClass("dice_e").addClass("dice_" + num);
-                $("#result").html("您掷得点数是<span>" + num + "</span>");
-                dice.css('cursor', 'pointer');
-                $("#dice_mask").remove();//移除遮罩
-            });
-        });
-    });
-</script>
 </body>
 </html>

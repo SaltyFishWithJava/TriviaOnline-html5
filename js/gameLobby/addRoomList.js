@@ -4,7 +4,7 @@ function  getInfo() {
 }
 getInfo();
 
-$(document).ready(update())
+$(document).ready(update());
 
 var num = 0;
 var roomID = new Array();
@@ -106,9 +106,7 @@ function update(){
         }
     }
 }
-/*
-Listener
- */
+
 
 var uName = window.localStorage.getItem("userName");
 
@@ -222,6 +220,8 @@ else {
         }
         else if(jsMsg.resMsg==="CreateRoomSuccess"){
             alert("CreateRoomSuccess");
+            window.localStorage.setItem("roomName",rname);
+            console.log(window.localStorage.getItem("roomName"));
             isGame = true;
             $(location).attr('href', 'gameRoom.html');
         }
@@ -230,6 +230,7 @@ else {
         }
         else if(jsMsg.resMsg==="JoinSuccess"){
             alert("加入成功");
+            window.localStorage.setItem("roomName",rname);
             isGame = true;
             $(location).attr('href', 'gameRoom.html');
         }
@@ -388,11 +389,11 @@ function delByClass(elementClass)
 
 $(".smallroomList").live("click", function () {
     console.log("JoinGame");
-    var gName = $(this).find('.roomName')[0].innerText;
+    rname = $(this).find('.roomName')[0].innerText;
     var json = {
         Code : "A",
         uN : uName,
-        gN : gName
+        gN : rname
     }
     ws_GL.send(JSON.stringify(json));
 });

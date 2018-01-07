@@ -314,6 +314,7 @@
 
 <script type="text/javascript">
     var isGame = false;
+    var rname;
     $("#modal-default").iziModal({
         title: "新建房间",
         subtitle: "欢迎加入Trivia～请创建您的房间！",
@@ -329,7 +330,7 @@
 
     $("#createRoomButton").click(function () {
         console.log("CreateRoom");
-        var rname = document.getElementById("roomName").value;
+        rname = document.getElementById("roomName").value;
         var userN = window.localStorage.getItem("username");
         var json = {
             Code: "C",

@@ -16,7 +16,7 @@ body{
     -webkit-box-orient: horizontal;
 }
 .playerList{
-    padding-bottom: 100px;
+    padding-bottom: 80px;
 }
 .gameStatusDisplayBox{
     -webkit-box-flex: 1;
@@ -25,9 +25,6 @@ body{
     margin: 10px;
 }
 
-
-
-
 /*游戏状态显示框*/
 .gameStatusDisplayBox{
     margin: 20px 50px;
@@ -35,6 +32,7 @@ body{
     color: black;
     border: #ddd 1px solid;
     border-radius: 20px;
+    height: 300px;
 }
 
 .displayBoxHead{
@@ -47,4 +45,6 @@ body{
 }
 .displayBoxBody{
     padding: 5px;
+    height: 230px;
+    overflow: scroll;
 }
