@@ -167,7 +167,7 @@ else {
     /*
     GameList
      */
-    ws_GL = new ReconnectingWebSocket("ws://111.231.85.149:8080/MyTestServer/websocket/GameList");
+    ws_GL = new ReconnectingWebSocket("ws://182.254.220.56:8080/Trivia-Server/websocket/GameList");
     ws_GL.onopen = function () {
         console.log("WebOpen");
         socketstate_GL = true;
@@ -257,7 +257,7 @@ else {
     PlayerList
      */
 
-    ws_PL = new ReconnectingWebSocket("ws://111.231.85.149:8080/MyTestServer/websocket/PlayerList");
+    ws_PL = new ReconnectingWebSocket("ws://182.254.220.56:8080/Trivia-Server/websocket/PlayerList");
     ws_PL.onopen = function () {
         console.log("T:WebOpen");
         socketstate_PL = true;
