@@ -94,20 +94,7 @@ function getPlayerId(curNickName,nickNames) {
         }
     }
     alert("nickname不存在！");
-    // switch (curNickName){
-    //     case nickNames[0]:
-    //         return 0;
-    //     case nickNames[1]:
-    //         return 1;
-    //     case nickNames[2]:
-    //         return 2;
-    //     case nickNames[3]:
-    //         return 3;
-    //     default:
-    // }
-    //
 }
-// currPlayerId("tt",nickNames);
 
 // id数组当前人数
 // isReady数组是否准备
@@ -171,7 +158,7 @@ $(".confirmButton").live("click",function(){
 
 $("#exitGame").live("click",function () {
     $("#gameOver").hide();
-    $(location).attr('href', 'gameRoom.html');
+    $(location).attr('href', 'gameLobby.html');
     console.log("exitGame");
 });
 
@@ -368,7 +355,6 @@ else {
             }
             // desBlockId[activePlayerId]=msg.list[activePlayerId]
             if(behavior=="Out"){
-                console.log("111");
                 setTimeout(function () {
                     isOutJail=true;
                 },4000)
