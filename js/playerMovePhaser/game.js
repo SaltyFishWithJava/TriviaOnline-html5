@@ -94,10 +94,10 @@ function update() {
                             console.log(currBlockId[activePlayerId]);
                         }
                     }
-                    else if (currMoveOctopus.body.y >= blockPosy[currBlockId[activePlayerId] + 1]) {
+                    else if (currMoveOctopus.body.y >= blockPosy[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                         // console.log(currMoveOctopus.body.y);
                         currMoveOctopus.body.y -= moveSpeedy;
-                        if (currMoveOctopus.body.y <= blockPosy[currBlockId[activePlayerId] + 1]) {
+                        if (currMoveOctopus.body.y <= blockPosy[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                             currBlockId[activePlayerId] == 12 ? currBlockId[activePlayerId]=1 : currBlockId[activePlayerId]++;
                             console.log("11");
                             console.log(currBlockId[activePlayerId]);
