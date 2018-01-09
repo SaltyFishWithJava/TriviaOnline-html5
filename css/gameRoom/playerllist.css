@@ -22,7 +22,9 @@ body{
     -webkit-box-flex: 1;
 }
 .timer{
-    margin: 10px;
+    float: right;
+    margin: 40px;
+    z-index: 999;
 }
 
 /*游戏状态显示框*/

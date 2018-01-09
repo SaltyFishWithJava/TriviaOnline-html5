@@ -34,10 +34,6 @@ function preload() {
 }
 
 function create() {
-    // console.log(octopusNum);
-    //  Create our octopus
-    // initSprites(octopusNum);
-    // console.log("create()");
 }
 
 function update() {
@@ -48,10 +44,10 @@ function update() {
         console.log(desBlockId[activePlayerId]);
     }
     if(isInJail){
+        addMessage(false,nickNames[activePlayerId]+"进入监狱！");
         inJail(activePlayerId);
         activePlayerId=getPlayerId(nextActivePlayer,nickNames);
 
-        console.log(activePlayerId+"11111"+nickNames[activePlayerId]+"22222"+uname);
         if(nickNames[activePlayerId]==uname){
             addDicingbutton(activePlayerId);
             console.log("aaa");
@@ -61,6 +57,7 @@ function update() {
         isInJail=false;
     }
     if(isOutJail){
+        addMessage(false,"恭喜"+nickNames[(activePlayerId==0?playerNum-1:activePlayerId-1)]+"走出监狱！");
         outJail((activePlayerId==0?playerNum-1:activePlayerId-1),currBlockIdNew[(activePlayerId==0?playerNum-1:activePlayerId-1)]);
         // if(getPlayerId(uname,nickNames)==activePlayerId){
         //     outJail((activePlayerId==0?playerNum-1:activePlayerId-1),currBlockId[activePlayerId]);
@@ -71,7 +68,6 @@ function update() {
         isOutJail=false;
     }
     if(isMove&&behavior=="Go"){
-        console.log(activePlayerId);
         desBlockId[activePlayerId]=activePlayerStep;
         var currMoveOctopus=getOctopus(activePlayerId);
         // currMoveOctopus.body.x-=0.5;
@@ -86,33 +82,39 @@ function update() {
         }else {
             // if (currBlockId[activePlayerId] != (desBlockId[activePlayerId]==12?1:(desBlockId[activePlayerId]+1))) {
             if (currBlockId[activePlayerId] != (desBlockId[activePlayerId])) {
-            // if (currBlockId[activePlayerId] != 3) {
-                // console.log("2222");
                 console.log(activePlayerId+"######"+currBlockId[activePlayerId]+"#####"+desBlockId[activePlayerId]);
                 if (blockPosx[currBlockId[activePlayerId]] == blockPosx[currBlockId[activePlayerId] == 12 ? 1 : currBlockId[activePlayerId] + 1]) {
-                    if (currMoveOctopus.body.y <= blockPosy[currBlockId[activePlayerId] + 1]) {
+                    if (currMoveOctopus.body.y <= blockPosy[currBlockId[activePlayerId] == 12 ? 1 : currBlockId[activePlayerId] + 1]) {
                         currMoveOctopus.body.y += moveSpeedy;
-                        if (currMoveOctopus.body.y >= blockPosy[currBlockId[activePlayerId] + 1]) {
+                        if (currMoveOctopus.body.y >= blockPosy[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                             currBlockId[activePlayerId] == 12 ?currBlockId[activePlayerId]=1: currBlockId[activePlayerId]++;
+                            console.log("11");
+                            console.log(currBlockId[activePlayerId]);
                         }
                     }
-                    else if (currMoveOctopus.body.y >= blockPosy[currBlockId[activePlayerId] + 1]) {
+                    else if (currMoveOctopus.body.y >= blockPosy[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                         // console.log(currMoveOctopus.body.y);
                         currMoveOctopus.body.y -= moveSpeedy;
-                        if (currMoveOctopus.body.y <= blockPosy[currBlockId[activePlayerId] + 1]) {
+                        if (currMoveOctopus.body.y <= blockPosy[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                             currBlockId[activePlayerId] == 12 ? currBlockId[activePlayerId]=1 : currBlockId[activePlayerId]++;
+                            console.log("11");
+                            console.log(currBlockId[activePlayerId]);
                         }
                     }
                 } else if (blockPosy[currBlockId[activePlayerId]] == blockPosy[currBlockId[activePlayerId] == 12 ? 1: currBlockId[activePlayerId] + 1]) {
-                    if (currMoveOctopus.body.x <= blockPosx[currBlockId[activePlayerId] + 1]) {
+                    if (currMoveOctopus.body.x <= blockPosx[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                         currMoveOctopus.body.x += moveSpeedx;
-                        if (currMoveOctopus.body.x >= blockPosx[currBlockId[activePlayerId] + 1]) {
+                        if (currMoveOctopus.body.x >= blockPosx[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                             currBlockId[activePlayerId] == 12 ? currBlockId[activePlayerId]=1 : currBlockId[activePlayerId]++;
+                            console.log("11");
+                            console.log(currBlockId[activePlayerId]);
                         }
-                    } else if (currMoveOctopus.body.x >= blockPosx[currBlockId[activePlayerId] + 1]) {
+                    } else if (currMoveOctopus.body.x >= blockPosx[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                         currMoveOctopus.body.x -= moveSpeedx;
-                        if (currMoveOctopus.body.x <= blockPosx[currBlockId[activePlayerId] + 1]) {
+                        if (currMoveOctopus.body.x <= blockPosx[currBlockId[activePlayerId] == 12 ? 1 :currBlockId[activePlayerId] + 1]) {
                             currBlockId[activePlayerId] == 12 ? currBlockId[activePlayerId]=1: currBlockId[activePlayerId]++;
+                            console.log("11");
+                            console.log(currBlockId[activePlayerId]);
                         }
                     }
                 }
@@ -120,6 +122,7 @@ function update() {
                     alert("位置出错了！");
                 }
             }else {
+                    addMessage(false,nickNames[activePlayerId]+"到达第"+currBlockId[activePlayerId]+"块");
                     console.log("到了");
                     isMove=false;
                     shuffle()

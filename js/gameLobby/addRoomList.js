@@ -1,8 +1,13 @@
 function  getInfo() {
-    var windowHeight=document.body.clientHeight;
-    $("body").css({"height":windowHeight+40});
+    var windowHeight=window.screen.availHeight;
+    $("body").css({"height":windowHeight});
 }
 getInfo();
+
+$(".selectButton").live("click",function () {
+    Nlogin=true;
+    $(location).attr('href', 'login.html');
+})
 
 $(document).ready(update());
 
@@ -167,7 +172,8 @@ else {
     /*
     GameList
      */
-    ws_GL = new ReconnectingWebSocket("ws://182.254.220.56:8080/Trivia-Server/websocket/GameList");
+    // ws_GL = new ReconnectingWebSocket("ws://111.231.85.149:8080/Trivia-Server/websocket/GameList");
+    ws_GL = new ReconnectingWebSocket("ws://111.231.85.149:8080/MyTestServer/websocket/GameList");
     ws_GL.onopen = function () {
         console.log("WebOpen");
         socketstate_GL = true;
@@ -257,7 +263,8 @@ else {
     PlayerList
      */
 
-    ws_PL = new ReconnectingWebSocket("ws://182.254.220.56:8080/Trivia-Server/websocket/PlayerList");
+    // ws_PL = new ReconnectingWebSocket("ws://111.231.85.149:8080/Trivia-Server/websocket/PlayerList");
+    ws_PL = new ReconnectingWebSocket("ws://111.231.85.149:8080/MyTestServer/websocket/PlayerList");
     ws_PL.onopen = function () {
         console.log("T:WebOpen");
         socketstate_PL = true;
@@ -289,7 +296,7 @@ else {
                 }
             }
             delByClass("playerListDetail");
-            updateFrienfList();
+            updateFriendList();
         }
         else if(jsMsg.resMsg==="RP") {
             // 个人信息加载
@@ -307,6 +314,7 @@ else {
             alert("请您登录");
             Nlogin=true;
             $(location).attr('href', 'login.html');
+            // $(location).attr('href', 'gameLobby.html');
         }
     };
 
@@ -320,6 +328,7 @@ else {
         console.log("T"+evt);
     };
 }
+
 
 window.onbeforeunload = function () {
     var json;
@@ -339,6 +348,8 @@ window.onbeforeunload = function () {
     ws_GL.close();
     ws_PL.close();
 }
+
+
 
 function gLSend() {
     console.log("Send::GL");

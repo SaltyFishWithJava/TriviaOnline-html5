@@ -1,11 +1,3 @@
-// $(document).ready(function () {
-//     // $("#q1").hide();
-//     // shuffle();
-//     // dicing();
-// });
-
-
-
 // 洗牌动画
 function shuffle() {
     // $('#testimonials').alpha();
@@ -28,7 +20,6 @@ function shuffle() {
             var random = parseInt(Math.random() * 15 + 1);
             console.log(random);
             var index = $("ul#baraja-el li:eq(" + random + ")");
-            console.log(index[0].innerText);
             index.trigger("click");
         }, 1250);
          setTimeout(function () {
@@ -36,7 +27,11 @@ function shuffle() {
             //  $("#shuffle_div").hide();
              $("#q1 .enter_btn").show();
              $("#q1 .content").show();
-             addQues()
+             addQues();
+             // if(!Countdown){
+             console.log("开始计时器！");
+                 Countdown.reStartCount();
+             // }
          }, 3000);
         // $("#q1 .enter_btn").show();
 }
@@ -86,6 +81,7 @@ function dicing() {
         // $("#result").html("请直接点击上面的色子！");
         $("#dicing_div").show();
         setTimeout(function () {
+            console.log("")
             $(".wrap").append("<div id='dice_mask'></div>");//加遮罩
             dice.attr("class", "dice");//清除上次动画后的点数
             dice.css('cursor', 'default');
@@ -101,14 +97,13 @@ function dicing() {
                 dice.css('cursor', 'pointer');
                 $("#dice_mask").remove();//移除遮罩
             });
-        }, 1000);
+        }, 500);
         setTimeout(function () {
             $("#dicing_div").hide();
             if(!isInJail[activePlayerId]){
-                setTimeout(function () {
-
                     isMove=true;
-                },3000)
+                    addMessage(false,nickNames[activePlayerId]+"前进"+dicingNum+"步");
+                // },1500)
             }
         }, 3000);
 }

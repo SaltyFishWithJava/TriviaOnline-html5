@@ -2,7 +2,7 @@ var playerNum=0;
 var playerName = new Array();
 var playerScore = new Array();
 var playerState = new Array();
-function updateFrienfList() {
+function updateFriendList() {
     for(i=0;i<playerNum;i++){
         var p="<div class=\"playerListDetail\">\n" +
             "                    <div class=\"playerListhead0\">"+playerName[i]+"</div>\n" +
@@ -14,6 +14,6 @@ function updateFrienfList() {
     }
 }
 
-updateFrienfList();
+updateFriendList();
 
 

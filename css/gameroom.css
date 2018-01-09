@@ -64,6 +64,8 @@ body{
 }
 
 .panelRight{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
     background-color: white;
     -webkit-box-flex: 1;
     margin: 0 10px;
@@ -180,6 +182,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "������";}
 }
 
 .playerListhead{
+    margin: 0 15px;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
     text-align: center;
@@ -198,12 +201,12 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "������";}
 }
 .rollBox {
     overflow:scroll;
-    height: 100px;
-    width: 90%;
+    height: 400px;
+    margin: 5px 10px;
+    /*width: 90%;*/
     border: #ddd 1px solid;
     border-radius: 4px;
     padding: 5px 10px;
-    margin: 2px auto;
     text-align: center;
 }
 .playerListhead0 img{
@@ -212,16 +215,19 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "������";}
 }
 .playerList{
     margin-bottom: 10px;
+    height: 70%;
 }
 .myinfoBody{
     display: -webkit-box;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
+    -webkit-box-flex: 1;
 }
 .myinfoDetail{
+    -webkit-box-flex: 1;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    height: 200px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
     background-color: aliceblue;
 }
 .myavatar img{
@@ -233,9 +239,10 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "������";}
     /*margin: 10px 0;*/
 /*}*/
 .myinfoText{
+    font-size: 18px;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
-    padding-left: 5px;
+    margin-left: 35%;
 }
 .myfriendList{
     -webkit-box-flex: 1;
@@ -246,16 +253,20 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "������";}
     border-radius: 50%;
     border: 8px solid #fff;
     height: 90px;
+    width: 90px;
 }
 #myavatar{
-    height: 30%;
-    margin-bottom: 45px;
+    margin-bottom: 22%;
+    padding-top: 10px;
+    height: 25%;
     background-color: #186483;
 }
 .bio-photo{
+    height: 60px;
     text-align: center;
 }
 .cancel{
+    margin: 10px;
     text-align: center;
 }
 .friendListAll{
@@ -346,4 +357,16 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "������";}
 }
 .smallroomList_white{
     background: white;
+}
+
+.myLnfo{
+    -webkit-box-flex: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.myinfoText2{
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    text-align: center;
 }
