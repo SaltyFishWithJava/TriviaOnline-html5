@@ -358,6 +358,10 @@ else {
                 console.log("que");
         }else if(msg.resMsg=="Roll"){
             // go:
+            var list=msg.list;
+            for(i=0;i<playerNum;i++){
+                changeCurScore(i,list[i].coin);
+            }
             QuesArray[0]=msg.property.description;
             QuesArray[1]=msg.property.A;
             QuesArray[2]=msg.property.B;
