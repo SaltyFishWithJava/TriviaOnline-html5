@@ -19,10 +19,8 @@ jQuery.fn.reverse = [].reverse;
 	var Modernizr = window.Modernizr;
 
 	$.Baraja = function( options, element ) {
-		
 		this.$el = $( element );
 		this._init( options );
-		
 	};
 
 	// the options
@@ -166,7 +164,6 @@ jQuery.fn.reverse = [].reverse;
 			if( this.options.nextEl !== '' ) {
 
 				$( this.options.nextEl ).on( 'click.baraja', function() {
-
 					self._navigate( 'next' );
 					return false;
 
@@ -177,7 +174,6 @@ jQuery.fn.reverse = [].reverse;
 			if( this.options.prevEl !== '' ) {
 
 				$( this.options.prevEl ).on( 'click.baraja', function() {
-
 					self._navigate( 'prev' );
 					return false;
 
@@ -186,11 +182,10 @@ jQuery.fn.reverse = [].reverse;
 			}
 
 			this.$el.on( 'click.baraja', 'li', function() {
-
+                // console.log($(this)[0].innerText);
 				if( !self.isAnimating ) {
-
+                    console.log("111");
 					self._move2front( $( this ) );
-
 				}
 
 			} );
@@ -325,12 +320,12 @@ jQuery.fn.reverse = [].reverse;
 
 			// if it's the one with higher z-index, just close the baraja
 			if( !this.closed ) {
-
+				console.log("open");
 				this._close( callback, $item );
 
 			}
 			else {
-
+				console.log("close");
 				this._fan();
 
 			}
