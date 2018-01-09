@@ -217,7 +217,8 @@ if (!("WebSocket" in window)) {
     alert("您的浏览器不支持 WebSocket!");
 }
 else {
-    ws = new ReconnectingWebSocket("ws://182.254.220.56:8080/Trivia-Server/websocket/Login");
+    // ws = new ReconnectingWebSocket("ws://111.231.85.149:8080/Trivia-Server/websocket/Login");
+    ws = new ReconnectingWebSocket("ws://111.231.85.149:8080/MyTestServer/websocket/Login");
     ws.onopen = function () {
         console.log("WebOpen");
         socketstate = true;
@@ -248,9 +249,9 @@ else {
             alert("未知错误！");
         }else if(msg.resMsg==="DatabaseError") {
             alert("数据库错误");
-        }else if(msg.resMsg==="PLAYING"){
-            alert("您仍在游戏中，下面将为您重新进入游戏");
-            $(location).attr('href', 'gameRoom.html');
+        }else if(msg.resMsg==="Login"){
+            alert("您已登录！现在为您进入游戏大厅！");
+            $(location).attr('href', 'gameLobby.html');
         }
     };
 

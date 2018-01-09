@@ -29,7 +29,7 @@
 
     <div id="board">
         <section id="start" class="boardblue block0">
-            <h1>TRAVIA,go!</h1>
+            <h1>TRAVIA,JAIL!</h1>
             <a href="#mediterranean">Go</a>
         </section>
         <section id="mediterranean" class="property purple left chest block1">
@@ -97,32 +97,7 @@
                 </div>
             </div>
 
-            <div class="timer">
-                <div class="">
-                    <div class="count"></div>
-                    <script id="count-template" type="text/template">
-                        <span class="current top <%= currentSize %>"><%= time %></span>
-                        <span class="next top <%= nextSize %>"><%= nextTime %></span>
-                        <span class="current bottom <%= currentSize %>"><%= time %></span>
-                        <span class="next bottom <%= nextSize %>"><%= nextTime %></span>
-                    </script>
-                </div>
 
-                <div class="buttons">
-                    <button id="startCount">start</button>
-                    <button id="resetCount">reset</button>
-                </div>
-                <div>
-                    <button id="nav-fan">洗牌</button>
-                    <button id="dicing">掷骰子</button>
-                </div>
-        <div>
-            <button id="0" >0</button>
-            <button id="1" >1</button>
-            <button id="2" >2</button>
-            <button id="3" >3</button>
-        </div>
-            </div>
         </div>
 
         <div class="playerList">
@@ -232,6 +207,28 @@
 
 <div id="shuffle_div" hidden="hidden">
 <!--<div id="shuffle_div">-->
+    <div class="timer">
+        <div class="">
+            <div class="count"></div>
+            <script id="count-template" type="text/template">
+                <span class="current top <%= currentSize %>"><%= time %></span>
+                <span class="next top <%= nextSize %>"><%= nextTime %></span>
+                <span class="current bottom <%= currentSize %>"><%= time %></span>
+                <span class="next bottom <%= nextSize %>"><%= nextTime %></span>
+            </script>
+        </div>
+
+        <!--<div class="buttons">-->
+        <!--<button id="startCount">start</button>-->
+        <!--<button id="resetCount">reset</button>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<button id="0" >0</button>-->
+        <!--<button id="1" >1</button>-->
+        <!--<button id="2" >2</button>-->
+        <!--<button id="3" >3</button>-->
+        <!--</div>-->
+    </div>
     <div class="baraja-demo">
         <ul id="baraja-el" class="baraja-container">
             <li><img src="../img/shuffle/1.jpg" alt="image1"/><h4>Coco Loko</h4>

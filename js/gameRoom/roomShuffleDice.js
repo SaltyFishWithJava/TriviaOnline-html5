@@ -1,11 +1,3 @@
-// $(document).ready(function () {
-//     // $("#q1").hide();
-//     // shuffle();
-//     // dicing();
-// });
-
-
-
 // 洗牌动画
 function shuffle() {
     // $('#testimonials').alpha();
@@ -36,6 +28,10 @@ function shuffle() {
              $("#q1 .enter_btn").show();
              $("#q1 .content").show();
              addQues();
+             // if(!Countdown){
+             console.log("开始计时器！");
+                 Countdown.reStartCount();
+             // }
          }, 3000);
         // $("#q1 .enter_btn").show();
 }
@@ -105,10 +101,8 @@ function dicing() {
         setTimeout(function () {
             $("#dicing_div").hide();
             if(!isInJail[activePlayerId]){
-                console.log("outismoving");
-                // setTimeout(function () {
-                    console.log("ismoving!");
                     isMove=true;
+                    addMessage(false,nickNames[activePlayerId]+"前进"+dicingNum+"步");
                 // },1500)
             }
         }, 3000);

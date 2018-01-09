@@ -12,7 +12,7 @@ Countdown.prototype = {
         this.el = el;
         this.template = _(template.innerHTML).template();
         this.delta = -1;
-        this.isPause=false;
+        this.isPause=true;
     },
     reset:function () {
         this.time = this.countNum;
@@ -40,8 +40,13 @@ Countdown.prototype = {
     },
     checkTime: function () {
         this.time += this.delta;
-        if (this.time === 0)
-            this.reset();
+        if (this.time === 0){
+            var randomAns=new Array("A","B","C","D")
+            selectedAnswer=randomAns(Math.round(Math.random()*3));
+            console.log(selectedAnswer);
+            Ans(selectedAnswer);
+            alert("玩家超时！");
+        }
         this.toggleDirection('down', 'up');
         this.nextTime = this.time + this.delta;
     },
@@ -68,13 +73,13 @@ Countdown.prototype = {
         this.el.classList.remove('changing');
     }
 };
-var Countdown=new Countdown(20, document.querySelector('.count'), document.querySelector('#count-template'));
+var maxCountdownNum=5;
+var Countdown=new Countdown(maxCountdownNum, document.querySelector('.count'), document.querySelector('#count-template'));
 $(document).ready(function() {
     $("#startCount").click(function () {
         if(!this.Countdown){
             Countdown.reStartCount();
         }
-        $(".jq22-container").show();
     });
 
     $("#resetCount").click(function () {

@@ -15,14 +15,16 @@
     checks:{
       xhr:{
         url:function() {
-          return "/TriviaOnline/favicon.ico?_=" + new Date().getTime();
+          // return "/TriviaOnline/favicon.ico?_=" + new Date().getTime();
+          return "/favicon.ico?_=" + new Date().getTime();
         },
         timeout:5e3,
         type:"HEAD"
       },
       image:{
         url:function() {
-          return "/TriviaOnline/favicon.ico?_=" + new Date().getTime();
+          // return "/TriviaOnline/favicon.ico?_=" + new Date().getTime();
+          return "/favicon.ico?_=" + new Date().getTime();
         }
       },
       active:"xhr"

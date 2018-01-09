@@ -34,10 +34,6 @@ function preload() {
 }
 
 function create() {
-    // console.log(octopusNum);
-    //  Create our octopus
-    // initSprites(octopusNum);
-    // console.log("create()");
 }
 
 function update() {
@@ -48,6 +44,7 @@ function update() {
         console.log(desBlockId[activePlayerId]);
     }
     if(isInJail){
+        addMessage(false,nickNames[activePlayerId]+"进入监狱！");
         inJail(activePlayerId);
         activePlayerId=getPlayerId(nextActivePlayer,nickNames);
 
@@ -60,6 +57,7 @@ function update() {
         isInJail=false;
     }
     if(isOutJail){
+        addMessage(false,"恭喜"+nickNames[(activePlayerId==0?playerNum-1:activePlayerId-1)]+"走出监狱！");
         outJail((activePlayerId==0?playerNum-1:activePlayerId-1),currBlockIdNew[(activePlayerId==0?playerNum-1:activePlayerId-1)]);
         // if(getPlayerId(uname,nickNames)==activePlayerId){
         //     outJail((activePlayerId==0?playerNum-1:activePlayerId-1),currBlockId[activePlayerId]);
@@ -124,6 +122,7 @@ function update() {
                     alert("位置出错了！");
                 }
             }else {
+                    addMessage(false,nickNames[activePlayerId]+"到达第"+currBlockId[activePlayerId]+"块");
                     console.log("到了");
                     isMove=false;
                     shuffle()

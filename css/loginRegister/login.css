@@ -20,15 +20,17 @@
     /*display: none;*/
 }
 .errorText_username{
-    top:40px;
+    top:20px;
 }
 .errorText_password{
-    top:109px;
+    top: 75px;
 }
 .errorText_repassword{
-    top:178px;
+    top: 130px;
 }
 .error{
+    position: absolute;
+    left: 310px;
     display:none;
     /*position: absolute;*/
     /*right: -55px;*/
@@ -60,13 +62,13 @@
     height: 40px;
 }
 .errorback0{
-    top: 27px;
+    top: 10px;
 }
 .errorback1{
-     top: 96px;
+    top: 65px;
  }
 .errorback2{
-    top: 165px;
+    top: 120px;
 }
 #username{top: 27px;}
 #password{top: 96px;}
@@ -103,5 +105,11 @@
     visibility: hidden;
 }
 input{
-    margin-top: 0;
+    margin-top: 10px;
+
+}
+
+.error_login{
+    left: 10px;
+    display: block;
 }

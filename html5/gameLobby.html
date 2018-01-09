@@ -146,67 +146,67 @@
 
     </div>
     <div class="panelRight">
-        <div class="roomfilter">
-            <div class="roomHead">
-                <div class="roomHead_text">房间筛选</div>
-                <div class="blank"></div>
-            </div>
-            <ul class="select">
-                <li class="select-list select-list-roomid" style="padding: 0px;">
-                <div id="vivo-airbox"></div>
-                <div id="vivo-wrap">
-                    <div id="vivo-head">
-                        <div class="vivo-search">
-                            <div class="search-box">
-                                <form action='' method='get'>
-                                    <input type="text" placeholder="请输入房间id或者房间主昵称" name='q' class='data_q' autocomplete="off"><button>搜索</button><a class="close"></a>
-                                </form>
-                                <div class="qk-results">
-                                    <ul>
-                                    </ul>
-                                    <div class="other-results"><a href="#">其他搜索结果</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="vivo-nav cl">
-                            <div class="search-user"><a href="#" class="search"><b></b></a></div>
-                        </div>
-                    </div>
-                </div>
-                <div id="vivo-contain"></div>
-                </li>
+        <!--<div class="roomfilter">-->
+            <!--<div class="roomHead">-->
+                <!--<div class="roomHead_text">房间筛选</div>-->
+                <!--<div class="blank"></div>-->
+            <!--</div>-->
+            <!--<ul class="select">-->
+                <!--<li class="select-list select-list-roomid" style="padding: 0px;">-->
+                <!--<div id="vivo-airbox"></div>-->
+                <!--<div id="vivo-wrap">-->
+                    <!--<div id="vivo-head">-->
+                        <!--<div class="vivo-search">-->
+                            <!--<div class="search-box">-->
+                                <!--<form action='' method='get'>-->
+                                    <!--<input type="text" placeholder="请输入房间id或者房间主昵称" name='q' class='data_q' autocomplete="off"><button>搜索</button><a class="close"></a>-->
+                                <!--</form>-->
+                                <!--<div class="qk-results">-->
+                                    <!--<ul>-->
+                                    <!--</ul>-->
+                                    <!--<div class="other-results"><a href="#">其他搜索结果</a></div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="vivo-nav cl">-->
+                            <!--<div class="search-user"><a href="#" class="search"><b></b></a></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div id="vivo-contain"></div>-->
+                <!--</li>-->
 
-                <li class="select-list">
-                    <dl id="select1">
-                        <dt>地板格子数：</dt>
-                        <dd class="select-all selected"><a href="#">全部</a></dd>
-                        <dd><a href="#">12</a></dd>
-                        <dd><a href="#">15</a></dd>
-                    </dl>
-                </li>
-                <li class="select-list">
-                    <dl id="select2">
-                        <dt>题目类型：</dt>
-                        <dd class="select-all selected"><a href="#">全部</a></dd>
-                        <dd class="type1"><a href="#">类型1</a></dd>
-                        <dd class="type2"><a href="#">类型2</a></dd>
-                        <dd class="type3"><a href="#">类型3</a></dd>
-                        <dd class="type4"><a href="#">类型4</a></dd>
-                        <dd class="type5"><a href="#">类型5</a></dd>
-                        <dd class="type6"><a href="#">类型6</a></dd>
-                    </dl>
-                </li>
-                <li class="select-result">
-                    <dl>
-                        <dt>已选条件：</dt>
-                        <dd class="select-no">暂时没有选择过滤条件</dd>
-                    </dl>
-                    <button class="selectButton" onclick="select()">筛选</button>
-                </li>
+                <!--<li class="select-list">-->
+                    <!--<dl id="select1">-->
+                        <!--<dt>地板格子数：</dt>-->
+                        <!--<dd class="select-all selected"><a href="#">全部</a></dd>-->
+                        <!--<dd><a href="#">12</a></dd>-->
+                        <!--<dd><a href="#">15</a></dd>-->
+                    <!--</dl>-->
+                <!--</li>-->
+                <!--<li class="select-list">-->
+                    <!--<dl id="select2">-->
+                        <!--<dt>题目类型：</dt>-->
+                        <!--<dd class="select-all selected"><a href="#">全部</a></dd>-->
+                        <!--<dd class="type1"><a href="#">类型1</a></dd>-->
+                        <!--<dd class="type2"><a href="#">类型2</a></dd>-->
+                        <!--<dd class="type3"><a href="#">类型3</a></dd>-->
+                        <!--<dd class="type4"><a href="#">类型4</a></dd>-->
+                        <!--<dd class="type5"><a href="#">类型5</a></dd>-->
+                        <!--<dd class="type6"><a href="#">类型6</a></dd>-->
+                    <!--</dl>-->
+                <!--</li>-->
+                <!--<li class="select-result">-->
+                    <!--<dl>-->
+                        <!--<dt>已选条件：</dt>-->
+                        <!--<dd class="select-no">暂时没有选择过滤条件</dd>-->
+                    <!--</dl>-->
+                    <!--<button class="selectButton" onclick="select()">筛选</button>-->
+                <!--</li>-->
 
 
-            </ul>
-        </div>
+            <!--</ul>-->
+        <!--</div>-->
         <div class="playerList">
             <div class="roomHead">
                 <div class="roomHead_text">玩家列表</div>
@@ -237,61 +237,63 @@
                         </div>
                     </div>
                     <div class="myinfoText nickname">
-                        昵称：
-                        <div id="myName">用户名</div>
+                        <div class="myinfoText2">
+                        <div class="myinfoText1">昵称：</div>
+                        <div id="myName"></div>
+                        </div>
                     </div>
                     <div class="myinfoText myscore">
                         当前积分：
-                        <div id="myScore">100033</div>
+                        <div id="myScore"></div>
                     </div>
                     <div class="cancel">
                         <button class="selectButton">注销</button>
                     </div>
                 </div>
-                <div class="myfriendList">
-                    <div class="playerListhead">
-                        <div class="playerListhead0">好友列表</div>
-                        <div class="playerListhead0">取消好友</div>
-                    </div>
-                    <div class="friendListAll  rollBox">
-                        <div class="friendList playerListDetail">
-                            <div class="friendName playerListhead0">好友1</div>
-                            <div class="heartImg playerListhead0">
-                                <img src="../img/gameLobby/red_heart.png">
-                            </div>
-                        </div>
-                        <div class="friendList playerListDetail">
-                            <div class="friendName playerListhead0">好友1</div>
-                            <div class="heartImg playerListhead0">
-                                <img src="../img/gameLobby/red_heart.png">
-                            </div>
-                        </div>
-                        <div class="friendList playerListDetail">
-                            <div class="friendName playerListhead0">好友1</div>
-                            <div class="heartImg playerListhead0">
-                                <img src="../img/gameLobby/red_heart.png">
-                            </div>
-                        </div>
-                        <div class="friendList playerListDetail">
-                            <div class="friendName playerListhead0">好友1</div>
-                            <div class="heartImg playerListhead0">
-                                <img src="../img/gameLobby/red_heart.png">
-                            </div>
-                        </div>
-                        <div class="friendList playerListDetail">
-                            <div class="friendName playerListhead0">好友1</div>
-                            <div class="heartImg playerListhead0">
-                                <img src="../img/gameLobby/red_heart.png">
-                            </div>
-                        </div>
-                        <div class="friendList playerListDetail">
-                            <div class="friendName playerListhead0">好友1</div>
-                            <div class="heartImg playerListhead0">
-                                <img src="../img/gameLobby/red_heart.png">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="myfriendList">-->
+                    <!--<div class="playerListhead">-->
+                        <!--<div class="playerListhead0">好友列表</div>-->
+                        <!--<div class="playerListhead0">取消好友</div>-->
+                    <!--</div>-->
+                    <!--<div class="friendListAll  rollBox">-->
+                        <!--<div class="friendList playerListDetail">-->
+                            <!--<div class="friendName playerListhead0">好友1</div>-->
+                            <!--<div class="heartImg playerListhead0">-->
+                                <!--<img src="../img/gameLobby/red_heart.png">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="friendList playerListDetail">-->
+                            <!--<div class="friendName playerListhead0">好友1</div>-->
+                            <!--<div class="heartImg playerListhead0">-->
+                                <!--<img src="../img/gameLobby/red_heart.png">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="friendList playerListDetail">-->
+                            <!--<div class="friendName playerListhead0">好友1</div>-->
+                            <!--<div class="heartImg playerListhead0">-->
+                                <!--<img src="../img/gameLobby/red_heart.png">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="friendList playerListDetail">-->
+                            <!--<div class="friendName playerListhead0">好友1</div>-->
+                            <!--<div class="heartImg playerListhead0">-->
+                                <!--<img src="../img/gameLobby/red_heart.png">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="friendList playerListDetail">-->
+                            <!--<div class="friendName playerListhead0">好友1</div>-->
+                            <!--<div class="heartImg playerListhead0">-->
+                                <!--<img src="../img/gameLobby/red_heart.png">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="friendList playerListDetail">-->
+                            <!--<div class="friendName playerListhead0">好友1</div>-->
+                            <!--<div class="heartImg playerListhead0">-->
+                                <!--<img src="../img/gameLobby/red_heart.png">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
     </div>

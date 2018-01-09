@@ -1,5 +1,8 @@
 // 加入room 里的消息
-function addMessage(mes) {
+function addMessage(isRemove,mes) {
+    if(isRemove){
+        $(".message").remove();
+    }
     p="<div class=\"message\">"+mes+"</div>";
     $("#displayBoxBody").prepend(p)
 }
@@ -15,7 +18,37 @@ function addQuesType(arr) {
 }
 addQuesType(quesArray);
 console.log(window.localStorage.getItem("roomName"));
+var isHasStartGame=false;
+$(function() {
+    if (window.history && window.history.pushState) {
+            $(window).on('popstate', function () {
+                if(isHasStartGame){
+                    alert("游戏进行中！无法退出游戏房间！");
+                window.history.pushState('forward', null, '#');
+                window.history.forward(1);
+                }
+            });
+    }
+    window.history.pushState('forward', null, '#');
+    window.history.forward(1);
+});
 
+window.onbeforeunload = function () {
+    /*
+    退出窗口则退出游戏，需要一个监听
+     */
+    if(!isHasStartGame){
+        var json;
+        json = {
+            Code : "Remove",
+            uN : uname,
+            gN:window.localStorage.getItem("roomName")
+        };
+        console.log(JSON.stringify(json));
+        ws.send(JSON.stringify(json));
+        ws.close();
+    }
+}
 // 加入room小黄人
 // var playerNum=2;
 // var nickNames=new  Array("郭靖","黄蓉","杨过","小龙女");
@@ -61,10 +94,6 @@ function changeHisScore(id,score) {
     $("li:eq("+id+")"+" .cus-title").text(score);
     console.log($("li:eq("+id+")"+" .cus-title").length);
 }
-// changeCurScore(1,"1222");
-// $(".testimonials-line li").remove();
-// console.log("a111ddPlayers");
-// addPlayers(playerNum);
 
 function addDicingbutton(id) {
     $(".dicing").remove();
@@ -75,9 +104,6 @@ function addDicingbutton(id) {
 function removeDicingbutton() {
     $(".dicing").remove();
 }
-
-
-
 
 $(".dicing").live("click",function () {
     console.log("dicing");
@@ -157,6 +183,15 @@ $(".confirmButton").live("click",function(){
 });
 
 $("#exitGame").live("click",function () {
+    var json;
+    json = {
+        Code : "Remove",
+        uN : uname,
+        gN:window.localStorage.getItem("roomName")
+    };
+    console.log(JSON.stringify(json));
+    ws.send(JSON.stringify(json));
+    ws.close();
     $("#gameOver").hide();
     $(location).attr('href', 'gameLobby.html');
     console.log("exitGame");
@@ -170,32 +205,6 @@ $("#reGame").live("click",function () {
 
 });
 
-function initGame() {
-    sprites=null;
-    blockPosx=Array(520,400,225,50,50,50,50,225,400,400,225,225,400,575,575,575,575);
-    blockPosy=Array(575,575,575,575,400,225,50,50,50,225,225,400,400,0,100,200,300);
-    moveSpeedx=4;
-    moveSpeedy=5;
-    isMove=false;
-    isInJail=false;
-    isOutJail=false;
-    currBlockId =new Array();//当前的块id
-    currBlockIdNew=new Array();
-    desBlockId=new Array();//目的地块id
-    isAddOctopus=false;
-    selectedAnswer="e";
-    quesType=new Array("🐙","娱","史","百","生");
-    quesArray=new Array(0,0,0,0,0,0,0,0,0,0,0,0);
-    playerNameArray=new Array("橙色🐙","粉红🐙","红色🐙","黄色🐙");
-    if(game){
-        console.log("2222");
-        // game=null;
-        // game = new Phaser.Game(config);
-    }
-    else {
-        console.log("1111")
-    }
-}
 
 
 
@@ -256,7 +265,7 @@ if (!("WebSocket" in window)) {
     alert("您的浏览器不支持 WebSocket!");
 }
 else {
-    ws = new ReconnectingWebSocket("ws://182.254.220.56:8080/Trivia-Server/websocket/Game");
+    ws = new ReconnectingWebSocket("ws://111.231.85.149:8080/MyTestServer/websocket/Game");
     ws.onopen = function () {
         console.log("WebOpen");
         socketstate = true;
@@ -271,15 +280,6 @@ else {
         var received_msg = evt.data;
         console.log(received_msg);
         var msg = JSON.parse(received_msg);
-        // activeUser=msg.property.activePlayer;
-        // gameState=msg.property.GameState;
-        // if(gameState=="QUESTION") {
-        //     document.getElementById("des").innerHTML = msg.property.description;
-        //     document.getElementById("A").innerHTML = msg.property.A;
-        //     document.getElementById("B").innerHTML = msg.property.B;
-        //     document.getElementById("C").innerHTML = msg.property.C;
-        //     document.getElementById("D").innerHTML = msg.property.D;
-        // }
         curState=msg.resMsg;
 
         if(msg.resMsg=="End"){
@@ -298,10 +298,12 @@ else {
                 }else {
                     isReady[i]=true;
                 }
+                if(i==0){
+                    addMessage(true,msg.list[i].uN+"进入了房间！");
+                }else {
+                    addMessage(false,msg.list[i].uN+"进入了房间！");
+                }
             }
-
-
-
             myid=getPlayerId(uname,nickNames);
             addPlayers(playerNum);
             // $.fn.alpha();
@@ -310,6 +312,8 @@ else {
             console.log(myid);
             myReadyButton(myid);
         }else if(msg.resMsg=="StartGame"){
+            addMessage(false,"游戏开始！");
+                isHasStartGame=true;
                 isAddOctopus=true;
                 quesArray[0]=msg.property.Grid0;
                 quesArray[1]=msg.property.Grid1;
@@ -349,8 +353,10 @@ else {
                 currBlockIdNew[i]=msg.list[i].step;
             }
             if(msg.property.activePlayer==uname){
+                addMessage(false,"轮到您游戏！祝您好运🍀！");
                 addDicingbutton(activePlayerId);
             }else {
+                addMessage(false,msg.property.activePlayer+"游戏中......");
                 removeDicingbutton();
             }
             // desBlockId[activePlayerId]=msg.list[activePlayerId]
@@ -380,7 +386,6 @@ else {
                     setTimeout(function () {
                         nextActivePlayer=msg.property.activePlayer;
                         $("#shuffle_div").hide();
-                        console.log("222");
                         console.log(activePlayerId);
                         isInJail=true;
                     },2000)
@@ -389,7 +394,6 @@ else {
                     activePlayerId=getPlayerId(msg.property.activePlayer,nickNames);
                     $("#q1 .content").append(p);
                     $("#q1 .enter_btn").hide();
-                    // $("#shuffle_div").hide();
                     setTimeout(function () {
                         nextActivePlayer=msg.property.activePlayer;
                         $("#shuffle_div").hide();
@@ -397,7 +401,6 @@ else {
                 }
             }
         }
-
         console.log(msg);
         console.log(activeUser);
         console.log(gameState);
@@ -414,12 +417,12 @@ else {
     };
 }
 
-window.onbeforeunload = function () {
-    /*
-    退出窗口则退出游戏，需要一个监听
-     */
-    ws.close();
-}
+// window.onbeforeunload = function () {
+//     /*
+//     退出窗口则退出游戏，需要一个监听
+//      */
+//     ws.close();
+// }
 
 function Test() {
     var js={
@@ -464,6 +467,12 @@ function Roll() {
 }
 
 function Ans(selectedAnswer) {
+        // if(!Countdown){
+        //     alert("aaaa");
+            console.log("停止计时器！");
+            Countdown.stopCount();
+        // }
+
     var js={
         gN : window.localStorage.getItem("roomName"),
         Code : "Question",
@@ -471,8 +480,6 @@ function Ans(selectedAnswer) {
     };
     var json = JSON.stringify(js);
     console.log(json);
-    // if((gameState=="QUESTION")&&(activeUser==uname)) {
         console.log("QUES");
         ws.send(json);
-    // }
 }
