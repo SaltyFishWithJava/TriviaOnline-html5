@@ -1,3 +1,13 @@
+//加入一局游戏结束后的排名信息
+function addRankingInfo(i,uname,score) {
+    var p="<div class=\"line\">\n" +
+        "                <div class=\"a1\">第"+(i+1)+"名:</div>\n" +
+        "                <div class=\"a1\">"+uname+"</div>\n" +
+        "                <div class=\"a1\">"+score+"分</div>\n" +
+        "            </div>"
+    $("#gameOverRanking").append(p);
+}
+
 // 加入room 里的消息
 function addMessage(isRemove,mes) {
     if(isRemove){
@@ -283,7 +293,13 @@ else {
         curState=msg.resMsg;
 
         if(msg.resMsg=="End"){
+            var list=msg.list;
+            var rankUname;
+            for(i=0;i<playerNum;i++){
+                addRankingInfo(i,list[i].uN,list[i].sC);
+            }
             $("#gameOver").show();
+
             console.log("end");
         }
         else if(msg.resMsg=="Init"){
@@ -313,6 +329,10 @@ else {
             myReadyButton(myid);
         }else if(msg.resMsg=="StartGame"){
             addMessage(false,"游戏开始！");
+            var list=msg.list;
+            for(i=0;i<playerNum;i++){
+                changeCurScore(i,list[i].coin);
+            }
                 isHasStartGame=true;
                 isAddOctopus=true;
                 quesArray[0]=msg.property.Grid0;
@@ -369,7 +389,6 @@ else {
         }else if(msg.resMsg=="GameInfor"){
             behavior=msg.property.behavior;
             console.log(behavior);
-            // activePlayerId=getPlayerId(msg.property.activePlayer,nickNames)
             console.log(msg.property.activePlayer==uname);
             if(msg.property.activePlayer==uname&&msg.property.GameState=="GOING"){
                 addDicingbutton(activePlayerId==playerNum-1?0:activePlayerId+1);
@@ -467,12 +486,8 @@ function Roll() {
 }
 
 function Ans(selectedAnswer) {
-        // if(!Countdown){
-        //     alert("aaaa");
             console.log("停止计时器！");
             Countdown.stopCount();
-        // }
-
     var js={
         gN : window.localStorage.getItem("roomName"),
         Code : "Question",
