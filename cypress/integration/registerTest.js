@@ -4,12 +4,16 @@ test by zn
 
 describe('register page test', function () {
 
-    let REGISTER_USERNAME = 'buy some cheese'
-    let REGISTER_PASSWORD = 'buy_some_cheese'
-    let REPEAT_PASSWORD = 'buy_some_cheese!'
+    var timestamp = Date.parse(new Date())
+    console.log(timestamp)
+    let REGISTER_USERNAME = '系统测试'+timestamp
+    let BAD_PASSWORD = '123'
+    let REGISTER_PASSWORD = '123456'
+    let REPEAT_PASSWORD = '1234567'
+    let REGISTER_URL = 'http://localhost:63342/TriviaOnline_h5/html5/register.html'
 
     it('register page title is correct', function () {
-        cy.visit('http://localhost:63342/TriviaOnline_h5/html5/register.html')
+        cy.visit(REGISTER_URL)
         cy.title().should('include', '用户注册')
     })
 
@@ -17,23 +21,24 @@ describe('register page test', function () {
         beforeEach(function () {
             // Visiting our app before each test removes any state build up from
             // previous tests. Visiting acts as if we closed a tab and opened a fresh one
-            cy.visit('http://localhost:63342/TriviaOnline_h5/html5/register.html')
+            cy.visit(REGISTER_URL)
         })
 
         it('before register input exist',function () {
-            cy.get('.username').should('have.class','username')
-            cy.get('.password').should('have.class','password')
-            cy.get('.rePassword').should('have.class','rePassword')
+            cy.get('#username').should('have.class','username')
+            cy.get('#password').should('have.class','password')
+            cy.get('#password2').should('have.class','rePassword')
         })
 
         it('before register input empty',function () {
-            cy.get('.username').should('have.value','')
-            cy.get('.password').should('have.value','')
-            cy.get('.rePassword').should('have.value','')
+            cy.get('#username').should('have.value','')
+            cy.get('#password').should('have.value','')
+            cy.get('#password2').should('have.value','')
         })
 
         it('before register button exist',function () {
-            cy.get('.register').should('have.text','注册')
+            cy.get('#Register_button').should('exist')
+            cy.get('#Register_button').should('have.text','注册')
         })
     })
 
@@ -41,52 +46,62 @@ describe('register page test', function () {
         beforeEach(function () {
             // Visiting our app before each test removes any state build up from
             // previous tests. Visiting acts as if we closed a tab and opened a fresh one
-            cy.visit('http://localhost:63342/TriviaOnline_h5/html5/register.html')
+            cy.visit(REGISTER_URL)
         })
 
 
         it('should allow me to type username and password',function () {
-            cy.get('.username').type(REGISTER_USERNAME)
-            cy.get('.username').should('have.value',REGISTER_USERNAME)
-            cy.get('.password').type(REGISTER_PASSWORD)
-            cy.get('.password').should('have.value',REGISTER_PASSWORD)
-            cy.get('.rePassword').type(REGISTER_PASSWORD)
-            cy.get('.rePassword').should('have.value',REGISTER_PASSWORD)
+            cy.get('#username').type(REGISTER_USERNAME)
+            cy.get('#username').should('have.value',REGISTER_USERNAME)
+            cy.get('#password').type(REGISTER_PASSWORD)
+            cy.get('#password').should('have.value',REGISTER_PASSWORD)
+            cy.get('#password2').type(REGISTER_PASSWORD)
+            cy.get('#password2').should('have.value',REGISTER_PASSWORD)
 
-            cy.get('.username').clear()
-            cy.get('.password').clear()
-            cy.get('.rePassword').clear()
+            cy.get('#username').clear()
+            cy.get('#password').clear()
+            cy.get('#password2').clear()
         })
 
-        // it('should hide error message before input', function () {
-        //     cy.get('.errorText_password').should('have.attr', 'style', 'display: none;')
-        //     cy.get('.errorText_repassword').should('have.attr', 'style', 'display: none;')
-        // });
-
-        it('should clear text input field after click register button', function () {
-            cy.get('.username').type(REGISTER_USERNAME)
-            cy.get('.password').type(REGISTER_PASSWORD)
-            cy.get('.rePassword').type(REGISTER_PASSWORD)
-            cy.get('.register').click()
-            cy.get('.username').should('have.value','')
-            cy.get('.password').should('have.value','')
-            cy.get('.rePassword').should('have.value','')
+        it('should hide error message before input', function () {
+            cy.get('.errorText_password').should('have.attr', 'style', 'display: none;')
+            cy.get('.errorText_repassword').should('have.attr', 'style', 'display: none;')
         });
 
         it('should show error message when password less than 6 cahracters', function () {
-            cy.get('.password').type('123')
-            cy.get('.rePassword').focus()
+            cy.get('#password').type(BAD_PASSWORD)
+            cy.get('#password2').focus()
             cy.get('.errorText_password').should('have.attr', 'style', 'display: block;')
 
         });
 
         it('should show error message when rePassword is diff from password', function () {
-            cy.get('.password').type(REGISTER_PASSWORD)
-            cy.get('.rePassword').type(REPEAT_PASSWORD)
-            cy.get('.password').focus()
+            cy.get('#password').type(REGISTER_PASSWORD)
+            cy.get('#password2').type(REPEAT_PASSWORD)
+            cy.get('#password').focus()
             cy.get('.errorText_repassword').should('have.attr', 'style', 'display: block;')
         });
 
+    })
+
+    context('register success && upload login',function () {
+
+        it('should register successfully', function () {
+            // const stub = cy.stub()
+            // cy.on('window:alert', stub)
+            cy.get('#username').type(REGISTER_USERNAME)
+            cy.get('#password').type(REGISTER_PASSWORD)
+            cy.get('#password2').type(REGISTER_PASSWORD)
+            cy.get('#Register_button').click()
+            //     .then(() => {
+            //         expect(stub.getCall(0)).to.be.calledWith('登录成功！')
+            //     })
+            cy.location().should(function(location) {
+                expect(location.hostname).to.eq('localhost')
+                // expect(location.href).to.eq(REGISTER_URL)
+                expect(location.pathname).to.eq('/TriviaOnline_h5/html5/login.html')
+            })
+        })
     })
 
 })
