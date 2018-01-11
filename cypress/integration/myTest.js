@@ -4,20 +4,21 @@ test by zn
 
 describe('gameLobby page test', function () {
 
-    let LOGIN_USERNAME = '系统测试1515593241000'
-    let LOGIN_PASSWORD = '123456123456'
+    let LOGIN_USERNAME = 'tt4'
+    let LOGIN_PASSWORD = '123456'
     let GAMELOBBY_URL = 'http://localhost:63342/TriviaOnline_h5/html5/gameLobby.html'
     let LOGIN_URL = 'http://localhost:63342/TriviaOnline_h5/html5/login.html'
 
     context('gameLobby page title is correct', function () {
         beforeEach(function () {
+
+        })
+
+        it('enter gameLobby success', function () {
             cy.visit(LOGIN_URL)
             cy.get('#username').type(LOGIN_USERNAME)
             cy.get('#password').type(LOGIN_PASSWORD)
             cy.get('#button_login').click()
-        })
-
-        it('enter gameLobby success', function () {
             cy.location().should(function (location) {
                 expect(location.pathname).to.eq('/TriviaOnline_h5/html5/gameLobby.html')
             })
@@ -30,12 +31,12 @@ describe('gameLobby page test', function () {
     })
 
     context('page init correct', function () {
-        beforeEach(function () {
-            cy.visit(LOGIN_URL)
-            cy.get('#username').type(LOGIN_USERNAME)
-            cy.get('#password').type(LOGIN_PASSWORD)
-            cy.get('#button_login').click()
-        })
+        // beforeEach(function () {
+        //     cy.visit(LOGIN_URL)
+        //     cy.get('#username').type(LOGIN_USERNAME)
+        //     cy.get('#password').type(LOGIN_PASSWORD)
+        //     cy.get('#button_login').click()
+        // })
 
         it('should user info correct', function () {
             cy.get('.myscore').should('exist')

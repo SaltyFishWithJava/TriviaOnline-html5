@@ -4,7 +4,7 @@ test by zn
 
 describe('login page test', function () {
 
-    let LOGIN_USERNAME = 'tt7'
+    let LOGIN_USERNAME = '系统测试'
     let LOGIN_PASSWORD = '123456'
     let WRONG_PASSWORD = '12345678'
     let LOGIN_URL = 'http://localhost:63342/TriviaOnline_h5/html5/login.html'
