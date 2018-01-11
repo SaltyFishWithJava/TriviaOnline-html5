@@ -102,7 +102,8 @@ function dicing() {
             $("#dicing_div").hide();
             if(!isInJail[activePlayerId]){
                     isMove=true;
-                    addMessage(false,nickNames[activePlayerId]+"前进"+dicingNum+"步");
+                    console.log("isMove=true;");
+                    addMessage(false,nickNames[activePlayerId]+"掷得骰子为"+dicingNum+"！");
                 // },1500)
             }
         }, 3000);

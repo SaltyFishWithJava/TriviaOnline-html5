@@ -42,10 +42,10 @@ Countdown.prototype = {
         this.time += this.delta;
         if (this.time === 0){
             var randomAns=new Array("A","B","C","D")
-            selectedAnswer=randomAns(Math.round(Math.random()*3));
+            selectedAnswer=randomAns[Math.round(Math.random()*3)];
             console.log(selectedAnswer);
             Ans(selectedAnswer);
-            alert("玩家超时！");
+            alert("玩家超时！将由电脑托管，随机为玩家选择答案！");
         }
         this.toggleDirection('down', 'up');
         this.nextTime = this.time + this.delta;
