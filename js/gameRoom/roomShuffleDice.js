@@ -93,7 +93,7 @@ function dicing() {
                 dice.removeClass("dice_s").addClass("dice_e");
             }).delay(100).animate({left: '-2px', top: '2px'}, 100, function () {
                 dice.removeClass("dice_e").addClass("dice_" + dicingNum);
-                $("#result").html("您掷得点数是<span>" + dicingNum + "</span>");
+                $("#result").html("掷得点数是<span>" + dicingNum + "</span>");
                 dice.css('cursor', 'pointer');
                 $("#dice_mask").remove();//移除遮罩
             });
