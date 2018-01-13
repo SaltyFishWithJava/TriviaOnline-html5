@@ -275,7 +275,7 @@ if (!("WebSocket" in window)) {
     alert("您的浏览器不支持 WebSocket!");
 }
 else {
-    ws = new ReconnectingWebSocket("ws://111.231.85.149:8080/MyTestServer/websocket/Game");
+    ws = new ReconnectingWebSocket("ws://182.254.220.56:8080/MyTestServer/websocket/Game");
     ws.onopen = function () {
         console.log("WebOpen");
         socketstate = true;
