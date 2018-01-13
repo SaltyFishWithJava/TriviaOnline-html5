@@ -27,7 +27,7 @@ function addQuesType(arr) {
     }
 }
 addQuesType(quesArray);
-console.log(window.localStorage.getItem("roomName"));
+console.log(window.sessionStorage.getItem("roomName"));
 var isHasStartGame=false;
 $(function() {
     if (window.history && window.history.pushState) {
@@ -52,7 +52,7 @@ window.onbeforeunload = function () {
         json = {
             Code : "Remove",
             uN : uname,
-            gN:window.localStorage.getItem("roomName")
+            gN:window.sessionStorage.getItem("roomName")
         };
         console.log(JSON.stringify(json));
         ws.send(JSON.stringify(json));
@@ -197,7 +197,7 @@ $("#exitGame").live("click",function () {
     json = {
         Code : "Remove",
         uN : uname,
-        gN:window.localStorage.getItem("roomName")
+        gN:window.sessionStorage.getItem("roomName")
     };
     console.log(JSON.stringify(json));
     ws.send(JSON.stringify(json));
@@ -223,7 +223,7 @@ $("#reGame").live("click",function () {
 /*
    Test User
    */
-var uname = window.localStorage.getItem("userName");
+var uname = window.sessionStorage.getItem("userName");
 var answer = null;
 var playerNum;
 var myid;
@@ -449,7 +449,7 @@ else {
 
 function Test() {
     var js={
-        gN : window.localStorage.getItem("roomName"),
+        gN : window.sessionStorage.getItem("roomName"),
         Code : "Init",
         uN : uname,
     };
@@ -460,7 +460,7 @@ function Test() {
 
 function Start() {
     var js={
-        gN : window.localStorage.getItem("roomName"),
+        gN : window.sessionStorage.getItem("roomName"),
         Code : "Start",
         uN : uname,
     };
@@ -470,7 +470,7 @@ function Start() {
 }
 function Ready() {
     var js={
-        gN : window.localStorage.getItem("roomName"),
+        gN : window.sessionStorage.getItem("roomName"),
         Code : "Ready",
         uN : uname,
     };
@@ -480,7 +480,7 @@ function Ready() {
 }
 function Roll() {
     var js={
-        gN : window.localStorage.getItem("roomName"),
+        gN : window.sessionStorage.getItem("roomName"),
         Code : "Roll",
         uN : uname,
     };
@@ -493,7 +493,7 @@ function Ans(selectedAnswer) {
             console.log("停止计时器！");
             Countdown.stopCount();
     var js={
-        gN : window.localStorage.getItem("roomName"),
+        gN : window.sessionStorage.getItem("roomName"),
         Code : "Question",
         answer : selectedAnswer,
     };

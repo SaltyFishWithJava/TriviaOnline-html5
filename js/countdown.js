@@ -73,7 +73,7 @@ Countdown.prototype = {
         this.el.classList.remove('changing');
     }
 };
-var maxCountdownNum=30;
+var maxCountdownNum=5;
 var Countdown=new Countdown(maxCountdownNum, document.querySelector('.count'), document.querySelector('#count-template'));
 $(document).ready(function() {
     $("#startCount").click(function () {

@@ -113,7 +113,7 @@ function update(){
 }
 
 
-var uName = window.localStorage.getItem("userName");
+var uName = window.sessionStorage.getItem("userName");
 
 var score = 0;
 /*
@@ -226,8 +226,8 @@ else {
         }
         else if(jsMsg.resMsg==="CreateRoomSuccess"){
             alert("CreateRoomSuccess");
-            window.localStorage.setItem("roomName",rname);
-            console.log(window.localStorage.getItem("roomName"));
+            window.sessionStorage.setItem("roomName",rname);
+            console.log(window.sessionStorage.getItem("roomName"));
             isGame = true;
             $(location).attr('href', 'gameRoom.html');
         }
@@ -236,7 +236,7 @@ else {
         }
         else if(jsMsg.resMsg==="JoinSuccess"){
             alert("加入成功");
-            window.localStorage.setItem("roomName",rname);
+            window.sessionStorage.setItem("roomName",rname);
             isGame = true;
             $(location).attr('href', 'gameRoom.html');
         }

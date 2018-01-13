@@ -38,7 +38,7 @@ jQuery(document).ready(function() {
             }
         }
 
-        // localStorage.setItem("userName",username);
+        // sessionStorage.setItem("userName",username);
     });
 
 
@@ -86,14 +86,14 @@ jQuery(document).ready(function() {
     //
     //
     //
-    //     // localStorage.setItem("userName",username);
+    //     // sessionStorage.setItem("userName",username);
     //     // window.location.href= "test.html";
     //     alert("登录成功！");
     //     window.location.href = "https://www.baidu.com";
     //     window.location.href= "test.html";
     //     // return true;
     //     // self.location = "test.html";
-    //     // console.log("sdafadfadsf"+localStorage.getItem("b"));
+    //     // console.log("sdafadfadsf"+sessionStorage.getItem("b"));
     // });
 
 
@@ -140,10 +140,10 @@ jQuery(document).ready(function() {
          Login();
 
 
-        // window.localStorage.setItem("userName",username);
-        // window.localStorage.setItem("passWord",password);
+        // window.sessionStorage.setItem("userName",username);
+        // window.sessionStorage.setItem("passWord",password);
         // $(location).attr('href', 'gameLobby.html');
-        // console.log(window.localStorage.getItem("passWord"));
+        // console.log(window.sessionStorage.getItem("passWord"));
         // alert("登录成功！");
         
     });
@@ -155,7 +155,7 @@ jQuery(document).ready(function() {
     //     console.log($(this).innerText);
     //     if (username == "a" && password == "123") {
     //         alert("登录成功！");
-    //         localStorage.setItem("userName",username);
+    //         sessionStorage.setItem("userName",username);
     //         location.href = "test.html";
     //     } else {
     //         alert("登录失败！");
@@ -170,7 +170,7 @@ jQuery(document).ready(function() {
     //     console.log($(this).innerText);
     //     if (username == "a" && password == "123") {
     //         alert("登录成功！");
-    //         localStorage.setItem("userName",username);
+    //         sessionStorage.setItem("userName",username);
     //         location.href = "test.html";
     //     } else {
     //         alert("登录失败！");
@@ -217,6 +217,7 @@ if (!("WebSocket" in window)) {
     alert("您的浏览器不支持 WebSocket!");
 }
 else {
+    // ws = new ReconnectingWebSocket("ws://111.231.85.149:8080/Trivia-Server/websocket/Login");
     ws = new ReconnectingWebSocket("ws://182.254.220.56:8080/MyTestServer/websocket/Login");
     ws.onopen = function () {
         console.log("WebOpen");
@@ -232,8 +233,8 @@ else {
         console.log(received_msg);
         var msg = JSON.parse(received_msg);
         if(msg.resMsg==="LoginSuccess"){
-            window.localStorage.setItem("userName",uN.value);
-            console.log(window.localStorage.getItem("userName"));
+            window.sessionStorage.setItem("userName",uN.value);
+            console.log(window.sessionStorage.getItem("userName"));
             $(location).attr('href', 'gameLobby.html');
             alert("登录成功！");
         }
@@ -249,8 +250,7 @@ else {
         }else if(msg.resMsg==="DatabaseError") {
             alert("数据库错误");
         }else if(msg.resMsg==="Login"){
-            alert("您已登录！现在为您进入游戏大厅！");
-            $(location).attr('href', 'gameLobby.html');
+            alert("该账号已登录！不能重复登陆");
         }
     };
 
